@@ -33,7 +33,7 @@ export default function SelectProduct({
           onClick={changeHandler}
         >
           <p>{product.name}</p>
-          <p>{product?.price} руб.</p>
+          <p>{product?.price} Br.</p>
           <p>{product?.description}</p>
         </div>
       ))}
