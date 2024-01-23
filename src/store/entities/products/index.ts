@@ -101,7 +101,6 @@ const initialState: TProductStore<TProduct> = {
       name: "Штакетник металлический LANE 0.4 Акция",
       description: "Двусторонний мат",
       price: 3.32,
-      actionPrice: 3.05,
     },
     {
       id: 22,

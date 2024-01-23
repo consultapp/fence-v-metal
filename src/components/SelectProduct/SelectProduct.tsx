@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { RootState } from "@reduxjs/toolkit/query";
+import { RootState } from "@/store";
 
 import styles from "./styles.module.css";
 import { TProduct } from "@/types";
@@ -7,7 +7,7 @@ import { UnknownAction } from "redux";
 
 type Props = {
   products: TProduct[];
-  selector: (state: RootState) => any;
+  selector: (state: RootState) => number | null;
   dispatcher: (arg0: number) => UnknownAction;
 };
 
