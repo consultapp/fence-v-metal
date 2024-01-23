@@ -14,3 +14,12 @@ export const selectFenceTypeIsSelected = (state: RootState) =>
 
 export const selectFenceStage2IsHidden = (state: RootState) =>
   selectFenceType(state) !== FENCE_TYPES.shtaketnik;
+
+export const selectFenceMaterialId = (state: RootState) =>
+  selectFenceModule(state).materialId;
+
+export const selectFencePillarId = (state: RootState) =>
+  selectFenceModule(state).pillarId;
+
+export const selectFenceJoistId = (state: RootState) =>
+  selectFenceModule(state).joistId;

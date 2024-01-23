@@ -8,7 +8,9 @@ export interface TProduct {
   id: TProductID;
   productType: keyof typeof PRODUCT_TYPES;
   name: string;
+  link?: string;
   price?: number;
+  proflistType?: keyof typeof PRODUCT_TYPES;
 }
 
 // export type TPillarID = number;

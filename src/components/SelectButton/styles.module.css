@@ -1,0 +1,19 @@
+.btnRoot {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.btnRoot div {
+  width: 75px;
+  height: 75px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.selected {
+  background-color: rgb(249, 249, 100);
+}
