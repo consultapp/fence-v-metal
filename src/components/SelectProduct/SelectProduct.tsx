@@ -3,11 +3,12 @@ import { RootState } from "@reduxjs/toolkit/query";
 
 import styles from "./styles.module.css";
 import { TProduct } from "@/types";
+import { UnknownAction } from "redux";
 
 type Props = {
   products: TProduct[];
   selector: (state: RootState) => any;
-  dispatcher: (arg0: string) => unknown;
+  dispatcher: (arg0: number) => UnknownAction;
 };
 
 export default function SelectProduct({
@@ -16,11 +17,10 @@ export default function SelectProduct({
   dispatcher,
 }: Props) {
   const current = useAppSelector(selector);
-  console.log("current", current);
   const dispatch = useAppDispatch();
 
-  const changeHandler = (e: React.ClickEvent<HTMLButtonElement>) => {
-    dispatch(dispatcher(Number(e.target.dataset.id)));
+  const changeHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+    dispatch(dispatcher(Number(e.currentTarget.dataset.id)));
   };
 
   return (
@@ -32,7 +32,9 @@ export default function SelectProduct({
           key={product.id}
           onClick={changeHandler}
         >
-          {product.name}
+          <p>{product.name}</p>
+          <p>{product?.price} руб.</p>
+          <p>{product?.description}</p>
         </div>
       ))}
     </main>

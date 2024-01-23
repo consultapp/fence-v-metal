@@ -11,21 +11,8 @@ export interface TProduct {
   link?: string;
   price?: number;
   proflistType?: keyof typeof PRODUCT_TYPES;
+  description?: string;
 }
-
-// export type TPillarID = number;
-// export interface TPillar {
-//   id: TPillarID;
-//   name: string;
-//   price?: number;
-// }
-
-// export type TJoistID = number;
-// export interface TJoist {
-//   id: TJoistID;
-//   name: string;
-//   price?: number;
-// }
 
 export type TShtaketnik = {
   fenceType: FENCE_TYPES.shtaketnik;
