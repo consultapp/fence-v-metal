@@ -5,4 +5,4 @@
 
 -- 24.01.24 --
 1h wp-json
-2h async loading
+3h async loading
