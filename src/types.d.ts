@@ -6,10 +6,12 @@ import PRODUCT_TYPES from "./fixtures/PRODUCT_TYPES";
 export type TProductID = number;
 export interface TProduct {
   id: TProductID;
+  slug?: string;
   productType: keyof typeof PRODUCT_TYPES;
   name: string;
   link?: string;
   price?: number;
+  width?: number; // attributes_2_value for PROFLIST
   proflistType?: keyof typeof PRODUCT_TYPES;
   description?: string;
 }
@@ -37,7 +39,7 @@ export type TFence = {
 };
 
 export interface TProductStore<T> {
-  entities: T[];
+  entities: { [id: T["id"]]: T };
   ids: T["id"][];
   loadingStatus: keyof typeof LOADING_STATUS;
 }

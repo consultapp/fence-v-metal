@@ -5,10 +5,32 @@ import Stage4 from "../Stages/Stage4/Stage4";
 import Stage5 from "../Stages/Stage5/Stage5";
 import Stage6 from "../Stages/Stage6/Stage6";
 import Stage7 from "../Stages/Stage7/Stage7";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { loadProductsIfNotExisted } from "@/store/entities/products/thunk/loadProductsIfNotExisted";
+import { selectProductLoadingStatus } from "@/store/entities/products/selectors";
+import LOADING_STATUS from "@/fixtures/LOADING_STATUS";
+import Loading from "../Loading/Loading";
+import styles from "./style.module.scss";
+import classNames from "classnames";
 
 export default function Fence() {
+  const dispatch = useAppDispatch();
+  const loadingStatus = useAppSelector(selectProductLoadingStatus);
+
+  useEffect(() => {
+    dispatch(loadProductsIfNotExisted());
+  }, [dispatch]);
+
+  if (loadingStatus !== LOADING_STATUS.finished)
+    return (
+      <div className={classNames(styles.root, styles.loading)}>
+        <Loading />
+      </div>
+    );
+
   return (
-    <div id="fence">
+    <div className={styles.root}>
       <h1>Fence Calculator</h1>
       <Stage1 />
       <Stage2 />

@@ -1,3 +1,8 @@
 -- 23.01.24 --
 2h structure
-2h test server
+1h test server
+2h wp-json
+
+-- 24.01.24 --
+1h wp-json
+2h async loading
