@@ -17,7 +17,6 @@ export const productSlice = createSlice({
     },
     finishLoading: (state, { payload }) => {
       const { products } = payload;
-      console.log("redux finishLoading", products);
       state.entities = products.reduce(
         (acc: { [id: TProductID]: TProduct }, product: TProduct) => {
           acc[product.id] = product;
