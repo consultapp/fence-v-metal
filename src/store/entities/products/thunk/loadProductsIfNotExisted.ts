@@ -3,7 +3,7 @@ import { Dispatch } from "redux";
 import { productSlice } from "..";
 
 import { TProduct } from "@/types";
-import { parceProflist } from "./parceData";
+import { parceProflistData } from "./parceProflistData";
 import { selectProductLoadingStatus } from "../selectors";
 import LOADING_STATUS from "@/fixtures/LOADING_STATUS";
 
@@ -34,7 +34,7 @@ async function loadData() {
     const proflistsData = await data[0].json();
     // const shtaketnikData = await data[1].json();
     // const pipesData = await data[2].json();
-    products.push(...parceProflist(proflistsData));
+    products.push(...parceProflistData(proflistsData));
   } catch (error) {
     new Error("Load error" + error);
   }
