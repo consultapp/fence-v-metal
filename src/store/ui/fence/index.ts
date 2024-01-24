@@ -9,6 +9,8 @@ interface IInit {
   materialId: TProductID | null;
   pillarId: TProductID | null;
   joistId: TProductID | null;
+  length: number;
+  height: number;
 }
 
 const initialState: IInit = {
@@ -17,6 +19,8 @@ const initialState: IInit = {
   materialId: null,
   pillarId: null,
   joistId: null,
+  length: 0,
+  height: 0,
 };
 
 export const fenceSlice = createSlice({
@@ -39,6 +43,12 @@ export const fenceSlice = createSlice({
     },
     setJoistId: (state, { payload }) => {
       state.joistId = payload;
+    },
+    setLength: (state, { payload }) => {
+      state.length = payload;
+    },
+    setHeight: (state, { payload }) => {
+      state.height = payload;
     },
   },
 });

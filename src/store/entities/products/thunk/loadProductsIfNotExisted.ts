@@ -3,10 +3,10 @@ import { Dispatch } from "redux";
 import { productSlice } from "..";
 
 import { TProduct } from "@/types";
-import { parceProflistData } from "./parceProflistData";
+import { parseProflistData } from "./parseProflistData";
 import { selectProductLoadingStatus } from "../selectors";
 import LOADING_STATUS from "@/fixtures/LOADING_STATUS";
-import { parceShtaketnikData } from "./parceShtaketnikData";
+import { parseShtaketnikData } from "./parseShtaketnikData";
 
 // https://metal.webcartel.ru/wp-json/wp/v2/products/?_fields=slug&per_page=100&product_cat=8
 export const CAT_PROFILE_PIPE = { slug: "profile-pipe", id: 8 };
@@ -36,8 +36,8 @@ async function loadData() {
     const shtaketnikData = await data[1].json();
     // const pipesData = await data[2].json();
     products.push(
-      ...parceProflistData(proflistsData),
-      ...parceShtaketnikData(shtaketnikData)
+      ...parseProflistData(proflistsData),
+      ...parseShtaketnikData(shtaketnikData)
     );
   } catch (error) {
     new Error("Load error" + error);

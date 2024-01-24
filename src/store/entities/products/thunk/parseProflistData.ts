@@ -12,7 +12,7 @@ interface IProflist {
   };
 }
 
-export function parceProflistData(items: IProflist[]) {
+export function parseProflistData(items: IProflist[]) {
   const result: TProduct[] = [];
 
   items.forEach((item) => {

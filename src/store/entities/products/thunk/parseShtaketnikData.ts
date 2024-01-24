@@ -12,7 +12,7 @@ interface IProflist {
   };
 }
 
-export function parceShtaketnikData(items: IProflist[]) {
+export function parseShtaketnikData(items: IProflist[]) {
   const result: TProduct[] = [];
 
   items.forEach((item) => {
