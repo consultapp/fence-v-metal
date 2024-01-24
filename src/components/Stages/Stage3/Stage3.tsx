@@ -14,12 +14,14 @@ export default function Stage3() {
   return (
     <fieldset>
       <legend> Select Material</legend>
-      {products?.length && (
+      {products?.length ? (
         <SelectProduct
           products={products}
           selector={selectFenceMaterialId}
           dispatcher={fenceSlice.actions.setMaterialId}
         />
+      ) : (
+        ""
       )}
     </fieldset>
   );
