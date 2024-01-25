@@ -23,6 +23,13 @@ export default function Fence() {
     dispatch(loadProductsIfNotExisted());
   }, [dispatch]);
 
+  if (loadingStatus === LOADING_STATUS.failed)
+    return (
+      <div className={classNames(styles.root)}>
+        <h1>Error of data loading.</h1>
+      </div>
+    );
+
   if (loadingStatus !== LOADING_STATUS.finished)
     return (
       <div className={classNames(styles.root, styles.loading)}>
