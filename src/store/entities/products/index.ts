@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import LOADING_STATUS from "@/fixtures/LOADING_STATUS";
 import type { TProduct, TProductID, TProductStore } from "@/types.d.ts";
 
-const initialState: TProductStore<TProduct> = {
+const initialState: TProductStore = {
   entities: {},
   ids: [],
   loadingStatus: LOADING_STATUS.idle,
@@ -18,7 +18,7 @@ export const productSlice = createSlice({
     finishLoading: (state, { payload }) => {
       const { products } = payload;
       state.entities = products.reduce(
-        (acc: { [id: TProductID]: TProduct }, product: TProduct) => {
+        (acc: { [key: TProductID]: TProduct }, product: TProduct) => {
           acc[product.id] = product;
           return acc;
         },

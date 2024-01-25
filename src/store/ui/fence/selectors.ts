@@ -29,3 +29,10 @@ export const selectFenceLength = (state: RootState) =>
 
 export const selectFenceHeight = (state: RootState) =>
   selectFenceModule(state).height;
+
+export const selectFenceForCalculations = (state: RootState) => [
+  selectFenceLength(state),
+  selectFenceHeight(state),
+  selectFencePillarId(state),
+  selectFenceJoistId(state),
+];

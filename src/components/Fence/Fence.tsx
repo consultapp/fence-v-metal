@@ -13,6 +13,7 @@ import LOADING_STATUS from "@/fixtures/LOADING_STATUS";
 import Loading from "../Loading/Loading";
 import styles from "./style.module.scss";
 import classNames from "classnames";
+import Calculator from "../Calculator/Calculator";
 
 export default function Fence() {
   const dispatch = useAppDispatch();
@@ -39,6 +40,7 @@ export default function Fence() {
       <Stage5 />
       <Stage6 />
       <Stage7 />
+      <Calculator />
     </div>
   );
 }

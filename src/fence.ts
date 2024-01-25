@@ -1,41 +1,73 @@
-// import { TJoist, TPillar } from "./types";
+import { TProduct } from "./types";
 
-// type Nullable<T> = T | null;
+type Nullable<T> = T | null;
 
-// interface IFence {
-//   isStageNeeded: (stage: number) => boolean;
-// }
+interface IFence {}
 
-// class Fence implements IFence {
-//   length: Nullable<number>;
-//   height: Nullable<number>;
-//   pillar: Nullable<TPillar>;
-//   joist: Nullable<TJoist>;
-//   needStages: number[] = [];
+type TProps = Pick<Fence, "length" | "height" | "pillar" | "joist">;
 
-//   constructor({ l, h, p, j }) {
-//     this.length = l;
-//     this.height = h;
-//     this.pillar = p; //40х40х1.5	40х40х2	50х50х2	50х50х3	60х40х2	60х40х3
-//     this.joist = j; //30х20х1.5	40х20х1.5	40х20х2
-//   }
+class Fence implements IFence {
+  length: Nullable<number>;
+  height: Nullable<number>;
+  pillar: Nullable<TProduct>;
+  joist: Nullable<TProduct>;
+  needStages: number[] = [];
 
-//   isStageNeeded(stage: number) {
-//     return this.needStages.includes(stage);
-//   }
-// }
+  fenceHeight: number = 0;
 
-// export class FenceShtaketnik extends Fence {
-//   needStages = [1, 2, 3, 4, 5, 6];
+  constructor({ length, height, pillar, joist }: TProps) {
+    this.length = length;
+    this.height = height;
+    this.pillar = pillar;
+    this.joist = joist;
 
-//   constructor({ l = 100, h = 100, p = "", j = "" }) {
-//     super({ l, h, p, j });
-//   }
-// }
-// export class FenceProflist extends Fence implements IFence {
-//   needStages = [1, 3, 4, 5, 6];
+    this.calcFenceHeight();
+  }
 
-//   constructor({ l = 100, h = 100, p = "", j = "" }) {
-//     super({ l, h, p, j });
-//   }
-// }
+  calcFenceHeight() {
+    if (this.height) {
+      if (this.height <= 1.4) {
+        this.fenceHeight = 2;
+      } else if (this.height <= 1.7) {
+        this.fenceHeight = 2.4;
+      } else if (this.height <= 2.2) {
+        this.fenceHeight = 3;
+      }
+    }
+  }
+
+  getPillarCalculation() {
+    if (this.length && this.pillar) {
+      const pillarCount = Math.ceil(this.length / 2.5) + 1;
+      const pillarMeters = Math.round(pillarCount * this.fenceHeight * 10) / 10;
+      return {
+        meters: pillarMeters,
+        count: pillarCount,
+        totalPrice:
+          Math.ceil(pillarCount * (this.pillar.price ?? 0) * 100) / 100,
+      };
+    }
+    return;
+  }
+
+  getJoistCalculation() {
+    if (this.length && this.joist) {
+      return {
+        meters: this.length * 2,
+        totalPrice: this.length * 2 * (this.joist.price ?? 0),
+      };
+    }
+    return;
+  }
+}
+
+export class FenceShtaketnik extends Fence {
+  constructor({ length, height, pillar, joist }: TProps) {
+    super({ length, height, pillar, joist });
+  }
+}
+export class FenceProflist extends Fence implements IFence {
+  constructor({ length, height, pillar, joist }: TProps) {
+    super({ length, height, pillar, joist });
+  }
+}

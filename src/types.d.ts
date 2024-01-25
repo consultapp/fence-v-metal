@@ -17,9 +17,9 @@ export interface TProduct {
   description?: string;
 }
 
-export interface TProductStore<T> {
-  entities: { [id: T["id"]]: T };
-  ids: T["id"][];
+export interface TProductStore {
+  entities: { [key: TProductID]: TProduct };
+  ids: TProductID[];
   loadingStatus: keyof typeof LOADING_STATUS;
 }
 

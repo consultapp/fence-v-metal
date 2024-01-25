@@ -19,8 +19,8 @@ const initialState: IInit = {
   materialId: null,
   pillarId: null,
   joistId: null,
-  length: 0,
-  height: 0,
+  length: 100,
+  height: 1.7,
 };
 
 export const fenceSlice = createSlice({
@@ -48,7 +48,10 @@ export const fenceSlice = createSlice({
       state.length = payload;
     },
     setHeight: (state, { payload }) => {
-      state.height = payload;
+      let tmp = payload;
+      if (payload < 1) tmp = 1;
+      if (payload > 2.2) tmp = 2.2;
+      state.height = tmp;
     },
   },
 });
