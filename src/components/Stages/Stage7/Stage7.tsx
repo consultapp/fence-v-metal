@@ -13,10 +13,7 @@ export default function Stage7() {
   return (
     <fieldset>
       <legend> Height (meters)</legend>
-      <input
-        onChange={changeHandler}
-        value={current === 0 || current ? current : ""}
-      />
+      <input onChange={changeHandler} value={current ? current : ""} />
     </fieldset>
   );
 }

@@ -44,7 +44,7 @@ class Fence implements IFence {
         meters: pillarMeters,
         count: pillarCount,
         totalPrice:
-          Math.ceil(pillarCount * (this.pillar.price ?? 0) * 100) / 100,
+          Math.ceil(pillarMeters * (this.pillar.price ?? 0) * 100) / 100,
       };
     }
     return;
