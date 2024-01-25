@@ -34,7 +34,11 @@ export default function SelectProduct({
         >
           <p>{product.name}</p>
           <p>Price {product?.price} Br.</p>
-          <p>Width {product?.width} m.</p>
+          <p>width {product?.width}</p>
+          <p>Unit {product?.unit}</p>
+          <a href={product?.link} target="_blank">
+            View on site
+          </a>
           <p>{product?.description}</p>
         </div>
       ))}

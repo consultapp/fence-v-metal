@@ -9,7 +9,9 @@ interface IProflist {
     price: string;
     attributes_1_value: string;
     attributes_2_value: string;
+    unit: string;
   };
+  link: string;
 }
 
 export function parseProflistData(items: IProflist[]) {
@@ -24,15 +26,21 @@ export function parseProflistData(items: IProflist[]) {
       if ("slug" in item) {
         tmp.slug = item.slug;
       }
+      if ("link" in item) {
+        tmp.link = item.link;
+      }
+
       if ("title" in item && "rendered" in item.title) {
         const { rendered } = item.title;
         tmp.name = rendered;
       }
       if ("meta" in item) {
-        const { price, attributes_1_value, attributes_2_value } = item.meta;
+        const { price, attributes_1_value, attributes_2_value, unit } =
+          item.meta;
         tmp.price = parseFloat(price);
         tmp.width = parseFloat(attributes_2_value);
         tmp.description = attributes_1_value;
+        tmp.unit = unit;
       }
       if (tmp.slug?.startsWith("mp-20") || tmp.slug?.startsWith("s-8"))
         result.push(tmp as TProduct);

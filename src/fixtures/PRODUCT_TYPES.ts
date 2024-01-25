@@ -3,4 +3,5 @@ export const PRODUCT_TYPES = {
   proflist: "proflist",
   pillar: "pillar",
   joist: "joist",
+  screw: "screw",
 } as const;

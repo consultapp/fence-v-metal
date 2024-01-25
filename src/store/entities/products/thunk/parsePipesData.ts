@@ -8,7 +8,9 @@ interface IProflist {
   meta: {
     price: string;
     attributes_1_value: string;
+    unit: string;
   };
+  link: string;
 }
 
 const PIPES_PILLAR = [
@@ -39,6 +41,7 @@ export function parsePipesData(items: IProflist[]) {
       }
       if (productType) {
         const tmp: Partial<TProduct> = { productType };
+
         if ("id" in item) {
           tmp.id = parseInt(item.id);
         }
@@ -49,10 +52,15 @@ export function parsePipesData(items: IProflist[]) {
           const { rendered } = item.title;
           tmp.name = rendered;
         }
+        if ("link" in item) {
+          tmp.link = item.link;
+        }
+
         if ("meta" in item) {
-          const { price, attributes_1_value } = item.meta;
+          const { price, attributes_1_value, unit } = item.meta;
           tmp.price = parseFloat(price);
           tmp.description = attributes_1_value;
+          tmp.unit = unit;
         }
         result.push(tmp as TProduct);
       }
