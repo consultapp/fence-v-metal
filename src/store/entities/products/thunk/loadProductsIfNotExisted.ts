@@ -62,7 +62,6 @@ export const loadProductsIfNotExisted =
     if (loadingStatus === LOADING_STATUS.finished) {
       return;
     }
-    console.log("Network Usage (loadProductsIfNotExisted)");
 
     dispatch(productSlice.actions.startLoading());
 
@@ -71,7 +70,7 @@ export const loadProductsIfNotExisted =
         dispatch(productSlice.actions.finishLoading({ products }));
       })
       .catch(() => {
-        console.log("failLoading");
+        console.error("failLoading");
         dispatch(productSlice.actions.failLoading());
       });
   };
