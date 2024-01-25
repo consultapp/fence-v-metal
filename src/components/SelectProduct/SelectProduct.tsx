@@ -4,6 +4,7 @@ import { RootState } from "@/store";
 import styles from "./styles.module.css";
 import { TProduct } from "@/types";
 import { UnknownAction } from "redux";
+import UNIT_DICTIONARY from "../../fixtures/UNIT_DICTIONARY";
 
 type Props = {
   products: TProduct[];
@@ -35,7 +36,12 @@ export default function SelectProduct({
           <p>{product.name}</p>
           <p>Price {product?.price} Br.</p>
           <p>width {product?.width}</p>
-          <p>Unit {product?.unit}</p>
+          <p>
+            Unit:
+            {typeof product["unit"] === "string"
+              ? UNIT_DICTIONARY.get(product.unit)
+              : product.unit}
+          </p>
           <a href={product?.link} target="_blank">
             View on site
           </a>
