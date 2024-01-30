@@ -38,16 +38,21 @@ export default function Fence() {
     );
 
   return (
-    <div className={styles.root}>
-      <h1>Fence Calculator</h1>
-      <Stage1 />
-      <Stage2 />
-      <Stage3 />
-      <Stage4 />
-      <Stage5 />
-      <Stage6 />
-      <Stage7 />
-      <Calculator />
+    <div className="fenceCalc">
+      <div className="fenceCalc_header1">Калькулятор забора</div>
+      <div className="fenceCalc_header2">
+        Рассчитайте вес и длину необходимого вам товара
+      </div>
+      <div className="fenceCalc_wrapper">
+        <Stage1 />
+        <Stage2 />
+        <Stage3 />
+        <Stage4 />
+        <Stage5 />
+        <Stage6 />
+        <Stage7 />
+        <Calculator />
+      </div>
     </div>
   );
 }
