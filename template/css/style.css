@@ -1,0 +1,137 @@
+.fenceCalc {
+  box-sizing: border-box;
+  max-width: 640px;
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.fenceCalc_header1 {
+  color: #2c090b;
+  font-family: "Open Sans";
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  padding: 0px;
+  margin: 0px;
+}
+.fenceCalc_header2 {
+  color: #22122d;
+  font-family: "Open Sans";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 16px 0 0 0;
+}
+.fenceCalc_wrapper {
+  border-radius: 32px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  margin-top: 53px;
+  border-radius: 32px;
+  min-height: 100px;
+  width: calc(100% - 80px);
+  padding: 40px;
+  gap: 30px;
+}
+
+.fenceButton {
+  display: flex;
+}
+.fenceButton a {
+  text-decoration: none;
+  color: #22122d;
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 26px;
+  padding: 19px 24px;
+  border-radius: 16px;
+  background: #fdbf50;
+}
+
+.fenceRadio {
+  border: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 30px;
+  padding-left: 0;
+}
+.fenceRadio label {
+  color: #22122d;
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.fenceRadio [type=radio]:checked,
+.fenceRadio [type=checkbox]:checked {
+  background: radial-gradient(circle at center, #fdbf50 50%, #fff 50%);
+}
+.fenceRadio [type=radio],
+.fenceRadio [type=checkbox] {
+  display: inline-block;
+  vertical-align: middle;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #fdbf50;
+  background: #fff;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  margin: 0 10px 0 0;
+}
+.fenceRadio_displayLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.fenceRadio_displayLine [type=radio], .fenceRadio_displayLine [type=checkbox] {
+  margin: 0px;
+}
+.fenceRadio__imageWrapper {
+  width: 70px;
+  height: 70px;
+  border-radius: 16px;
+  background: #c4c4c4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fenceRadio__image {
+  width: 40.727px;
+  height: 56px;
+  background-image: url("../assets/shtaketnik_trapeze.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.fenceRadio__info {
+  display: flex;
+  flex-direction: column;
+}
+.fenceRadio__infoHeader {
+  color: #22122d;
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.fenceRadio__infoText {
+  color: #919399;
+  font-family: "Open Sans";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/*# sourceMappingURL=style.css.map */

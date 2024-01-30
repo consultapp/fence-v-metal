@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/fenceSection.css" />
+  </head>
+  <body style="background-color: black">
+    <div class="fenceCalc">
+      <div class="fenceCalc_header1">Калькулятор забора</div>
+      <div class="fenceCalc_header2">
+        Рассчитайте вес и длину необходимого вам товара
+      </div>
+      <div class="fenceCalc_wrapper">
+        <div class="fenceSection">
+          <div class="fenceSection__header3">Тип забора</div>
+          <fieldset class="fenceRadio">
+            <div>
+              <input
+                type="radio"
+                id="shtaketnik"
+                name="fenceType"
+                value="shtaketnik"
+                checked
+              />
+              <label for="shtaketnik">Штакетник</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="proflist"
+                name="fenceType"
+                value="proflist"
+              />
+              <label for="proflist">Профлист</label>
+            </div>
+          </fieldset>
+          <div class="fenceSection__line"></div>
+        </div>
+        <div class="fenceSection">
+          <div class="fenceSection__header3">Покрытие</div>
+          <fieldset class="fenceRadio">
+            <div>
+              <input
+                type="radio"
+                id="oneSide"
+                name="shtaketnikType"
+                value="oneSide"
+                checked
+              />
+              <label for="oneSide">Односторонний</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="twoSide"
+                name="shtaketnikType"
+                value="twoSide"
+              />
+              <label for="twoSide">Двусторонний</label>
+            </div>
+          </fieldset>
+          <div class="fenceSection__line"></div>
+        </div>
+        <div class="fenceSection">
+          <div class="fenceSection__header3">Форма</div>
+          <fieldset class="fenceRadio">
+            <label class="fenceRadio_displayLine">
+              <div class="fenceRadio__imageWrapper">
+                <image
+                  class="fenceRadio__image"
+                  src="assets/shtaketnik_trapeze.png"
+                />
+              </div>
+              <input type="radio" id="forms1" name="forms" value="forms1" />
+              <div class="fenceRadio__info">
+                <span class="fenceRadio__infoHeader">Trapeze</span>
+                <span class="fenceRadio__infoText">ширина 1.15 м</span>
+              </div>
+            </label>
+            <label class="fenceRadio_displayLine">
+              <div class="fenceRadio__imageWrapper">
+                <image
+                  class="fenceRadio__image"
+                  src="assets/shtaketnik_ellipse.png"
+                />
+              </div>
+              <input type="radio" id="forms2" name="forms" value="forms2" />
+              <div class="fenceRadio__info">
+                <span class="fenceRadio__infoHeader">Ellipse</span>
+                <span class="fenceRadio__infoText">ширина 1.15 м</span>
+              </div>
+            </label>
+            <label class="fenceRadio_displayLine">
+              <div class="fenceRadio__imageWrapper">
+                <image
+                  class="fenceRadio__image"
+                  src="assets/shtaketnik_lane.png"
+                />
+              </div>
+              <input type="radio" id="forms3" name="forms" value="forms3" />
+              <div class="fenceRadio__info">
+                <span class="fenceRadio__infoHeader">Lane</span>
+                <span class="fenceRadio__infoText">ширина 1.15 м</span>
+              </div>
+            </label>
+          </fieldset>
+          <div class="fenceSection__line"></div>
+        </div>
+
+        <div class="fenceSection">
+          <div class="fenceSection__header3">Столб</div>
+          <div class="fenceSection__line"></div>
+        </div>
+        <div class="fenceSection">
+          <div class="fenceSection__header3">Балка</div>
+          <div class="fenceSection__line"></div>
+        </div>
+        <div class="fenceSection">
+          <div class="fenceSection__header3">Балка</div>
+        </div>
+        <div class="fenceButton">
+          <div class="fenceSection__twoColumn">
+            <div>
+              <div class="fenceSection__header3">Длина, м.</div>
+              <input type="text" name="" id="" placeholder="100" />
+            </div>
+            <div>
+              <div class="fenceSection__header3">Высота, м.</div>
+              <input type="text" name="" id="" placeholder="1.7" />
+            </div>
+          </div>
+        </div>
+        <div class="fenceButton">
+          <a href="">Рассчитать</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

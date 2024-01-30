@@ -1,0 +1,53 @@
+.fenceSection {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-self: flex-start;
+  justify-content: flex-start;
+  gap: 16px;
+}
+.fenceSection__header3 {
+  color: #22122d;
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.fenceSection__line {
+  border-bottom: 1px solid #eaeaea;
+  align-self: stretch;
+}
+.fenceSection input {
+  color: #919399;
+  text-align: center;
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.fenceSection__twoColumn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 30px;
+}
+.fenceSection__twoColumn div {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.fenceSection__twoColumn input {
+  color: #919399;
+  border-radius: 16px;
+  border: 1px solid #eaeaea;
+  background: #f9f9f9;
+  padding: 19px 17px 19px 20px;
+  align-self: stretch;
+}
+
+/*# sourceMappingURL=fenceSection.css.map */
