@@ -10,5 +10,6 @@
 1h screw + add info
 2h calc
 
--- 30.01.24 -- 4,5h
-4,5h verstka start
+-- 30.01.24 -- 5h
+4.5h verstka start
+0.5h Stage1 impl
