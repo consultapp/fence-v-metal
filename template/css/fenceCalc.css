@@ -1,0 +1,41 @@
+.fenceCalc {
+  box-sizing: border-box;
+  max-width: 640px;
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.fenceCalc_header1 {
+  color: #2c090b;
+  font-family: "Open Sans";
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  padding: 0px;
+  margin: 0px;
+}
+.fenceCalc_header2 {
+  color: #22122d;
+  font-family: "Open Sans";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 16px 0 0 0;
+}
+.fenceCalc_wrapper {
+  border-radius: 32px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  margin-top: 53px;
+  border-radius: 32px;
+  min-height: 100px;
+  width: calc(100% - 80px);
+  padding: 40px;
+  gap: 30px;
+}
+
+/*# sourceMappingURL=fenceCalc.css.map */

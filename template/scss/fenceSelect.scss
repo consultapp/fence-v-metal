@@ -1,0 +1,104 @@
+.fenceSelect {
+  position: relative;
+
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  &__header {
+    border-radius: 16px;
+    border: 1px solid #eaeaea;
+    background: #f9f9f9;
+    padding: 8px 20px;
+    min-height: 60px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 24px;
+    gap: 10px;
+  }
+  &__body {
+    position: absolute;
+    top: 90px;
+    width: 100%;
+  }
+
+  &__toggler {
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+  &[data-open="true"] &__toggler {
+    transform: rotate(0.5turn);
+  }
+
+  &__current,
+  &__option {
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__option ~ &__option {
+    border-top: 0px;
+  }
+
+  &__current {
+    color: #919399;
+  }
+
+  &[data-selected] &__current {
+    color: black;
+  }
+
+  &__option {
+    min-height: 52px;
+    padding: 8px 20px;
+    border: 1px solid #eaeaea;
+    background: #fff;
+  }
+
+  &__option:hover {
+    background: #f9f9f9;
+  }
+
+  &__option[data-selected] {
+    background: #fdbf50;
+  }
+
+  &__option:first-child {
+    border-radius: 16px 16px 0px 0px;
+  }
+  &__option:last-child {
+    border-radius: 0px 0px 16px 16px;
+  }
+
+  &__info div:first-child {
+    color: #22122d;
+  }
+
+  &__noinfo {
+    color: #919399;
+  }
+
+  &__info div:last-child {
+    color: #22122d;
+  }
+
+  &__price {
+    text-align: end;
+    color: #22122d;
+    text-align: right;
+
+    & span {
+      color: #919399;
+    }
+  }
+}

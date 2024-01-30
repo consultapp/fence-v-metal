@@ -10,5 +10,5 @@
 1h screw + add info
 2h calc
 
--- 30.01.24 --
-2h verstka start
+-- 30.01.24 -- 4,5h
+4,5h verstka start
