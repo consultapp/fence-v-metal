@@ -1,7 +1,7 @@
 import { PRODUCT_TYPES } from "@/fixtures/PRODUCT_TYPES";
 import { TProduct } from "@/types";
 
-interface IProflist {
+interface IPipes {
   id: string;
   title: { rendered: string };
   slug: string;
@@ -28,7 +28,7 @@ const PIPES_JOIST = [
   "truba-profilnaya-40x20x2",
 ];
 
-export function parsePipesData(items: IProflist[]) {
+export function parsePipesData(items: IPipes[]) {
   const result: TProduct[] = [];
 
   items.forEach((item) => {

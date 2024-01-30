@@ -1,7 +1,7 @@
 import { PRODUCT_TYPES } from "@/fixtures/PRODUCT_TYPES";
 import { TProduct } from "@/types";
 
-interface IProflist {
+interface IShtaketnik {
   id: string;
   title: { rendered: string };
   slug: string;
@@ -14,7 +14,7 @@ interface IProflist {
   link: string;
 }
 
-export function parseShtaketnikData(items: IProflist[]) {
+export function parseShtaketnikData(items: IShtaketnik[]) {
   const result: TProduct[] = [];
 
   items.forEach((item) => {
