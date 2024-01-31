@@ -1,11 +1,12 @@
 #root {
   margin: 0;
   padding: 20px;
-  background-color: #f9f9f9;
 }
 
 html,
 body {
   padding: 0;
   margin: 0;
+  padding-bottom: 100px;
+  background-color: #f9f9f9;
 }

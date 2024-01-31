@@ -28,33 +28,39 @@ export default function Fence() {
       </div>
     );
 
-  if (loadingStatus !== LOADING_STATUS.finished)
-    return (
-      <div>
-        <Loading />
-      </div>
-    );
-
   return (
     <div className="fenceCalc">
       <div className="fenceCalc_header1">Калькулятор забора</div>
       <div className="fenceCalc_header2">
         Рассчитайте вес и длину необходимого вам товара
       </div>
-      <div className="fenceCalc_wrapper">
-        <Stage1 />
-        <Stage2 />
-        <Stage3 />
-        <Stage4 />
-        <Stage5 />
-        <div className="fenceSection">
-          <div className="fenceSection__twoColumn">
-            <Stage6 />
-            <Stage7 />
-          </div>
+      {loadingStatus !== LOADING_STATUS.finished ? (
+        <div
+          style={{
+            minHeight: 200,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
+          <Loading />
         </div>
-        <Calculator />
-      </div>
+      ) : (
+        <div className="fenceCalc_wrapper">
+          <Stage1 />
+          <Stage2 />
+          <Stage3 />
+          <Stage4 />
+          <Stage5 />
+          <div className="fenceSection">
+            <div className="fenceSection__twoColumn">
+              <Stage6 />
+              <Stage7 />
+            </div>
+          </div>
+          <Calculator />
+        </div>
+      )}
     </div>
   );
 }

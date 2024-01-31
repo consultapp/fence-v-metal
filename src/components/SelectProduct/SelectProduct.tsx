@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 import { TProduct } from "@/types";
 import { UnknownAction } from "redux";
 import UNIT_DICTIONARY from "../../fixtures/UNIT_DICTIONARY";
+import { useMemo } from "react";
 
 type Props = {
   products: TProduct[];
@@ -19,6 +20,11 @@ export default function SelectProduct({
 }: Props) {
   const current = useAppSelector(selector);
   const dispatch = useAppDispatch();
+
+  const [currentProduct] = useMemo(() => {
+    return products.filter((item) => item.id === current);
+  }, [products, current]);
+  console.log("current", current, currentProduct);
 
   const changeHandler = (e: React.MouseEvent<HTMLDivElement>) => {
     dispatch(dispatcher(Number(e.currentTarget.dataset.id)));

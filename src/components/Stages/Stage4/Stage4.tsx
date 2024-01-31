@@ -4,6 +4,7 @@ import { selectProductsByType } from "@/store/entities/products/selectors";
 import { useAppSelector } from "@/store/hooks";
 import { fenceSlice } from "@/store/ui/fence";
 import { selectFencePillarId } from "@/store/ui/fence/selectors";
+import CustomSelect from "@/toolkit/CustomSelect/CustomSelect";
 
 export default function Stage4() {
   const products = useAppSelector((state) =>
@@ -11,13 +12,13 @@ export default function Stage4() {
   );
 
   return (
-    <fieldset>
-      <legend> Select Pillar</legend>
-      <SelectProduct
+    <div className="fenceSection">
+      <div className="fenceSection__header3">Столб</div>
+      <CustomSelect
         products={products}
         selector={selectFencePillarId}
         dispatcher={fenceSlice.actions.setPillarlId}
       />
-    </fieldset>
+    </div>
   );
 }
