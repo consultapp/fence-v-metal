@@ -49,8 +49,12 @@ export default function Fence() {
         <Stage3 />
         <Stage4 />
         <Stage5 />
-        <Stage6 />
-        <Stage7 />
+        <div className="fenceSection">
+          <div className="fenceSection__twoColumn">
+            <Stage6 />
+            <Stage7 />
+          </div>
+        </div>
         <Calculator />
       </div>
     </div>

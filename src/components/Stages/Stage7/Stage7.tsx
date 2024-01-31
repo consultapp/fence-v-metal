@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { fenceSlice } from "@/store/ui/fence";
 import { selectFenceHeight } from "@/store/ui/fence/selectors";
+import CustomInput from "@/toolkit/CustomInput/CustomInput";
 
 export default function Stage7() {
   const current = useAppSelector(selectFenceHeight);
@@ -11,9 +12,13 @@ export default function Stage7() {
   };
 
   return (
-    <fieldset>
-      <legend> Height (meters)</legend>
-      <input onChange={changeHandler} value={current ? current : ""} />
-    </fieldset>
+    <div>
+      <div className="fenceSection__header3">Высота, м.</div>
+      <CustomInput
+        placeholder="100"
+        onChange={changeHandler}
+        value={current ? current : ""}
+      />
+    </div>
   );
 }

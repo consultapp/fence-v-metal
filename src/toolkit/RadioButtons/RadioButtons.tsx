@@ -3,6 +3,7 @@ import { RootState } from "@/store";
 
 import { UnknownAction } from "redux";
 import { useId } from "react";
+import { getLang } from "@/fixtures/LANG";
 
 type Props = {
   types: string[];
@@ -33,7 +34,7 @@ export default function RadioButtons({ types, selector, dispatcher }: Props) {
             checked={current === type}
             onClick={changeHandler}
           />
-          <label htmlFor={type}>{type}</label>
+          <label htmlFor={type}>{getLang(type)}</label>
         </div>
       ))}
     </fieldset>
