@@ -13,3 +13,6 @@
 -- 30.01.24 -- 5h
 4.5h verstka start
 0.5h Stage1 impl
+
+-- 31.01.24 --
+0.5 St6,7 impl

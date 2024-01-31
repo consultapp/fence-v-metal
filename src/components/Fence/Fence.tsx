@@ -10,9 +10,7 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { loadProductsIfNotExisted } from "@/store/entities/products/thunk/loadProductsIfNotExisted";
 import { selectProductLoadingStatus } from "@/store/entities/products/selectors";
 import LOADING_STATUS from "@/fixtures/LOADING_STATUS";
-import Loading from "../Loading/Loading";
-import styles from "./style.module.scss";
-import classNames from "classnames";
+import Loading from "@/toolkit/Loading/Loading";
 import Calculator from "../Calculator/Calculator";
 
 export default function Fence() {
@@ -25,14 +23,14 @@ export default function Fence() {
 
   if (loadingStatus === LOADING_STATUS.failed)
     return (
-      <div className={classNames(styles.root)}>
+      <div>
         <h1>Error of data loading.</h1>
       </div>
     );
 
   if (loadingStatus !== LOADING_STATUS.finished)
     return (
-      <div className={classNames(styles.root, styles.loading)}>
+      <div>
         <Loading />
       </div>
     );

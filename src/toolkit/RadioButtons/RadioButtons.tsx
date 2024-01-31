@@ -23,15 +23,14 @@ export default function RadioButtons({ types, selector, dispatcher }: Props) {
   return (
     <fieldset className="fenceRadio">
       {types.map((type) => (
-        <div>
+        <div key={type}>
           <input
             data-value={type}
             type="radio"
             id={type}
             name={radioName}
             value={type}
-            key={type}
-            checked={current === type}
+            defaultChecked={current === type}
             onClick={changeHandler}
           />
           <label htmlFor={type}>{getLang(type)}</label>
