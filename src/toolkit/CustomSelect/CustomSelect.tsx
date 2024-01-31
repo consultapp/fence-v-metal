@@ -1,7 +1,7 @@
 import { RootState } from "@/store";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { TProduct } from "@/types";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { UnknownAction } from "redux";
 import IconLogo from "./icon.svg";
 
@@ -19,32 +19,32 @@ export default function CustomSelect({
   const current = useAppSelector(selector);
   const dispatch = useAppDispatch();
   const [isOpen, setIsOpen] = useState(false);
+  const controller = useRef(new AbortController());
   const [currentProduct] = useMemo(() => {
     return products.filter((item) => item.id === current);
   }, [products, current]);
 
   const changeHandler = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation();
     dispatch(dispatcher(Number(e.currentTarget.dataset.id)));
     setIsOpen(false);
+    controller.current.abort();
   };
 
   const toggleSelect = (e: React.MouseEvent<HTMLDivElement>) => {
-    // e.stopPropagation();
     if (isOpen) {
       setIsOpen(false);
     } else {
       setIsOpen(true);
-      const controller = new AbortController();
+      controller.current = new AbortController();
       document.addEventListener(
         "click",
         (event) => {
           if (event.target !== e.target) {
             setIsOpen(false);
-            controller.abort();
+            controller.current.abort();
           }
         },
-        { signal: controller.signal }
+        { signal: controller.current.signal }
       );
     }
   };
