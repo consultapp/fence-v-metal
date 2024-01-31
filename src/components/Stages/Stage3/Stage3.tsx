@@ -6,16 +6,17 @@ import {
   selectFenceMaterialId,
   selectFenceType,
 } from "@/store/ui/fence/selectors";
+import CustomSelect from "@/toolkit/CustomSelect/CustomSelect";
 
 export default function Stage3() {
   const type = useAppSelector(selectFenceType);
   const products = useAppSelector((state) => selectProductsByType(state, type));
 
   return (
-    <fieldset>
-      <legend> Select Material</legend>
+    <div className="fenceSection">
+      <div className="fenceSection__header3">Форма</div>
       {products?.length ? (
-        <SelectProduct
+        <CustomSelect
           products={products}
           selector={selectFenceMaterialId}
           dispatcher={fenceSlice.actions.setMaterialId}
@@ -23,6 +24,6 @@ export default function Stage3() {
       ) : (
         ""
       )}
-    </fieldset>
+    </div>
   );
 }
