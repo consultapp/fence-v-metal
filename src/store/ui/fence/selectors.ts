@@ -1,5 +1,6 @@
 import FENCE_TYPES from "@/fixtures/FENCE_TYPES";
 import { RootState } from "@/store";
+import { createSelector } from "@reduxjs/toolkit";
 
 export const selectFenceModule = (state: RootState) => state.fence;
 
@@ -30,9 +31,12 @@ export const selectFenceLength = (state: RootState) =>
 export const selectFenceHeight = (state: RootState) =>
   selectFenceModule(state).height;
 
-export const selectFenceForCalculations = (state: RootState) => [
-  selectFenceLength(state),
-  selectFenceHeight(state),
-  selectFencePillarId(state),
-  selectFenceJoistId(state),
-];
+export const selectFenceForCalculations = createSelector(
+  [
+    selectFenceLength,
+    selectFenceHeight,
+    selectFencePillarId,
+    selectFenceJoistId,
+  ],
+  (a, b, c, d) => [a, b, c, d]
+);
