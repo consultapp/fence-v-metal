@@ -1,4 +1,3 @@
-import SelectProduct from "@/components/SelectProduct/SelectProduct";
 import { selectProductsByType } from "@/store/entities/products/selectors";
 import { useAppSelector } from "@/store/hooks";
 import { fenceSlice } from "@/store/ui/fence";
