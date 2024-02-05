@@ -15,6 +15,7 @@ export interface TProduct {
   width?: number; // attributes_2_value for PROFLIST
   proflistType?: keyof typeof PRODUCT_TYPES;
   description?: string;
+  group_image?: string;
 }
 
 export interface TProductStore {

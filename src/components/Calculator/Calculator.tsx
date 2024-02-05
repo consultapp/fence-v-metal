@@ -1,7 +1,9 @@
 // import { FenceProflist, FenceShtaketnik } from "@/fence";
 // import FENCE_TYPES from "@/fixtures/FENCE_TYPES";
 // import { selectProductById } from "@/store/entities/products/selectors";
-import { useAppDispatch } from "@/store/hooks";
+import { PRODUCT_TYPES } from "@/fixtures/PRODUCT_TYPES";
+import { selectProductsByType } from "@/store/entities/products/selectors";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { fenceSlice } from "@/store/ui/fence";
 // import {
 //   selectFenceForCalculations,
@@ -11,7 +13,11 @@ import CustomButton from "@/toolkit/CustomButton/CustomButton";
 
 export default function Calculator() {
   const dispatch = useAppDispatch();
-  // const type = useAppSelector(selectFenceType);
+  // const type = useAppSelector();
+  const [screw] = useAppSelector((state) =>
+    selectProductsByType(state, PRODUCT_TYPES.screw)
+  );
+  console.log("screw", screw);
   // const [length, height, pillarId, joistId] = useAppSelector(
   //   selectFenceForCalculations
   // );
@@ -64,27 +70,64 @@ export default function Calculator() {
           </div>
           <div className="fenceTable__cell fenceTable__header">Количество</div>
           <div className="fenceTable__cell fenceTable__header">Стоимость</div>
-          <div className="fenceTable__cell">4</div>
-          <div className="fenceTable__cell fenceTable__count">5</div>
-          <div className="fenceTable__cell fenceTable__price">6</div>
-          <div className="fenceTable__cell">7</div>
-          <div className="fenceTable__cell fenceTable__count">8</div>
-          <div className="fenceTable__cell fenceTable__price">9</div>
-          <div className="fenceTable__cell">10</div>
-          <div className="fenceTable__cell fenceTable__count">11</div>
-          <div className="fenceTable__cell fenceTable__price">12</div>
-          <div className="fenceTable__cell">13</div>
+          <div className="fenceTable__cell">
+            <div
+              className="fenceTable__image"
+              style={{ backgroundImage: `url("${screw.group_image}")` }}
+            ></div>
+            {screw.name}
+          </div>
           <div className="fenceTable__cell fenceTable__count">14</div>
-          <div className="fenceTable__cell fenceTable__price">15</div>
-          <div className="fenceTable__cell">13</div>
+          <div className="fenceTable__cell fenceTable__price">
+            {screw.price} руб.
+          </div>
+          <div className="fenceTable__cell">
+            <div
+              className="fenceTable__image"
+              style={{ backgroundImage: `url("${screw.group_image}")` }}
+            ></div>
+            {screw.name}
+          </div>
           <div className="fenceTable__cell fenceTable__count">14</div>
-          <div className="fenceTable__cell fenceTable__price">15</div>
+          <div className="fenceTable__cell fenceTable__price">
+            {screw.price} руб.
+          </div>
+          <div className="fenceTable__cell">
+            <div
+              className="fenceTable__image"
+              style={{ backgroundImage: `url("${screw.group_image}")` }}
+            ></div>
+            {screw.name}
+          </div>
+          <div className="fenceTable__cell fenceTable__count">14</div>
+          <div className="fenceTable__cell fenceTable__price">
+            {screw.price} руб.
+          </div>
+          <div className="fenceTable__cell">
+            <div
+              className="fenceTable__image"
+              style={{ backgroundImage: `url("${screw.group_image}")` }}
+            ></div>
+            {screw.name}
+          </div>
+          <div className="fenceTable__cell fenceTable__count">14</div>
+          <div className="fenceTable__cell fenceTable__price">
+            {screw.price} руб.
+          </div>
+          <div className="fenceTable__cell">
+            <div
+              className="fenceTable__image"
+              style={{ backgroundImage: `url("${screw.group_image}")` }}
+            ></div>
+            {screw.name}
+          </div>
+          <div className="fenceTable__cell fenceTable__count">14</div>
+          <div className="fenceTable__cell fenceTable__price">
+            {screw.price} руб.
+          </div>
           <div className="fenceTable__result">Итого:</div>
           <div className="fenceTable__resultPrice">999 руб.</div>
         </div>
-      </div>
-      <div className="fenceSection">
-        <div className="fenceSection__twoColumns"></div>
       </div>
       <div className="fenceSection fenceSection_flexRow">
         <CustomButton

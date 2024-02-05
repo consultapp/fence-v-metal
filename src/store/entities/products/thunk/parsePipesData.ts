@@ -9,6 +9,7 @@ interface IPipes {
     price: string;
     attributes_1_value: string;
     unit: string;
+    group_image: string;
   };
   link: string;
 }
@@ -57,10 +58,11 @@ export function parsePipesData(items: IPipes[]) {
         }
 
         if ("meta" in item) {
-          const { price, attributes_1_value, unit } = item.meta;
+          const { price, attributes_1_value, unit, group_image } = item.meta;
           tmp.price = parseFloat(price);
           tmp.description = attributes_1_value;
           tmp.unit = unit;
+          tmp.group_image = group_image;
         }
         result.push(tmp as TProduct);
       }
