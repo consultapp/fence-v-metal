@@ -17,6 +17,9 @@ export default function Calculator() {
   const [screw] = useAppSelector((state) =>
     selectProductsByType(state, PRODUCT_TYPES.screw)
   );
+  const [stub] = useAppSelector((state) =>
+    selectProductsByType(state, PRODUCT_TYPES.stub)
+  );
   console.log("screw", screw);
   // const [length, height, pillarId, joistId] = useAppSelector(
   //   selectFenceForCalculations
@@ -117,13 +120,13 @@ export default function Calculator() {
           <div className="fenceTable__cell">
             <div
               className="fenceTable__image"
-              style={{ backgroundImage: `url("${screw.group_image}")` }}
+              style={{ backgroundImage: `url("${stub.group_image}")` }}
             ></div>
-            {screw.name}
+            {stub.name}
           </div>
           <div className="fenceTable__cell fenceTable__count">14</div>
           <div className="fenceTable__cell fenceTable__price">
-            {screw.price} руб.
+            {stub.price} руб.
           </div>
           <div className="fenceTable__result">Итого:</div>
           <div className="fenceTable__resultPrice">999 руб.</div>

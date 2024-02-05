@@ -10,6 +10,7 @@ import { parseShtaketnikData } from "./parseShtaketnikData";
 import { parsePipesData } from "./parsePipesData";
 import { parseScrew } from "./parseScrew";
 import { API_URL } from "@/fixtures/API_URL";
+import { parseStub } from "./parseStub";
 
 async function loadData() {
   const proflists = fetch(
@@ -24,18 +25,22 @@ async function loadData() {
   const screw = fetch(
     `${API_URL}/products/1160/?_fields=id,slug,meta,title,link`
   );
+  const stub = fetch(
+    `${API_URL}/products/1832/?_fields=id,slug,meta,title,link`
+  );
 
   const products: TProduct[] = [];
 
   try {
-    const data = await Promise.all([proflists, shtaketnik, pipes, screw]);
+    const data = await Promise.all([proflists, shtaketnik, pipes, screw, stub]);
     const p = await Promise.all(data.map((d) => d.json()));
 
     products.push(
       ...parseProflistData(p[0]),
       ...parseShtaketnikData(p[1]),
       ...parsePipesData(p[2]),
-      ...parseScrew([p[3]])
+      ...parseScrew([p[3]]),
+      ...parseStub([p[4]])
     );
   } catch (error) {
     new Error("Load error" + error);

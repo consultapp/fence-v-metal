@@ -4,4 +4,5 @@ export const PRODUCT_TYPES = {
   pillar: "pillar",
   joist: "joist",
   screw: "screw",
+  stub: "stub",
 } as const;
