@@ -70,6 +70,7 @@ export default function Fence() {
               border="outlined"
               onClick={() => dispatch(fenceSlice.actions.resetFence())}
               half50={true}
+              svg={true}
             >
               Очистить все поля
             </CustomButton>
