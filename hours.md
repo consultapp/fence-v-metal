@@ -21,4 +21,5 @@
 
 -- 05.02.24 --
 1h v tooltip
-1.5h filter impl
+2h filter impl
+2h result form + fixes
