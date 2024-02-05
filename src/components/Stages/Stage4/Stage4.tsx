@@ -16,6 +16,8 @@ export default function Stage4() {
       <div className="fenceSection__header3">
         Столб <Tooltip type="pillar" />
       </div>
+      <div className="fenceSection__line"></div>
+
       <CustomSelect
         products={products}
         selector={selectFencePillarId}

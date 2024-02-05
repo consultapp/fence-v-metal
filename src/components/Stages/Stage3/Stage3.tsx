@@ -14,7 +14,6 @@ export default function Stage3() {
   return (
     <div className="fenceSection">
       <div className="fenceSection__header3">Форма</div>
-      <div className="fenceSection__line"></div>
       {products?.length ? (
         <FilteredProducts
           products={products}
