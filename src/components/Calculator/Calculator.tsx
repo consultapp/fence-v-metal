@@ -1,37 +1,37 @@
-import { FenceProflist, FenceShtaketnik } from "@/fence";
-import FENCE_TYPES from "@/fixtures/FENCE_TYPES";
-import { selectProductById } from "@/store/entities/products/selectors";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
+// import { FenceProflist, FenceShtaketnik } from "@/fence";
+// import FENCE_TYPES from "@/fixtures/FENCE_TYPES";
+// import { selectProductById } from "@/store/entities/products/selectors";
+import { useAppDispatch } from "@/store/hooks";
 import { fenceSlice } from "@/store/ui/fence";
-import {
-  selectFenceForCalculations,
-  selectFenceType,
-} from "@/store/ui/fence/selectors";
+// import {
+//   selectFenceForCalculations,
+//   selectFenceType,
+// } from "@/store/ui/fence/selectors";
 import CustomButton from "@/toolkit/CustomButton/CustomButton";
 
 export default function Calculator() {
   const dispatch = useAppDispatch();
-  const type = useAppSelector(selectFenceType);
-  const [length, height, pillarId, joistId] = useAppSelector(
-    selectFenceForCalculations
-  );
+  // const type = useAppSelector(selectFenceType);
+  // const [length, height, pillarId, joistId] = useAppSelector(
+  //   selectFenceForCalculations
+  // );
 
-  const pillar = useAppSelector((state) =>
-    selectProductById(state, pillarId ?? 0)
-  );
-  const joist = useAppSelector((state) =>
-    selectProductById(state, joistId ?? 0)
-  );
+  // const pillar = useAppSelector((state) =>
+  //   selectProductById(state, pillarId ?? 0)
+  // );
+  // const joist = useAppSelector((state) =>
+  //   selectProductById(state, joistId ?? 0)
+  // );
 
   // if (!pillarId || !joistId) return;
 
-  const fence =
-    type === FENCE_TYPES.shtaketnik
-      ? new FenceShtaketnik({ length, height, pillar, joist })
-      : new FenceProflist({ length, height, pillar, joist });
+  // const fence =
+  //   type === FENCE_TYPES.shtaketnik
+  //     ? new FenceShtaketnik({ length, height, pillar, joist })
+  //     : new FenceProflist({ length, height, pillar, joist });
 
-  const p = fence.getPillarCalculation();
-  const j = fence.getJoistCalculation();
+  // const p = fence.getPillarCalculation();
+  // const j = fence.getJoistCalculation();
 
   return (
     <>
