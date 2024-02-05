@@ -54,7 +54,8 @@ class Fence implements IFence {
     if (this.length && this.joist) {
       return {
         meters: this.length * 2,
-        totalPrice: this.length * 2 * (this.joist.price ?? 0),
+        totalPrice:
+          Math.ceil(this.length * 2 * (this.joist.price ?? 0) * 100) / 100,
       };
     }
     return;
