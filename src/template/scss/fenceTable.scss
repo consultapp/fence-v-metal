@@ -8,6 +8,13 @@
     padding-top: 20px;
   }
 
+  &__price {
+    text-align: end;
+  }
+  &__count {
+    text-align: center;
+  }
+
   &__header {
     font-family: Open Sans;
     font-size: 16px;
@@ -30,7 +37,6 @@
     grid-column: 2 / span 2;
     grid-row: 8 / 9;
     justify-self: end;
-    align-self: flex-start;
   }
 
   &__result {
