@@ -1,8 +1,6 @@
 .fenceButton {
-  display: flex;
-}
-.fenceButton a {
-  text-decoration: none;
+  display: inline-flex;
+  border: 0px;
   color: #22122d;
   font-family: "Open Sans";
   font-size: 16px;
@@ -11,7 +9,44 @@
   line-height: 26px;
   padding: 19px 24px;
   border-radius: 16px;
+  cursor: pointer;
+  justify-content: center;
+  flex-grow: 1;
+}
+.fenceButton_half50 {
+  width: 50%;
+}
+.fenceButton_primary {
   background: #fdbf50;
+}
+.fenceButton_secondary {
+  background: rgb(34, 18, 45);
+  color: #fff;
+}
+.fenceButton_outlined {
+  border: 1px solid #fdbf50;
+  background: #fff;
+}
+.fenceButton svg {
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.fenceFlatButton {
+  font-family: Open Sans;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+  background: rgb(34, 18, 45);
+  display: inline-flex;
+  align-items: center;
+  border: 0px;
+  background-color: #fff;
+}
+.fenceFlatButton svg {
+  padding-right: 10px;
 }
 
 /*# sourceMappingURL=fenceButton.css.map */

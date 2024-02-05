@@ -37,3 +37,22 @@
     margin-left: 5px;
   }
 }
+
+.fenceFlatButton {
+  font-family: Open Sans;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+  background: rgba(34, 18, 45, 1);
+
+  display: inline-flex;
+  align-items: center;
+  border: 0px;
+  background-color: #fff;
+
+  & svg {
+    padding-right: 10px;
+  }
+}

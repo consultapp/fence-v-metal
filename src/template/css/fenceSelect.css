@@ -25,6 +25,11 @@
   position: absolute;
   top: 90px;
   width: 100%;
+  max-height: 400px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border: 1px solid #eaeaea;
+  border-radius: 16px 16px 16px 16px;
   z-index: 100;
 }
 .fenceSelect__toggler {
@@ -51,7 +56,6 @@
 .fenceSelect__option {
   min-height: 52px;
   padding: 8px 20px;
-  border: 1px solid #eaeaea;
   background: #fff;
 }
 .fenceSelect__option[data-selectable]:hover {
@@ -60,14 +64,9 @@
 .fenceSelect__option[data-selected=true], .fenceSelect__option[data-selected=true]:hover {
   background: #fdbf50;
 }
-.fenceSelect__option:first-child {
-  border-radius: 16px 16px 0px 0px;
-}
-.fenceSelect__option:last-child {
-  border-radius: 0px 0px 16px 16px;
-}
 .fenceSelect__info div:first-child {
   color: #22122d;
+  font-weight: 600;
 }
 .fenceSelect__noinfo {
   color: #919399;

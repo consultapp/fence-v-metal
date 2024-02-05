@@ -2,7 +2,7 @@
   display: inline-block;
   position: relative;
   vertical-align: top;
-  color: #fdbf50;
+  color: 22122D;
   z-index: 1;
   cursor: pointer;
 }
@@ -34,6 +34,9 @@
   top: calc(50% - 5px);
   left: 0;
   transform: translateX(-100%);
+}
+.tooltip__icon {
+  color: rgba(34, 18, 45, 0.5);
 }
 .tooltip__icon:hover ~ .tooltip__details {
   opacity: 1;

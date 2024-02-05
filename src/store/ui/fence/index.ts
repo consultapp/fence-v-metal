@@ -17,9 +17,9 @@ interface IInit {
 }
 
 const initialState: IInit = {
-  fenceType: null,
+  fenceType: FENCE_TYPES.proflist,
   shtaketnikType: null,
-  filter: null,
+  filter: FILTERS[FENCE_TYPES.proflist][0].slug,
   materialId: null,
   pillarId: null,
   joistId: null,

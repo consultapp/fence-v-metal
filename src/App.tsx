@@ -12,6 +12,7 @@ import "@/template/scss/fenceSection.scss";
 import "@/template/scss/fenceRadio.scss";
 import "@/template/scss/fenceSelect.scss";
 import "@/template/scss/fenceTooltip.scss";
+import "@/template/scss/fenceTable.scss";
 
 function App() {
   return (
