@@ -1,33 +1,38 @@
 .fenceButton {
-  display: flex;
+  display: inline-flex;
+  border: 0px;
+  color: #22122d;
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 26px;
+  padding: 19px 24px;
+  border-radius: 16px;
 
-  &_primary a {
-    text-decoration: none;
-    color: #22122d;
-    font-family: "Open Sans";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 26px;
-    padding: 19px 24px;
-    border-radius: 16px;
-    background: #fdbf50;
+  cursor: pointer;
+
+  justify-content: center;
+
+  flex-grow: 1;
+
+  &_half50 {
+    width: 50%;
   }
 
-  &_outlined a {
-    text-decoration: none;
-    color: #22122d;
-    font-family: "Open Sans";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 26px;
-    padding: 19px 24px;
-    border-radius: 16px;
+  &_primary {
+    background: #fdbf50;
+  }
+  &_secondary {
+    background: rgba(34, 18, 45, 1);
+    color: #fff;
+  }
+
+  &_outlined {
     border: 1px solid #fdbf50;
     background: #fff;
   }
-  a svg {
+  & svg {
     vertical-align: middle;
     margin-left: 5px;
   }

@@ -1,6 +1,7 @@
 import FENCE_TYPES from "@/fixtures/FENCE_TYPES";
 import FILTERS from "@/fixtures/FILTERS";
 import SHTAKETNIK_TYPES from "@/fixtures/SHTAKETNIK_TYPES";
+import { RootState } from "@/store";
 import { TProductID } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 
@@ -66,6 +67,16 @@ export const fenceSlice = createSlice({
         if (payload > 2.2) tmp = 2.2;
         state.height = tmp;
       }
+    },
+    resetFence: (state) => {
+      state.fenceType = initialState.fenceType;
+      state.shtaketnikType = initialState.shtaketnikType;
+      state.filter = initialState.filter;
+      state.materialId = initialState.materialId;
+      state.pillarId = initialState.pillarId;
+      state.joistId = initialState.joistId;
+      state.length = initialState.length;
+      state.height = initialState.height;
     },
   },
 });

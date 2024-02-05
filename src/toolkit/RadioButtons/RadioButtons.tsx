@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { RootState } from "@/store";
 
 import { UnknownAction } from "redux";
-import { useId } from "react";
+import { ChangeEvent, useId } from "react";
 import { getLang } from "@/fixtures/LANG";
 
 type Props = {
@@ -16,9 +16,11 @@ export default function RadioButtons({ types, selector, dispatcher }: Props) {
   const dispatch = useAppDispatch();
   const radioName = useId();
 
-  const changeHandler = (e: React.MouseEvent<HTMLDivElement>) => {
+  const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(dispatcher(e.currentTarget.dataset.value ?? ""));
   };
+
+  console.log("current", current);
 
   return (
     <fieldset className="fenceRadio">
@@ -30,8 +32,8 @@ export default function RadioButtons({ types, selector, dispatcher }: Props) {
             id={type}
             name={radioName}
             value={type}
-            defaultChecked={current === type}
-            onClick={changeHandler}
+            checked={current === type}
+            onChange={changeHandler}
           />
           <label htmlFor={type}>{getLang(type)}</label>
         </div>
