@@ -14,10 +14,12 @@ import Loading from "@/toolkit/Loading/Loading";
 import Calculator from "../Calculator/Calculator";
 import CustomButton from "@/toolkit/CustomButton/CustomButton";
 import { fenceSlice } from "@/store/ui/fence";
+import { selectIsShowResult } from "@/store/ui/fence/selectors";
 
 export default function Fence() {
   const dispatch = useAppDispatch();
   const loadingStatus = useAppSelector(selectProductLoadingStatus);
+  const showResult = useAppSelector(selectIsShowResult);
 
   useEffect(() => {
     dispatch(loadProductsIfNotExisted());
@@ -30,55 +32,56 @@ export default function Fence() {
       </div>
     );
 
-  return (
-    <div className="fenceCalc">
-      <div className="fenceCalc_header1">Калькулятор забора</div>
-      <div className="fenceCalc_header2">
-        Рассчитайте вес и длину необходимого вам товара
+  if (loadingStatus !== LOADING_STATUS.finished)
+    return (
+      <div
+        style={{
+          minHeight: 200,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        <Loading />
       </div>
-      {loadingStatus !== LOADING_STATUS.finished ? (
-        <div
-          style={{
-            minHeight: 200,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
+    );
+
+  return showResult ? (
+    <div className="fenceCalc_wrapper">
+      <Calculator />
+    </div>
+  ) : (
+    <div className="fenceCalc_wrapper">
+      <Stage1 />
+      <Stage2 />
+      <Stage3 />
+      <Stage4 />
+      <Stage5 />
+      <div className="fenceSection">
+        <div className="fenceSection_twoColumn">
+          <Stage6 />
+          <Stage7 />
+        </div>
+      </div>
+
+      <div className="fenceSection fenceSection_flexRow">
+        <CustomButton
+          type="primary"
+          half50={true}
+          onClick={() => dispatch(fenceSlice.actions.showResult())}
         >
-          <Loading />
-        </div>
-      ) : (
-        <div className="fenceCalc_wrapper">
-          <Stage1 />
-          <Stage2 />
-          <Stage3 />
-          <Stage4 />
-          <Stage5 />
-          <div className="fenceSection">
-            <div className="fenceSection_twoColumn">
-              <Stage6 />
-              <Stage7 />
-            </div>
-          </div>
-
-          <div className="fenceSection fenceSection_flexRow">
-            <CustomButton type="primary" onClick={() => {}} half50={true}>
-              Рассчитать
-            </CustomButton>
-            <CustomButton
-              type="primary"
-              border="outlined"
-              onClick={() => dispatch(fenceSlice.actions.resetFence())}
-              half50={true}
-              svg={true}
-            >
-              Очистить все поля
-            </CustomButton>
-          </div>
-
-          <Calculator />
-        </div>
-      )}
+          Рассчитать
+        </CustomButton>
+        <CustomButton
+          type="primary"
+          border="outlined"
+          onClick={() => dispatch(fenceSlice.actions.resetFence())}
+          half50={true}
+          svg={true}
+        >
+          Очистить все поля
+        </CustomButton>
+      </div>
     </div>
   );
 }

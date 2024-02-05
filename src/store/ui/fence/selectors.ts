@@ -29,6 +29,9 @@ export const selectCurrentFilter = (state: RootState) => {
   return null;
 };
 
+export const selectIsShowResult = (state: RootState) =>
+  selectFenceModule(state).showResult;
+
 export const selectFenceStage2IsHidden = (state: RootState) =>
   selectFenceType(state) !== FENCE_TYPES.shtaketnik;
 

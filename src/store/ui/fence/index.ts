@@ -13,6 +13,7 @@ interface IInit {
   joistId: TProductID | null;
   length: number;
   height: number;
+  showResult: boolean;
 }
 
 const initialState: IInit = {
@@ -22,6 +23,7 @@ const initialState: IInit = {
   materialId: null,
   pillarId: null,
   joistId: null,
+  showResult: false,
   length: 100,
   height: 1.7,
 };
@@ -76,6 +78,12 @@ export const fenceSlice = createSlice({
       state.joistId = initialState.joistId;
       state.length = initialState.length;
       state.height = initialState.height;
+    },
+    showResult: (state) => {
+      state.showResult = true;
+    },
+    hideResult: (state) => {
+      state.showResult = false;
     },
   },
 });

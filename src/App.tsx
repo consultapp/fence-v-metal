@@ -16,7 +16,13 @@ import "@/template/scss/fenceTooltip.scss";
 function App() {
   return (
     <Provider store={store}>
-      <Fence />
+      <div className="fenceCalc">
+        <div className="fenceCalc_header1">Калькулятор забора</div>
+        <div className="fenceCalc_header2">
+          Рассчитайте вес и длину необходимого вам товара
+        </div>
+        <Fence />
+      </div>
     </Provider>
   );
 }
