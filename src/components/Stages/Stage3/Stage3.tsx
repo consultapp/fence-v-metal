@@ -14,15 +14,13 @@ export default function Stage3() {
   return (
     <div className="fenceSection">
       <div className="fenceSection__header3">Форма</div>
-      {products?.length ? (
+      {
         <FilteredProducts
           products={products}
           selector={selectFenceMaterialId}
           dispatcher={fenceSlice.actions.setMaterialId}
         />
-      ) : (
-        ""
-      )}
+      }
     </div>
   );
 }

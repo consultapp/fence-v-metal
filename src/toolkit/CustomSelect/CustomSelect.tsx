@@ -34,18 +34,20 @@ export default function CustomSelect({
     if (isOpen) {
       setIsOpen(false);
     } else {
-      setIsOpen(true);
-      controller.current = new AbortController();
-      document.addEventListener(
-        "click",
-        (event) => {
-          if (event.target !== e.target) {
-            setIsOpen(false);
-            controller.current.abort();
-          }
-        },
-        { signal: controller.current.signal }
-      );
+      if (products.length) {
+        setIsOpen(true);
+        controller.current = new AbortController();
+        document.addEventListener(
+          "click",
+          (event) => {
+            if (event.target !== e.target) {
+              setIsOpen(false);
+              controller.current.abort();
+            }
+          },
+          { signal: controller.current.signal }
+        );
+      }
     }
   };
 

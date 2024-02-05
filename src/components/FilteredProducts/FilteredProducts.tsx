@@ -38,15 +38,13 @@ export default function FilteredProducts({
         selector={selectCurrentFilter}
         dispatcher={fenceSlice.actions.setFilter}
       />
-      {products?.length ? (
+      {
         <CustomSelect
-          products={filteredProducts}
+          products={filteredProducts ? filteredProducts : []}
           selector={selector}
           dispatcher={dispatcher}
         />
-      ) : (
-        ""
-      )}
+      }
     </>
   );
 }
