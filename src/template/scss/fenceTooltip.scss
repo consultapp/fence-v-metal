@@ -2,7 +2,7 @@
   display: inline-block;
   position: relative;
   vertical-align: top;
-  color: #fdbf50;
+  color: 22122D;
   z-index: 1;
   cursor: pointer;
 
@@ -39,6 +39,9 @@
       left: 0;
       transform: translateX(-100%);
     }
+  }
+  &__icon {
+    color: rgba(34, 18, 45, 0.5);
   }
 
   &__icon:hover ~ &__details {

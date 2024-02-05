@@ -1,6 +1,10 @@
 #root {
   margin: 0;
   padding: 20px;
+
+  @media screen and (max-width: 375px) {
+    padding: 0;
+  }
 }
 
 html,
