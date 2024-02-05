@@ -1,5 +1,6 @@
 .fenceSelect {
   position: relative;
+  cursor: pointer;
   font-family: "Open Sans";
   font-size: 16px;
   font-style: normal;
@@ -18,17 +19,19 @@
   align-items: center;
   line-height: 24px;
   gap: 10px;
+  z-index: 90;
 }
 .fenceSelect__body {
   position: absolute;
   top: 90px;
   width: 100%;
+  z-index: 100;
 }
 .fenceSelect__toggler {
   flex-shrink: 0;
   flex-grow: 0;
 }
-.fenceSelect[data-open=true] .fenceSelect__toggler {
+.fenceSelect__togglerOpen {
   transform: rotate(0.5turn);
 }
 .fenceSelect__current, .fenceSelect__option {
@@ -45,19 +48,16 @@
 .fenceSelect__current {
   color: #919399;
 }
-.fenceSelect[data-selected] .fenceSelect__current {
-  color: black;
-}
 .fenceSelect__option {
   min-height: 52px;
   padding: 8px 20px;
   border: 1px solid #eaeaea;
   background: #fff;
 }
-.fenceSelect__option:hover {
+.fenceSelect__option[data-selectable]:hover {
   background: #f9f9f9;
 }
-.fenceSelect__option[data-selected] {
+.fenceSelect__option[data-selected=true], .fenceSelect__option[data-selected=true]:hover {
   background: #fdbf50;
 }
 .fenceSelect__option:first-child {

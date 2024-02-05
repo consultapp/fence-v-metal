@@ -13,6 +13,8 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+
+  vertical-align: bottom;
 }
 .fenceSection__line {
   border-bottom: 1px solid #eaeaea;
@@ -20,7 +22,6 @@
 }
 .fenceSection input {
   color: #919399;
-  text-align: center;
   font-family: "Open Sans";
   font-size: 16px;
   font-style: normal;

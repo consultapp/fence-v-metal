@@ -1,3 +1,4 @@
+import Tooltip from "@/components/Tooltip/Tooltip";
 import { PRODUCT_TYPES } from "@/fixtures/PRODUCT_TYPES";
 import { selectProductsByType } from "@/store/entities/products/selectors";
 import { useAppSelector } from "@/store/hooks";
@@ -12,7 +13,9 @@ export default function Stage4() {
 
   return (
     <div className="fenceSection">
-      <div className="fenceSection__header3">Столб</div>
+      <div className="fenceSection__header3">
+        Столб <Tooltip type="pillar" />
+      </div>
       <CustomSelect
         products={products}
         selector={selectFencePillarId}

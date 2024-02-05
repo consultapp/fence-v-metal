@@ -1,0 +1,43 @@
+.tooltip {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  color: #fdbf50;
+  z-index: 1;
+  cursor: pointer;
+}
+.tooltip__details {
+  position: absolute;
+  left: -100vw;
+  opacity: 0;
+  min-width: 310px;
+  font-family: Open Sans;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #919399;
+  box-shadow: 0px 16px 24px 0px rgba(44, 54, 81, 0.0784313725);
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  top: 12px;
+  transform: translateY(-50%) translateX(20px);
+  transition: opacity 0.3s ease-in-out;
+}
+.tooltip__details::after {
+  position: absolute;
+  content: "";
+  border: 5px solid transparent;
+  border-right: 5px solid #fff;
+  top: calc(50% - 5px);
+  left: 0;
+  transform: translateX(-100%);
+}
+.tooltip__icon:hover ~ .tooltip__details {
+  opacity: 1;
+  left: 50%;
+}
+
+/*# sourceMappingURL=fenceTooltip.css.map */
