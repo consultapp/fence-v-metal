@@ -20,8 +20,6 @@ export default function RadioButtons({ types, selector, dispatcher }: Props) {
     dispatch(dispatcher(e.currentTarget.dataset.value ?? ""));
   };
 
-  console.log("current", current);
-
   return (
     <fieldset className="fenceRadio">
       {types.map((type) => (
