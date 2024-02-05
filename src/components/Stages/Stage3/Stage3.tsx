@@ -1,3 +1,4 @@
+import FilteredProducts from "@/components/FilteredProducts/FilteredProducts";
 import { selectProductsByType } from "@/store/entities/products/selectors";
 import { useAppSelector } from "@/store/hooks";
 import { fenceSlice } from "@/store/ui/fence";
@@ -5,7 +6,6 @@ import {
   selectFenceMaterialId,
   selectFenceType,
 } from "@/store/ui/fence/selectors";
-import CustomSelect from "@/toolkit/CustomSelect/CustomSelect";
 
 export default function Stage3() {
   const type = useAppSelector(selectFenceType);
@@ -14,8 +14,9 @@ export default function Stage3() {
   return (
     <div className="fenceSection">
       <div className="fenceSection__header3">Форма</div>
+      <div className="fenceSection__line"></div>
       {products?.length ? (
-        <CustomSelect
+        <FilteredProducts
           products={products}
           selector={selectFenceMaterialId}
           dispatcher={fenceSlice.actions.setMaterialId}

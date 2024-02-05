@@ -44,3 +44,10 @@ export type TFence = {
   pillar: TPillarID;
   joist: TJoistID;
 };
+
+export interface IFilter {
+  slug: string;
+  name: string;
+  link: string;
+  description: string;
+}
