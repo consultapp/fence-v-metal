@@ -19,7 +19,7 @@ export default function RadioFilter({ filters, selector, dispatcher }: Props) {
   const changeHandler = (e: React.MouseEvent<HTMLDivElement>) => {
     dispatch(dispatcher(e.currentTarget.dataset.value ?? ""));
   };
-  console.log("current", current);
+
   return (
     <fieldset className="fenceRadio">
       {filters

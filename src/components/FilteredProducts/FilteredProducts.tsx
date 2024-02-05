@@ -33,11 +33,15 @@ export default function FilteredProducts({
 
   return (
     <>
-      <RadioFilter
-        filters={filters}
-        selector={selectCurrentFilter}
-        dispatcher={fenceSlice.actions.setFilter}
-      />
+      {filters && filters.length ? (
+        <RadioFilter
+          filters={filters}
+          selector={selectCurrentFilter}
+          dispatcher={fenceSlice.actions.setFilter}
+        />
+      ) : (
+        ""
+      )}
       {
         <CustomSelect
           products={filteredProducts ? filteredProducts : []}

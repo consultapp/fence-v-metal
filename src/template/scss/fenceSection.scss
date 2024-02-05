@@ -7,6 +7,11 @@
   justify-content: flex-start;
   gap: 16px;
 
+  &_flexRow {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
   &__header3 {
     color: #22122d;
     font-family: "Open Sans";
@@ -30,7 +35,7 @@
     line-height: normal;
   }
 
-  &__twoColumn {
+  &_twoColumn {
     display: flex;
     flex-direction: row;
     justify-content: center;
