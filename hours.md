@@ -14,13 +14,14 @@
 4.5h verstka start
 0.5h Stage1 impl
 
--- 31.01.24 --
+-- 31.01.24 -- 2h
 0.5 St6,7 impl
 1.5 St5 impl
 0.5 optimization
 
--- 05.02.24 --
+-- 05.02.24 -- 6.5h
 1h v tooltip
 2h filter impl
 2h result form + fixes
 1h image + result
+0.5 stub added
