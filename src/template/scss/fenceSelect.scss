@@ -28,9 +28,11 @@
     position: absolute;
     top: 90px;
     width: 100%;
-    // max-height: calc(400px);
-    // overflow-y: scroll;
-    // border-radius: 16px 16px 16px 16px;
+    max-height: calc(400px);
+    overflow-y: scroll;
+    border-radius: 16px 16px 16px 16px;
+    overflow-x: hidden;
+    border: 1px solid #eaeaea;
 
     z-index: 100;
   }
@@ -65,7 +67,7 @@
   &__option {
     min-height: 52px;
     padding: 8px 20px;
-    border: 1px solid #eaeaea;
+    // border: 1px solid #eaeaea;
     background: #fff;
   }
 
@@ -78,15 +80,16 @@
     background: #fdbf50;
   }
 
-  &__option:first-child {
-    border-radius: 16px 16px 0px 0px;
-  }
-  &__option:last-child {
-    border-radius: 0px 0px 16px 16px;
-  }
+  // &__option:first-child {
+  //   border-radius: 16px 16px 0px 0px;
+  // }
+  // &__option:last-child {
+  //   border-radius: 0px 0px 16px 16px;
+  // }
 
   &__info div:first-child {
     color: #22122d;
+    font-weight: 600;
   }
 
   &__noinfo {
