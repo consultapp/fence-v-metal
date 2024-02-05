@@ -19,7 +19,7 @@
 1.5 St5 impl
 0.5 optimization
 
--- 05.02.24 -- 6.5h
+-- 05.02.24 -- 7h
 1h v tooltip
 2h filter impl
 2h result form + fixes
