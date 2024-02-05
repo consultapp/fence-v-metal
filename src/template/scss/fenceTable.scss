@@ -17,6 +17,8 @@
     flex-direction: row;
     align-items: center;
     flex-grow: 1;
+
+    gap: 5px;
   }
 
   &__price {
@@ -57,11 +59,20 @@
     justify-self: flex-start;
   }
 
+  &__imageContainer {
+    width: 70px;
+    height: 70px;
+  }
+
   &__image {
     width: 70px;
     height: 70px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+
+    &_contain {
+      background-size: contain;
+    }
   }
 }

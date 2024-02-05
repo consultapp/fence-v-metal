@@ -25,3 +25,4 @@
 2h result form + fixes
 1h image + result
 0.5 stub added
+0.5 calculator

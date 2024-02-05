@@ -56,6 +56,7 @@ export const selectFenceForCalculations = createSelector(
     selectFenceHeight,
     selectFencePillarId,
     selectFenceJoistId,
+    selectFenceMaterialId,
   ],
-  (a, b, c, d) => [a, b, c, d]
+  (a, b, c, d, e) => [a, b, c, d, e]
 );

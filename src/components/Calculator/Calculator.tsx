@@ -1,46 +1,54 @@
-// import { FenceProflist, FenceShtaketnik } from "@/fence";
-// import FENCE_TYPES from "@/fixtures/FENCE_TYPES";
-// import { selectProductById } from "@/store/entities/products/selectors";
+import { FenceProflist, FenceShtaketnik } from "@/fence";
+import FENCE_TYPES from "@/fixtures/FENCE_TYPES";
+import { selectProductById } from "@/store/entities/products/selectors";
 import { PRODUCT_TYPES } from "@/fixtures/PRODUCT_TYPES";
 import { selectProductsByType } from "@/store/entities/products/selectors";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { fenceSlice } from "@/store/ui/fence";
-// import {
-//   selectFenceForCalculations,
-//   selectFenceType,
-// } from "@/store/ui/fence/selectors";
+import {
+  selectFenceForCalculations,
+  selectFenceType,
+} from "@/store/ui/fence/selectors";
 import CustomButton from "@/toolkit/CustomButton/CustomButton";
+import TableCell from "@/toolkit/TableCell/TableCell";
 
 export default function Calculator() {
   const dispatch = useAppDispatch();
-  // const type = useAppSelector();
+  const type = useAppSelector(selectFenceType);
+
   const [screw] = useAppSelector((state) =>
     selectProductsByType(state, PRODUCT_TYPES.screw)
   );
   const [stub] = useAppSelector((state) =>
     selectProductsByType(state, PRODUCT_TYPES.stub)
   );
-  console.log("screw", screw);
-  // const [length, height, pillarId, joistId] = useAppSelector(
-  //   selectFenceForCalculations
-  // );
+  const [length, height, pillarId, joistId, materialId] = useAppSelector(
+    selectFenceForCalculations
+  );
 
-  // const pillar = useAppSelector((state) =>
-  //   selectProductById(state, pillarId ?? 0)
-  // );
-  // const joist = useAppSelector((state) =>
-  //   selectProductById(state, joistId ?? 0)
-  // );
+  const pillar = useAppSelector((state) =>
+    selectProductById(state, pillarId ?? 0)
+  );
+  const joist = useAppSelector((state) =>
+    selectProductById(state, joistId ?? 0)
+  );
+
+  const material = useAppSelector((state) =>
+    selectProductById(state, materialId ?? 0)
+  );
+
+  console.log("material", materialId, material);
 
   // if (!pillarId || !joistId) return;
 
-  // const fence =
-  //   type === FENCE_TYPES.shtaketnik
-  //     ? new FenceShtaketnik({ length, height, pillar, joist })
-  //     : new FenceProflist({ length, height, pillar, joist });
+  const fence =
+    type === FENCE_TYPES.shtaketnik
+      ? new FenceShtaketnik({ length, height, pillar, joist })
+      : new FenceProflist({ length, height, pillar, joist });
 
-  // const p = fence.getPillarCalculation();
-  // const j = fence.getJoistCalculation();
+  const p = fence.getPillarCalculation();
+  const j = fence.getJoistCalculation();
+  console.log("p,j", p, j);
 
   return (
     <>
@@ -73,63 +81,15 @@ export default function Calculator() {
           </div>
           <div className="fenceTable__cell fenceTable__header">Количество</div>
           <div className="fenceTable__cell fenceTable__header">Стоимость</div>
-          <div className="fenceTable__cell">
-            <div
-              className="fenceTable__image"
-              style={{ backgroundImage: `url("${screw.group_image}")` }}
-            ></div>
-            {screw.name}
-          </div>
-          <div className="fenceTable__cell fenceTable__count">14</div>
-          <div className="fenceTable__cell fenceTable__price">
-            {screw.price} руб.
-          </div>
-          <div className="fenceTable__cell">
-            <div
-              className="fenceTable__image"
-              style={{ backgroundImage: `url("${screw.group_image}")` }}
-            ></div>
-            {screw.name}
-          </div>
-          <div className="fenceTable__cell fenceTable__count">14</div>
-          <div className="fenceTable__cell fenceTable__price">
-            {screw.price} руб.
-          </div>
-          <div className="fenceTable__cell">
-            <div
-              className="fenceTable__image"
-              style={{ backgroundImage: `url("${screw.group_image}")` }}
-            ></div>
-            {screw.name}
-          </div>
-          <div className="fenceTable__cell fenceTable__count">14</div>
-          <div className="fenceTable__cell fenceTable__price">
-            {screw.price} руб.
-          </div>
-          <div className="fenceTable__cell">
-            <div
-              className="fenceTable__image"
-              style={{ backgroundImage: `url("${screw.group_image}")` }}
-            ></div>
-            {screw.name}
-          </div>
-          <div className="fenceTable__cell fenceTable__count">14</div>
-          <div className="fenceTable__cell fenceTable__price">
-            {screw.price} руб.
-          </div>
-          <div className="fenceTable__cell">
-            <div
-              className="fenceTable__image"
-              style={{ backgroundImage: `url("${stub.group_image}")` }}
-            ></div>
-            {stub.name}
-          </div>
-          <div className="fenceTable__cell fenceTable__count">14</div>
-          <div className="fenceTable__cell fenceTable__price">
-            {stub.price} руб.
-          </div>
+          <TableCell product={material} contain={true} />
+          <TableCell product={pillar} count={p?.meters} sum={p?.totalPrice} />
+          <TableCell product={joist} count={j?.meters} sum={j?.totalPrice} />
+          <TableCell product={screw} />
+          <TableCell product={stub} />
           <div className="fenceTable__result">Итого:</div>
-          <div className="fenceTable__resultPrice">999 руб.</div>
+          <div className="fenceTable__resultPrice">
+            {(p?.totalPrice ?? 0) + (j?.totalPrice ?? 0)} руб.
+          </div>
         </div>
       </div>
       <div className="fenceSection fenceSection_flexRow">
