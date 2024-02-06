@@ -4,22 +4,29 @@ type Nullable<T> = T | null;
 
 interface IFence {}
 
-type TProps = Pick<Fence, "length" | "height" | "pillar" | "joist">;
+type TProps = Pick<
+  Fence,
+  "length" | "height" | "pillar" | "joist" | "screw" | "stub"
+>;
 
 class Fence implements IFence {
   length: Nullable<number>;
   height: Nullable<number>;
   pillar: Nullable<TProduct>;
   joist: Nullable<TProduct>;
+  screw: Nullable<TProduct>;
+  stub: Nullable<TProduct>;
   needStages: number[] = [];
 
   fenceHeight: number = 0;
 
-  constructor({ length, height, pillar, joist }: TProps) {
+  constructor({ length, height, pillar, joist, screw, stub }: TProps) {
     this.length = length;
     this.height = height;
     this.pillar = pillar;
     this.joist = joist;
+    this.screw = screw;
+    this.stub = stub;
 
     this.calcFenceHeight();
   }
@@ -60,15 +67,27 @@ class Fence implements IFence {
     }
     return;
   }
+
+  getStubCalculations() {
+    if (this.length && this.pillar && this.stub) {
+      const p = this.getPillarCalculation();
+      return {
+        count: p?.count,
+        totalPrice:
+          Math.ceil((p?.count ?? 0) * (this.stub.price ?? 0) * 100) / 100,
+      };
+    }
+    return;
+  }
 }
 
 export class FenceShtaketnik extends Fence {
-  constructor({ length, height, pillar, joist }: TProps) {
-    super({ length, height, pillar, joist });
+  constructor({ length, height, pillar, joist, screw, stub }: TProps) {
+    super({ length, height, pillar, joist, screw, stub });
   }
 }
 export class FenceProflist extends Fence implements IFence {
-  constructor({ length, height, pillar, joist }: TProps) {
-    super({ length, height, pillar, joist });
+  constructor({ length, height, pillar, joist, screw, stub }: TProps) {
+    super({ length, height, pillar, joist, screw, stub });
   }
 }

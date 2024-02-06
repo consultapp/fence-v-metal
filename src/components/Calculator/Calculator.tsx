@@ -43,12 +43,13 @@ export default function Calculator() {
 
   const fence =
     type === FENCE_TYPES.shtaketnik
-      ? new FenceShtaketnik({ length, height, pillar, joist })
-      : new FenceProflist({ length, height, pillar, joist });
+      ? new FenceShtaketnik({ length, height, pillar, joist, screw, stub })
+      : new FenceProflist({ length, height, pillar, joist, screw, stub });
 
-  const p = fence.getPillarCalculation();
-  const j = fence.getJoistCalculation();
-  console.log("p,j", p, j);
+  const cPillar = fence.getPillarCalculation();
+  const cJoist = fence.getJoistCalculation();
+  // const cScrew = fence.getScrewCalculations();
+  const cStub = fence.getStubCalculations();
 
   return (
     <>
@@ -82,13 +83,28 @@ export default function Calculator() {
           <div className="fenceTable__cell fenceTable__header">Количество</div>
           <div className="fenceTable__cell fenceTable__header">Стоимость</div>
           <TableCell product={material} contain={true} />
-          <TableCell product={pillar} count={p?.meters} sum={p?.totalPrice} />
-          <TableCell product={joist} count={j?.meters} sum={j?.totalPrice} />
+          <TableCell
+            product={pillar}
+            count={cPillar?.meters}
+            sum={cPillar?.totalPrice}
+          />
+          <TableCell
+            product={joist}
+            count={cJoist?.meters}
+            sum={cJoist?.totalPrice}
+          />
           <TableCell product={screw} />
-          <TableCell product={stub} />
+          <TableCell
+            product={stub}
+            count={cStub?.count}
+            sum={cStub?.totalPrice}
+          />
           <div className="fenceTable__result">Итого:</div>
           <div className="fenceTable__resultPrice">
-            {(p?.totalPrice ?? 0) + (j?.totalPrice ?? 0)} руб.
+            {(cPillar?.totalPrice ?? 0) +
+              (cJoist?.totalPrice ?? 0) +
+              (cStub?.totalPrice ?? 0)}{" "}
+            руб.
           </div>
         </div>
       </div>
