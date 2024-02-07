@@ -56,3 +56,10 @@ export interface IFilter {
     [key in keyof typeof SHTAKETNIK_TYPES]: number;
   };
 }
+
+declare global {
+  interface Window {
+    __INITIAL_STATE__: { tooltips: { [key: string]: string } };
+  }
+}
+window.__INITIAL_STATE__ = window.__INITIAL_STATE__ || {};

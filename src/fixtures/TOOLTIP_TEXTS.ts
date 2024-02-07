@@ -6,3 +6,6 @@ export const TOOLTIP_TEXTS = {
   filler:
     "При одностороннем варианте 7-8 планок на 1м, в зависимости от формы. В случае с шахматным - 11-13 шт.",
 };
+
+// export const TOOLTIP_TEXTS = window.__INITIAL_STATE__.tooltips;
+//

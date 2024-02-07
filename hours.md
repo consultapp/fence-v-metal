@@ -29,3 +29,4 @@
 
 -- 07.02.24 --
 1h calc proflist
+2h calc shtaketnik
