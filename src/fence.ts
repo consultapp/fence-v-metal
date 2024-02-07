@@ -127,7 +127,7 @@ export class FenceShtaketnik extends Fence {
           count,
           description: `${count} планок по ${this.height} м`,
           squareMeter,
-          countInfo: "m2",
+          countInfo: "m",
           totalPrice: Ceil(squareMeter * (this.material.price ?? 0)),
         };
       }
