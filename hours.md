@@ -26,3 +26,6 @@
 1h image + result
 0.5 stub added
 0.5 calculator
+
+-- 07.02.24 --
+1h calc proflist
