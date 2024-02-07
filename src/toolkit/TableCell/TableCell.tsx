@@ -8,6 +8,7 @@ type Props = {
   contain?: boolean;
   description?: string;
   countInfo?: string;
+  showDescription?: boolean;
 };
 
 export default function TableCell({
@@ -17,6 +18,7 @@ export default function TableCell({
   sum,
   description = "",
   contain = false,
+  showDescription = false,
 }: Props) {
   if (!product) return;
   return (
@@ -31,7 +33,12 @@ export default function TableCell({
             style={{ backgroundImage: `url("${product.group_image}")` }}
           ></div>
         </div>
-        {product.name}
+        <div>
+          <div>{product.name}</div>
+          <div className="fenceTable__desc">
+            {showDescription && product.description ? product.description : ""}
+          </div>
+        </div>
       </div>
       <div className="fenceTable__cell fenceTable__count">
         <div>{`${count} ${countInfo}`}</div>

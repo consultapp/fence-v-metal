@@ -12,7 +12,7 @@ export default function Stage5() {
 
   return (
     <div className="fenceSection">
-      <div className="fenceSection__header3">Балка</div>
+      <div className="fenceSection__header3">Лаги</div>
       <div className="fenceSection__line"></div>
 
       <CustomSelect

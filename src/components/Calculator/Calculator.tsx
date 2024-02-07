@@ -62,7 +62,7 @@ export default function Calculator() {
   const cMaterial = fence.getMaterialCalculations();
   const cPillar = fence.getPillarCalculation();
   const cJoist = fence.getJoistCalculation();
-  // const cScrew = fence.getScrewCalculations();
+  const cScrew = fence.getScrewCalculations();
   const cStub = fence.getStubCalculations();
 
   if (!cMaterial) return "";
@@ -105,6 +105,7 @@ export default function Calculator() {
             count={cMaterial.squareMeter}
             description={cMaterial.description}
             sum={cMaterial.totalPrice}
+            showDescription={true}
           />
           <TableCell
             product={pillar}
@@ -119,7 +120,12 @@ export default function Calculator() {
             sum={cJoist?.totalPrice}
             countInfo="м"
           />
-          <TableCell product={screw} countInfo="шт." />
+          <TableCell
+            product={screw}
+            countInfo="шт."
+            count={cScrew.count}
+            sum={cScrew.totalPrice}
+          />
           <TableCell
             product={stub}
             count={cStub?.count}
@@ -131,6 +137,7 @@ export default function Calculator() {
             {(cMaterial?.totalPrice ?? 0) +
               (cPillar?.totalPrice ?? 0) +
               (cJoist?.totalPrice ?? 0) +
+              (cScrew?.totalPrice ?? 0) +
               (cStub?.totalPrice ?? 0)}{" "}
             руб.
           </div>

@@ -9,6 +9,10 @@ type TProps = Pick<
   "length" | "height" | "pillar" | "joist" | "screw" | "stub"
 >;
 
+function Ceil(num: number, t: number = 2) {
+  return Math.ceil(num * 10 ** t) / 10 ** t;
+}
+
 class Fence implements IFence {
   length: Nullable<number>;
   height: Nullable<number>;
@@ -50,7 +54,7 @@ class Fence implements IFence {
       return {
         meters: pillarMeters,
         count: pillarCount,
-        description: `${pillarCount} столб по ${this.fenceHeight}`,
+        description: `${pillarCount} столб по ${this.fenceHeight} м`,
         totalPrice: Ceil(pillarMeters * (this.pillar.price ?? 0)),
       };
     }
@@ -97,6 +101,17 @@ export class FenceShtaketnik extends Fence {
   }
 
   getMaterialCalculations() {}
+
+  // getScrewCalculations() {
+  //   const m = this.getMaterialCalculations();
+  //   if (m && this.screw) {
+  //     const count = Math.ceil(m.squareMeter * 10);
+  //     return {
+  //       count,
+  //       totalPrice: count * (this.screw.price ?? 0),
+  //     };
+  //   }
+  // }
 }
 
 export class FenceProflist extends Fence {
@@ -114,6 +129,7 @@ export class FenceProflist extends Fence {
     super({ length, height, pillar, joist, screw, stub });
     this.material = material;
   }
+
   getMaterialCalculations() {
     if (this.length && this.material && this.height) {
       const count = Math.ceil(
@@ -121,7 +137,8 @@ export class FenceProflist extends Fence {
       );
 
       const squareMeter = Ceil(
-        count * (this.material.width ?? 20) * this.height
+        count * (this.material.width ?? 20) * this.height,
+        3
       );
 
       return {
@@ -133,8 +150,15 @@ export class FenceProflist extends Fence {
       };
     }
   }
-}
 
-function Ceil(num: number) {
-  return Math.ceil(num * 100) / 100;
+  getScrewCalculations() {
+    const m = this.getMaterialCalculations();
+    if (m && this.screw) {
+      const count = Math.ceil(m.squareMeter * 10);
+      return {
+        count,
+        totalPrice: count * (this.screw.price ?? 0),
+      };
+    }
+  }
 }
