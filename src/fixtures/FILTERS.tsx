@@ -10,8 +10,8 @@ const FILTERS: { [key in keyof typeof FENCE_TYPES]: IFilter[] } = {
       link: "../assets/shtaketnik_trapeze.png",
       description: "ширина 1.15 м",
       perMeter: {
-        [SHTAKETNIK_TYPES.oneSide]: 8,
-        [SHTAKETNIK_TYPES.chess]: 13,
+        [SHTAKETNIK_TYPES.oneSide]: 7,
+        [SHTAKETNIK_TYPES.chess]: 11,
       },
     },
     {
@@ -30,8 +30,8 @@ const FILTERS: { [key in keyof typeof FENCE_TYPES]: IFilter[] } = {
       link: "assets/shtaketnik_lane.png",
       description: "ширина 1.15 м",
       perMeter: {
-        [SHTAKETNIK_TYPES.oneSide]: 7,
-        [SHTAKETNIK_TYPES.chess]: 11,
+        [SHTAKETNIK_TYPES.oneSide]: 8,
+        [SHTAKETNIK_TYPES.chess]: 13,
       },
     },
   ],

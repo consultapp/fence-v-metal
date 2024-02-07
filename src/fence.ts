@@ -118,6 +118,7 @@ export class FenceShtaketnik extends Fence {
       const { perMeter } = this.filter;
       if (perMeter) {
         const density = perMeter[this.shtaketnikType];
+        console.log("density", density, this.length);
 
         const count = Math.ceil(this.length * density);
 
