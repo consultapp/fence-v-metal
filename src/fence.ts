@@ -1,5 +1,5 @@
 import SHTAKETNIK_TYPES from "./fixtures/SHTAKETNIK_TYPES";
-import { Ceil } from "./functions";
+import { Ceil, getPriceIfPromotion } from "./functions";
 import { IFilter, TProduct } from "./types";
 
 type Nullable<T> = T | null;
@@ -129,7 +129,8 @@ export class FenceShtaketnik extends Fence {
           description: `${count} планок по ${this.height} м`,
           squareMeter,
           countInfo: "m",
-          totalPrice: Ceil(squareMeter * (this.material.price ?? 0)),
+          totalPrice: Ceil(squareMeter * getPriceIfPromotion(this.material)),
+          oldPrice: Ceil(squareMeter * (this.material.price ?? 0)),
         };
       }
     }
@@ -179,7 +180,8 @@ export class FenceProflist extends Fence {
         description: `${count} лист по ${this.height} м`,
         squareMeter,
         countInfo: "m2",
-        totalPrice: Ceil(squareMeter * (this.material.price ?? 0)),
+        totalPrice: Ceil(squareMeter * getPriceIfPromotion(this.material)),
+        oldPrice: Ceil(squareMeter * (this.material.price ?? 0)),
       };
     }
   }

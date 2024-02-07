@@ -109,32 +109,33 @@ export default function Calculator() {
             countInfo={cMaterial?.countInfo}
             count={cMaterial.squareMeter}
             description={cMaterial.description}
-            sum={cMaterial.totalPrice}
+            totalPrice={cMaterial.totalPrice}
+            oldPrice={cMaterial.oldPrice}
             showDescription={true}
           />
           <TableCell
             product={pillar}
             count={cPillar?.meters}
-            sum={cPillar?.totalPrice}
+            totalPrice={cPillar?.totalPrice}
             description={cPillar?.description}
             countInfo="м"
           />
           <TableCell
             product={joist}
             count={cJoist?.meters}
-            sum={cJoist?.totalPrice}
+            totalPrice={cJoist?.totalPrice}
             countInfo="м"
           />
           <TableCell
             product={screw}
             countInfo="шт."
             count={cScrew?.count ?? 0}
-            sum={cScrew?.totalPrice ?? 0}
+            totalPrice={cScrew?.totalPrice ?? 0}
           />
           <TableCell
             product={stub}
             count={cStub?.count}
-            sum={cStub?.totalPrice}
+            totalPrice={cStub?.totalPrice}
             countInfo="шт."
           />
           <div className="fenceTable__result">Итого:</div>

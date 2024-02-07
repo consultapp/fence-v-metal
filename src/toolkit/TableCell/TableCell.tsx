@@ -4,7 +4,8 @@ import classNames from "classnames";
 type Props = {
   product: TProduct;
   count?: number;
-  sum?: number;
+  totalPrice?: number;
+  oldPrice?: number;
   contain?: boolean;
   description?: string;
   countInfo?: string;
@@ -15,7 +16,8 @@ export default function TableCell({
   product,
   count = 1,
   countInfo = "",
-  sum,
+  totalPrice,
+  oldPrice,
   description = "",
   contain = false,
   showDescription = false,
@@ -44,9 +46,16 @@ export default function TableCell({
         <div>{`${count} ${countInfo}`}</div>
         <div className="fenceTable__description">{description}</div>
       </div>
-      <div className="fenceTable__cell fenceTable__price">
-        {sum ? sum : product.price} руб.
-      </div>
+      {product.currentPromotion ? (
+        <div className="fenceTable__cell fenceTable__priceDiscount">
+          <div>{oldPrice} руб.</div>
+          <div>{totalPrice} руб.</div>
+        </div>
+      ) : (
+        <div className="fenceTable__cell fenceTable__price">
+          {totalPrice} руб.
+        </div>
+      )}
     </>
   );
 }

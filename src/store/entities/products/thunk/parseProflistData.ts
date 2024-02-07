@@ -11,6 +11,7 @@ interface IProflist {
     attributes_2_value: string;
     unit: string;
     group_image: string;
+    currentPromotion?: number;
   };
   link: string;
 }
@@ -42,12 +43,14 @@ export function parseProflistData(items: IProflist[]) {
           attributes_2_value,
           unit,
           group_image,
+          currentPromotion,
         } = item.meta;
         tmp.price = parseFloat(price);
         tmp.width = parseFloat(attributes_2_value);
         tmp.description = attributes_1_value;
         tmp.unit = unit;
         tmp.group_image = group_image;
+        tmp.currentPromotion = Number(currentPromotion) ?? null;
       }
       if (tmp.slug?.startsWith("mp-20") || tmp.slug?.startsWith("s-8"))
         result.push(tmp as TProduct);

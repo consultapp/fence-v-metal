@@ -17,6 +17,7 @@ export interface TProduct {
   proflistType?: keyof typeof PRODUCT_TYPES;
   description?: string;
   group_image?: string;
+  currentPromotion?: number;
 }
 
 export interface TProductStore {

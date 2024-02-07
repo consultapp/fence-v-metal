@@ -67,7 +67,7 @@
   &__option {
     min-height: 52px;
     padding: 8px 20px;
-    // border: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
     background: #fff;
   }
 
@@ -98,6 +98,20 @@
 
   &__info div:last-child {
     color: #22122d;
+  }
+
+  &__priceDiscount {
+    text-align: end;
+    color: #22122d;
+    text-align: right;
+
+    & div:last-child {
+      color: #fdbf50;
+    }
+
+    & span {
+      color: #919399;
+    }
   }
 
   &__price {

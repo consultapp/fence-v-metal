@@ -14,6 +14,8 @@
 4.5h verstka start
 0.5h Stage1 impl
 
+------------------ 15h
+
 -- 31.01.24 -- 2h
 0.5 St6,7 impl
 1.5 St5 impl
@@ -27,6 +29,7 @@
 0.5 stub added
 0.5 calculator
 
--- 07.02.24 --
+-- 07.02.24 -- 4.5h
 1h calc proflist
 2h calc shtaketnik
+1,5h discount price

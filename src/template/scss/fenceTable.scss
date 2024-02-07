@@ -21,9 +21,25 @@
     gap: 5px;
   }
 
+  &__priceDiscount {
+    justify-content: end;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+
+    & div:first-child {
+      text-decoration: line-through;
+    }
+    & div:last-child {
+      color: #fdbf50;
+    }
+  }
+
   &__price {
     justify-content: end;
   }
+
   &__count {
     justify-content: center;
     display: flex;

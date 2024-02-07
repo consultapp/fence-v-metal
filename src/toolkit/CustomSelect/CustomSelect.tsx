@@ -4,6 +4,7 @@ import { TProduct } from "@/types";
 import { useMemo, useRef, useState } from "react";
 import { UnknownAction } from "redux";
 import IconLogo from "./icon.svg";
+import { Ceil, sortByPrice } from "@/functions";
 
 type Props = {
   products: TProduct[];
@@ -84,7 +85,7 @@ export default function CustomSelect({
               Не выбрано
             </div>
           </div>
-          {products.map((product) => (
+          {sortByPrice(products).map((product) => (
             <div
               className="fenceSelect__option"
               data-id={product.id}
@@ -97,9 +98,25 @@ export default function CustomSelect({
                 <div>{product.name}</div>
                 <div>{product.description}</div>
               </div>
-              <div className="fenceSelect__price">
-                {product.price} руб. <span>/м</span>
-              </div>
+              {product.currentPromotion ? (
+                <div className="fenceSelect__priceDiscount">
+                  <div>
+                    {product.price} руб. <span> &nbsp;</span>
+                  </div>
+                  <div>
+                    {Ceil(
+                      (product.price ?? 0) *
+                        ((100 - product.currentPromotion) / 100)
+                    )}{" "}
+                    руб.
+                    <span>/м</span>
+                  </div>
+                </div>
+              ) : (
+                <div className="fenceSelect__price">
+                  {product.price} руб. <span>/м</span>
+                </div>
+              )}
             </div>
           ))}
         </div>
