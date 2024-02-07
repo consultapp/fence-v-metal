@@ -1,6 +1,5 @@
 type Props = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder: string;
   value: number | string;
 };
 

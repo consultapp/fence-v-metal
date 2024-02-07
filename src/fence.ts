@@ -1,8 +1,6 @@
-import FILTERS from "./fixtures/FILTERS";
 import SHTAKETNIK_TYPES from "./fixtures/SHTAKETNIK_TYPES";
 import { Ceil } from "./functions";
 import { IFilter, TProduct } from "./types";
-import { IFilter } from "@/types";
 
 type Nullable<T> = T | null;
 
