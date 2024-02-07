@@ -4,13 +4,6 @@ type Props = {
   value: number | string;
 };
 
-export default function CustomInput({ onChange, placeholder, value }: Props) {
-  return (
-    <input
-      type="text"
-      placeholder={placeholder}
-      onChange={onChange}
-      value={value ? value : ""}
-    />
-  );
+export default function CustomInput({ onChange, value }: Props) {
+  return <input type="text" onChange={onChange} value={value ? value : ""} />;
 }

@@ -6,11 +6,14 @@ import { selectProductsByType } from "@/store/entities/products/selectors";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { fenceSlice } from "@/store/ui/fence";
 import {
+  selectCurrentFilter,
   selectFenceForCalculations,
   selectFenceType,
+  selectShtaketnikType,
 } from "@/store/ui/fence/selectors";
 import CustomButton from "@/toolkit/CustomButton/CustomButton";
 import TableCell from "@/toolkit/TableCell/TableCell";
+import { Ceil } from "@/functions";
 
 export default function Calculator() {
   const dispatch = useAppDispatch();
@@ -19,6 +22,8 @@ export default function Calculator() {
   const [length, height, pillarId, joistId, materialId] = useAppSelector(
     selectFenceForCalculations
   );
+  const shtaketnikType = useAppSelector(selectShtaketnikType);
+  const filter = useAppSelector(selectCurrentFilter);
 
   const material = useAppSelector((state) =>
     selectProductById(state, materialId ?? 0)
@@ -36,8 +41,6 @@ export default function Calculator() {
     selectProductsByType(state, PRODUCT_TYPES.stub)
   );
 
-  // if (!pillarId || !joistId) return;
-
   const fence =
     type === FENCE_TYPES.shtaketnik
       ? new FenceShtaketnik({
@@ -48,6 +51,8 @@ export default function Calculator() {
           screw,
           stub,
           material,
+          shtaketnikType,
+          filter,
         })
       : new FenceProflist({
           length,
@@ -134,11 +139,13 @@ export default function Calculator() {
           />
           <div className="fenceTable__result">Итого:</div>
           <div className="fenceTable__resultPrice">
-            {(cMaterial?.totalPrice ?? 0) +
-              (cPillar?.totalPrice ?? 0) +
-              (cJoist?.totalPrice ?? 0) +
-              (cScrew?.totalPrice ?? 0) +
-              (cStub?.totalPrice ?? 0)}{" "}
+            {Ceil(
+              (cMaterial?.totalPrice ?? 0) +
+                (cPillar?.totalPrice ?? 0) +
+                (cJoist?.totalPrice ?? 0) +
+                (cScrew?.totalPrice ?? 0) +
+                (cStub?.totalPrice ?? 0)
+            )}
             руб.
           </div>
         </div>

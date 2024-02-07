@@ -2,6 +2,7 @@
 import FENCE_TYPES from "./fixtures/FENCE_TYPES";
 import LOADING_STATUS from "./fixtures/LOADING_STATUS";
 import PRODUCT_TYPES from "./fixtures/PRODUCT_TYPES";
+import SHTAKETNIK_TYPES from "./fixtures/SHTAKETNIK_TYPES";
 
 export type TProductID = number;
 export interface TProduct {
@@ -51,4 +52,7 @@ export interface IFilter {
   name: string;
   link: string;
   description: string;
+  perMeter?: {
+    [key in keyof typeof SHTAKETNIK_TYPES]: number;
+  };
 }

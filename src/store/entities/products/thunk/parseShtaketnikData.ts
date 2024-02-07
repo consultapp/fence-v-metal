@@ -44,6 +44,7 @@ export function parseShtaketnikData(items: IShtaketnik[]) {
       result.push(tmp as TProduct);
     }
   });
+  console.log("result", result);
 
   return result;
 }

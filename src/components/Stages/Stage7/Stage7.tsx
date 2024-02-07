@@ -14,11 +14,7 @@ export default function Stage7() {
   return (
     <div>
       <div className="fenceSection__header3">Высота, м.</div>
-      <CustomInput
-        placeholder="100"
-        onChange={changeHandler}
-        value={current ? current : ""}
-      />
+      <CustomInput onChange={changeHandler} value={current ? current : ""} />
     </div>
   );
 }

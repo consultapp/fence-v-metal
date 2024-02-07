@@ -5,8 +5,8 @@ import { TProductID } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 
 interface IInit {
-  fenceType: keyof typeof FENCE_TYPES | null;
-  shtaketnikType: keyof typeof SHTAKETNIK_TYPES | null;
+  fenceType: keyof typeof FENCE_TYPES;
+  shtaketnikType: keyof typeof SHTAKETNIK_TYPES;
   filter: string | null;
   materialId: TProductID | null;
   pillarId: TProductID | null;
@@ -18,7 +18,7 @@ interface IInit {
 
 const initialState: IInit = {
   fenceType: FENCE_TYPES.proflist,
-  shtaketnikType: null,
+  shtaketnikType: SHTAKETNIK_TYPES.oneSide,
   filter: FILTERS[FENCE_TYPES.proflist][0].slug,
   materialId: null,
   pillarId: null,
@@ -37,8 +37,8 @@ export const fenceSlice = createSlice({
       if (payload) {
         state.filter = FILTERS[payload as keyof typeof FILTERS][0].slug;
       }
-      state.shtaketnikType = null;
-      state.materialId = null;
+      state.shtaketnikType = initialState.shtaketnikType;
+      state.materialId = initialState.materialId;
     },
     setShtaketnikType: (state, { payload }) => {
       state.shtaketnikType = payload;
@@ -63,7 +63,7 @@ export const fenceSlice = createSlice({
       if (payload === "") {
         state.height = 0;
       } else {
-        let tmp = payload;
+        let tmp = payload.replace(",", ".");
         if (payload < 1) tmp = 1;
         if (payload > 2.2) tmp = 2.2;
         state.height = tmp;

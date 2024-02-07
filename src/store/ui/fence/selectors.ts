@@ -60,3 +60,14 @@ export const selectFenceForCalculations = createSelector(
   ],
   (a, b, c, d, e) => [a, b, c, d, e]
 );
+
+export const selectFenceIsRedyForCalculations = createSelector(
+  [
+    selectFenceLength,
+    selectFenceHeight,
+    selectFencePillarId,
+    selectFenceJoistId,
+    selectFenceMaterialId,
+  ],
+  (a, b, c, d, e) => Boolean(a && b && c && d && e)
+);

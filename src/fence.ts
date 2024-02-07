@@ -1,4 +1,8 @@
-import { TProduct } from "./types";
+import FILTERS from "./fixtures/FILTERS";
+import SHTAKETNIK_TYPES from "./fixtures/SHTAKETNIK_TYPES";
+import { Ceil } from "./functions";
+import { IFilter, TProduct } from "./types";
+import { IFilter } from "@/types";
 
 type Nullable<T> = T | null;
 
@@ -9,10 +13,6 @@ type TProps = Pick<
   "length" | "height" | "pillar" | "joist" | "screw" | "stub"
 >;
 
-function Ceil(num: number, t: number = 2) {
-  return Math.ceil(num * 10 ** t) / 10 ** t;
-}
-
 class Fence implements IFence {
   length: Nullable<number>;
   height: Nullable<number>;
@@ -20,7 +20,6 @@ class Fence implements IFence {
   joist: Nullable<TProduct>;
   screw: Nullable<TProduct>;
   stub: Nullable<TProduct>;
-  needStages: number[] = [];
 
   fenceHeight: number = 0;
 
@@ -83,10 +82,16 @@ class Fence implements IFence {
   }
 }
 
-type TPropsExt = TProps & { material: Nullable<TProduct> };
+type TPropsExt = TProps & {
+  material: Nullable<TProduct>;
+  shtaketnikType?: keyof typeof SHTAKETNIK_TYPES;
+  filter?: Nullable<IFilter>;
+};
 
 export class FenceShtaketnik extends Fence {
   material: Nullable<TProduct>;
+  shtaketnikType: keyof typeof SHTAKETNIK_TYPES;
+  filter;
   constructor({
     length,
     height,
@@ -95,14 +100,52 @@ export class FenceShtaketnik extends Fence {
     screw,
     stub,
     material,
+    shtaketnikType,
+    filter,
   }: TPropsExt) {
     super({ length, height, pillar, joist, screw, stub });
     this.material = material;
+    this.shtaketnikType = shtaketnikType ?? SHTAKETNIK_TYPES.chess;
+    this.filter = filter;
   }
 
-  getMaterialCalculations() {}
+  getMaterialCalculations() {
+    if (
+      this.length &&
+      this.material &&
+      this.height &&
+      this.shtaketnikType &&
+      this.filter
+    ) {
+      const { perMeter } = this.filter;
+      if (perMeter) {
+        const density = perMeter[this.shtaketnikType];
 
-  getScrewCalculations() {}
+        const count = Math.ceil(this.length * density);
+
+        const squareMeter = Ceil(count * this.height, 3);
+
+        return {
+          count,
+          description: `${count} планок по ${this.height} м`,
+          squareMeter,
+          countInfo: "m2",
+          totalPrice: Ceil(squareMeter * (this.material.price ?? 0)),
+        };
+      }
+    }
+  }
+
+  getScrewCalculations() {
+    const m = this.getMaterialCalculations();
+    if (m && this.screw) {
+      const count = Math.ceil(m.squareMeter * 10);
+      return {
+        count,
+        totalPrice: Ceil(count * (this.screw.price ?? 0)),
+      };
+    }
+  }
 }
 
 export class FenceProflist extends Fence {
@@ -148,7 +191,7 @@ export class FenceProflist extends Fence {
       const count = Math.ceil(m.squareMeter * 10);
       return {
         count,
-        totalPrice: count * (this.screw.price ?? 0),
+        totalPrice: Ceil(count * (this.screw.price ?? 0)),
       };
     }
   }

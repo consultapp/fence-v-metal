@@ -15,7 +15,7 @@ export default function Stage6() {
     <div>
       <div className="fenceSection__header3">Длина, м.</div>
       <CustomInput
-        placeholder="100"
+        // placeholder="100"
         onChange={changeHandler}
         value={current ? current : ""}
       />

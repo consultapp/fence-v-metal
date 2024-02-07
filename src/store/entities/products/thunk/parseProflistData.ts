@@ -53,6 +53,5 @@ export function parseProflistData(items: IProflist[]) {
         result.push(tmp as TProduct);
     }
   });
-  console.log("result", result);
   return result;
 }

@@ -30,15 +30,5 @@ export const selectProductsByType = createSelector(
   (values, payload) => values.filter((item) => item.productType === payload)
 );
 
-// export const selectProductsByType = (
-//   state: RootState,
-//   payload: keyof typeof PRODUCT_TYPES | null
-// ) => {
-//   const result = selectProductEntityValues(state).filter(
-//     (item) => item.productType === payload
-//   );
-//   return result;
-// };
-
 export const selectProductById = (state: RootState, payload: TProductID) =>
   selectProductModule(state).entities[payload];

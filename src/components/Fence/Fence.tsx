@@ -14,12 +14,18 @@ import Loading from "@/toolkit/Loading/Loading";
 import Calculator from "../Calculator/Calculator";
 import CustomButton from "@/toolkit/CustomButton/CustomButton";
 import { fenceSlice } from "@/store/ui/fence";
-import { selectIsShowResult } from "@/store/ui/fence/selectors";
+import {
+  selectFenceIsRedyForCalculations,
+  selectIsShowResult,
+} from "@/store/ui/fence/selectors";
 
 export default function Fence() {
   const dispatch = useAppDispatch();
   const loadingStatus = useAppSelector(selectProductLoadingStatus);
   const showResult = useAppSelector(selectIsShowResult);
+  const isReadyForCalc = useAppSelector(selectFenceIsRedyForCalculations);
+
+  console.log("isReadyForCalc", isReadyForCalc);
 
   useEffect(() => {
     dispatch(loadProductsIfNotExisted());
@@ -68,7 +74,9 @@ export default function Fence() {
         <CustomButton
           type="primary"
           half50={true}
-          onClick={() => dispatch(fenceSlice.actions.showResult())}
+          onClick={() =>
+            isReadyForCalc ? dispatch(fenceSlice.actions.showResult()) : null
+          }
         >
           Рассчитать
         </CustomButton>
