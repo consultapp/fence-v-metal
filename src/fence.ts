@@ -102,16 +102,7 @@ export class FenceShtaketnik extends Fence {
 
   getMaterialCalculations() {}
 
-  // getScrewCalculations() {
-  //   const m = this.getMaterialCalculations();
-  //   if (m && this.screw) {
-  //     const count = Math.ceil(m.squareMeter * 10);
-  //     return {
-  //       count,
-  //       totalPrice: count * (this.screw.price ?? 0),
-  //     };
-  //   }
-  // }
+  getScrewCalculations() {}
 }
 
 export class FenceProflist extends Fence {

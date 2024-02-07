@@ -123,8 +123,8 @@ export default function Calculator() {
           <TableCell
             product={screw}
             countInfo="шт."
-            count={cScrew.count}
-            sum={cScrew.totalPrice}
+            count={cScrew?.count ?? 0}
+            sum={cScrew?.totalPrice ?? 0}
           />
           <TableCell
             product={stub}
