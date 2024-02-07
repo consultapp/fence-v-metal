@@ -16,40 +16,56 @@ export default function Calculator() {
   const dispatch = useAppDispatch();
   const type = useAppSelector(selectFenceType);
 
-  const [screw] = useAppSelector((state) =>
-    selectProductsByType(state, PRODUCT_TYPES.screw)
-  );
-  const [stub] = useAppSelector((state) =>
-    selectProductsByType(state, PRODUCT_TYPES.stub)
-  );
   const [length, height, pillarId, joistId, materialId] = useAppSelector(
     selectFenceForCalculations
   );
 
+  const material = useAppSelector((state) =>
+    selectProductById(state, materialId ?? 0)
+  );
   const pillar = useAppSelector((state) =>
     selectProductById(state, pillarId ?? 0)
   );
   const joist = useAppSelector((state) =>
     selectProductById(state, joistId ?? 0)
   );
-
-  const material = useAppSelector((state) =>
-    selectProductById(state, materialId ?? 0)
+  const [screw] = useAppSelector((state) =>
+    selectProductsByType(state, PRODUCT_TYPES.screw)
   );
-
-  console.log("material", materialId, material);
+  const [stub] = useAppSelector((state) =>
+    selectProductsByType(state, PRODUCT_TYPES.stub)
+  );
 
   // if (!pillarId || !joistId) return;
 
   const fence =
     type === FENCE_TYPES.shtaketnik
-      ? new FenceShtaketnik({ length, height, pillar, joist, screw, stub })
-      : new FenceProflist({ length, height, pillar, joist, screw, stub });
+      ? new FenceShtaketnik({
+          length,
+          height,
+          pillar,
+          joist,
+          screw,
+          stub,
+          material,
+        })
+      : new FenceProflist({
+          length,
+          height,
+          pillar,
+          joist,
+          screw,
+          stub,
+          material,
+        });
 
+  const cMaterial = fence.getMaterialCalculations();
   const cPillar = fence.getPillarCalculation();
   const cJoist = fence.getJoistCalculation();
   // const cScrew = fence.getScrewCalculations();
   const cStub = fence.getStubCalculations();
+
+  if (!cMaterial) return "";
 
   return (
     <>
@@ -82,22 +98,33 @@ export default function Calculator() {
           </div>
           <div className="fenceTable__cell fenceTable__header">Количество</div>
           <div className="fenceTable__cell fenceTable__header">Стоимость</div>
-          <TableCell product={material} contain={true} />
+          <TableCell
+            product={material}
+            contain={true}
+            countInfo={cMaterial?.countInfo}
+            count={cMaterial.squareMeter}
+            description={cMaterial.description}
+            sum={cMaterial.totalPrice}
+          />
           <TableCell
             product={pillar}
             count={cPillar?.meters}
             sum={cPillar?.totalPrice}
+            description={cPillar?.description}
+            countInfo="м"
           />
           <TableCell
             product={joist}
             count={cJoist?.meters}
             sum={cJoist?.totalPrice}
+            countInfo="м"
           />
-          <TableCell product={screw} />
+          <TableCell product={screw} countInfo="шт." />
           <TableCell
             product={stub}
             count={cStub?.count}
             sum={cStub?.totalPrice}
+            countInfo="шт."
           />
           <div className="fenceTable__result">Итого:</div>
           <div className="fenceTable__resultPrice">

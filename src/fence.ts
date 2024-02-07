@@ -50,8 +50,8 @@ class Fence implements IFence {
       return {
         meters: pillarMeters,
         count: pillarCount,
-        totalPrice:
-          Math.ceil(pillarMeters * (this.pillar.price ?? 0) * 100) / 100,
+        description: `${pillarCount} столб по ${this.fenceHeight}`,
+        totalPrice: Ceil(pillarMeters * (this.pillar.price ?? 0)),
       };
     }
     return;
@@ -61,8 +61,7 @@ class Fence implements IFence {
     if (this.length && this.joist) {
       return {
         meters: this.length * 2,
-        totalPrice:
-          Math.ceil(this.length * 2 * (this.joist.price ?? 0) * 100) / 100,
+        totalPrice: Ceil(this.length * 2 * (this.joist.price ?? 0)),
       };
     }
     return;
@@ -73,21 +72,69 @@ class Fence implements IFence {
       const p = this.getPillarCalculation();
       return {
         count: p?.count,
-        totalPrice:
-          Math.ceil((p?.count ?? 0) * (this.stub.price ?? 0) * 100) / 100,
+        totalPrice: Ceil((p?.count ?? 0) * (this.stub.price ?? 0)),
       };
     }
     return;
   }
 }
 
+type TPropsExt = TProps & { material: Nullable<TProduct> };
+
 export class FenceShtaketnik extends Fence {
-  constructor({ length, height, pillar, joist, screw, stub }: TProps) {
+  material: Nullable<TProduct>;
+  constructor({
+    length,
+    height,
+    pillar,
+    joist,
+    screw,
+    stub,
+    material,
+  }: TPropsExt) {
     super({ length, height, pillar, joist, screw, stub });
+    this.material = material;
+  }
+
+  getMaterialCalculations() {}
+}
+
+export class FenceProflist extends Fence {
+  material: Nullable<TProduct>;
+
+  constructor({
+    length,
+    height,
+    pillar,
+    joist,
+    screw,
+    stub,
+    material,
+  }: TPropsExt) {
+    super({ length, height, pillar, joist, screw, stub });
+    this.material = material;
+  }
+  getMaterialCalculations() {
+    if (this.length && this.material && this.height) {
+      const count = Math.ceil(
+        this.length / ((this.material.width ?? 20) - 0.05)
+      );
+
+      const squareMeter = Ceil(
+        count * (this.material.width ?? 20) * this.height
+      );
+
+      return {
+        count,
+        description: `${count} лист по ${this.height} м`,
+        squareMeter,
+        countInfo: "m2",
+        totalPrice: Ceil(squareMeter * (this.material.price ?? 0)),
+      };
+    }
   }
 }
-export class FenceProflist extends Fence implements IFence {
-  constructor({ length, height, pillar, joist, screw, stub }: TProps) {
-    super({ length, height, pillar, joist, screw, stub });
-  }
+
+function Ceil(num: number) {
+  return Math.ceil(num * 100) / 100;
 }
