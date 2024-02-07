@@ -128,7 +128,8 @@ export default function Calculator() {
           />
           <div className="fenceTable__result">Итого:</div>
           <div className="fenceTable__resultPrice">
-            {(cPillar?.totalPrice ?? 0) +
+            {(cMaterial?.totalPrice ?? 0) +
+              (cPillar?.totalPrice ?? 0) +
               (cJoist?.totalPrice ?? 0) +
               (cStub?.totalPrice ?? 0)}{" "}
             руб.
