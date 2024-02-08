@@ -18,6 +18,7 @@ export interface TProduct {
   description?: string;
   group_image?: string;
   currentPromotion?: number;
+  profilePipeDiscount?: { [key: number]: number };
 }
 
 export interface TProductStore {

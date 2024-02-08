@@ -1,4 +1,5 @@
 import { PRODUCT_TYPES } from "@/fixtures/PRODUCT_TYPES";
+import { splitPipesDiscount } from "@/functions";
 import { TProduct } from "@/types";
 
 interface IPipes {
@@ -11,6 +12,7 @@ interface IPipes {
     unit: string;
     group_image: string;
     currentPromotion?: number;
+    profilePipeDiscount?: string;
   };
   link: string;
 }
@@ -65,12 +67,15 @@ export function parsePipesData(items: IPipes[]) {
             unit,
             group_image,
             currentPromotion,
+            profilePipeDiscount,
           } = item.meta;
           tmp.price = parseFloat(price);
           tmp.description = attributes_1_value;
           tmp.unit = unit;
           tmp.group_image = group_image;
           tmp.currentPromotion = Number(currentPromotion) ?? null;
+          if (profilePipeDiscount)
+            tmp.profilePipeDiscount = splitPipesDiscount(profilePipeDiscount);
         }
         result.push(tmp as TProduct);
       }

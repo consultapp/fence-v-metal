@@ -22,3 +22,30 @@ export function getPriceWithPromotion(
 ) {
   return price ? Ceil((price ?? 0) * ((100 - promotion) / 100)) : NaN;
 }
+
+export function splitPipesDiscount(str: string) {
+  const arr = str.split(";");
+  const result: { [key: number]: number } = {};
+  arr.forEach((item) => {
+    if (item) {
+      const [a, d] = item.split("-");
+      const a1 = parseInt(a);
+      const d1 = parseFloat(d);
+      if (typeof a1 === "number") result[a1] = d1;
+    }
+  });
+  return result;
+}
+
+export function getPipePriceWithDiscount(p: TProduct, meters: number) {
+  let currentDiscount = 0;
+
+  if (p.profilePipeDiscount) {
+    for (const [a, d] of Object.entries(p.profilePipeDiscount)) {
+      if (parseInt(a) <= meters) {
+        currentDiscount = d;
+      } else break;
+    }
+  }
+  return getPriceWithPromotion(p?.price ?? 0, currentDiscount);
+}

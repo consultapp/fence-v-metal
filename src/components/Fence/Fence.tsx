@@ -25,8 +25,6 @@ export default function Fence() {
   const showResult = useAppSelector(selectIsShowResult);
   const isReadyForCalc = useAppSelector(selectFenceIsRedyForCalculations);
 
-  console.log("isReadyForCalc", isReadyForCalc);
-
   useEffect(() => {
     dispatch(loadProductsIfNotExisted());
   }, [dispatch]);

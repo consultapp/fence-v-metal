@@ -1,5 +1,9 @@
 import SHTAKETNIK_TYPES from "./fixtures/SHTAKETNIK_TYPES";
-import { Ceil, getPriceIfPromotion } from "./functions";
+import {
+  Ceil,
+  getPipePriceWithDiscount,
+  getPriceIfPromotion,
+} from "./functions";
 import { IFilter, TProduct } from "./types";
 
 type Nullable<T> = T | null;
@@ -48,11 +52,15 @@ class Fence implements IFence {
     if (this.length && this.pillar) {
       const pillarCount = Math.ceil(this.length / 2.5) + 1;
       const pillarMeters = Math.round(pillarCount * this.fenceHeight * 10) / 10;
+
+      const price = getPipePriceWithDiscount(this.pillar, pillarMeters);
+
       return {
         meters: pillarMeters,
         count: pillarCount,
         description: `${pillarCount} столб по ${this.fenceHeight} м`,
-        totalPrice: Ceil(pillarMeters * (this.pillar.price ?? 0)),
+        totalPrice: Ceil(pillarMeters * (price ?? 0)),
+        oldPrice: Ceil(pillarMeters * (this.pillar.price ?? 0)),
       };
     }
     return;
@@ -60,9 +68,12 @@ class Fence implements IFence {
 
   getJoistCalculation() {
     if (this.length && this.joist) {
+      const meters = this.length * 2;
+      const price = getPipePriceWithDiscount(this.joist, meters);
       return {
         meters: this.length * 2,
-        totalPrice: Ceil(this.length * 2 * (this.joist.price ?? 0)),
+        totalPrice: Ceil(this.length * 2 * (price ?? 0)),
+        oldPrice: Ceil(this.length * 2 * (this.joist.price ?? 0)),
       };
     }
     return;
@@ -74,6 +85,7 @@ class Fence implements IFence {
       return {
         count: p?.count,
         totalPrice: Ceil((p?.count ?? 0) * (this.stub.price ?? 0)),
+        oldPrice: Ceil((p?.count ?? 0) * (this.stub.price ?? 0)),
       };
     }
     return;
@@ -118,10 +130,7 @@ export class FenceShtaketnik extends Fence {
       const { perMeter } = this.filter;
       if (perMeter) {
         const density = perMeter[this.shtaketnikType];
-        console.log("density", density, this.length);
-
         const count = Math.ceil(this.length * density);
-
         const squareMeter = Ceil(count * this.height, 3);
 
         return {
@@ -143,6 +152,7 @@ export class FenceShtaketnik extends Fence {
       return {
         count,
         totalPrice: Ceil(count * (this.screw.price ?? 0)),
+        oldPrice: Ceil(count * (this.screw.price ?? 0)),
       };
     }
   }

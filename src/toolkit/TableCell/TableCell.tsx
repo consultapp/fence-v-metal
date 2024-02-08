@@ -46,7 +46,7 @@ export default function TableCell({
         <div>{`${count} ${countInfo}`}</div>
         <div className="fenceTable__description">{description}</div>
       </div>
-      {product.currentPromotion ? (
+      {product.currentPromotion || oldPrice !== totalPrice ? (
         <div className="fenceTable__cell fenceTable__priceDiscount">
           <div>{oldPrice} руб.</div>
           <div>{totalPrice} руб.</div>
