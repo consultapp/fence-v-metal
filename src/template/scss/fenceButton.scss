@@ -21,14 +21,27 @@
   }
 
   &_primary {
-    background: #fdbf50;
+    border: 1px solid #fdbf50;
+    background-color: #fdbf50;
+    transition: background-color 0.2s ease-in-out;
+    &:hover {
+      background-color: rgba(253, 191, 80, 0.5);
+    }
   }
+
   &_secondary {
     background: rgba(34, 18, 45, 1);
     color: #fff;
+
+    border: 1px solid rgba(34, 18, 45, 1);
+    transition: background-color 0.2s ease-in-out;
+    &:hover {
+      background-color: rgba(34, 18, 45, 0.8);
+    }
   }
 
-  &_outlined {
+  &_outlined,
+  &_outlined:hover {
     border: 1px solid #fdbf50;
     background: #fff;
   }
