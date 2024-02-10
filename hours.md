@@ -33,3 +33,6 @@
 1h calc proflist
 2h calc shtaketnik
 1,5h discount price
+
+-- 08.02.24 --
+1h discount pipes
