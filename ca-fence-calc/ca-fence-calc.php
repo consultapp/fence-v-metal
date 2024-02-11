@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Fence Calc
-Author: Dmitry
+Author: Dmitry Egorov
 Author URI: https://consultapp.ru
 */
 
