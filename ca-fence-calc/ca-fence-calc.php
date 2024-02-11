@@ -18,7 +18,7 @@ function ca_calculator_func($atts){
 // подключить стили и скрипты
 add_action( 'wp_enqueue_scripts', 'fence_calc_name_scripts' );
 function fence_calc_name_scripts() {
-	wp_enqueue_style( 'style-name', '/wp-content/plugins/ca-fence-calc/assets/index-nN3i65OU.css' );
+	wp_enqueue_style( 'style-name', '/wp-content/plugins/ca-fence-calc/assets/index.css' );
 	// wp_enqueue_script( 'script-name',  '/wp-content/plugins/ca-fence-calc/assets/index-0xo68vUk.js', array(), '1.0.0', true );
 }
 

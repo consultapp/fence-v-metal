@@ -37,6 +37,9 @@
 -- 08.02.24 --
 1h discount pipes
 
+-- 11.02.24 --
+2h wp integration plugin
+
 -- Plan --
 Mobile version
 3h верстка + интеграция

@@ -1,4 +1,6 @@
 .fenceCalc {
+  margin: 0 auto;
+
   box-sizing: border-box;
   max-width: 640px;
   background: #f9f9f9;
@@ -29,13 +31,11 @@
   &_wrapper {
     border-radius: 32px;
     background: #fff;
-
     display: flex;
     flex-direction: column;
-    margin-top: 53px;
     border-radius: 32px;
     min-height: 100px;
-    width: calc(100% - 80px);
+    width: 100%;
     padding: 40px;
     gap: 30px;
   }

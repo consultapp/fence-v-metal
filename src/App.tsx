@@ -17,6 +17,10 @@ import "@/template/scss/fenceTable.scss";
 function App() {
   return (
     <Provider store={store}>
+      <div className="calculator__head">
+        <h2>Калькулятор забора</h2>
+        <h4>Рассчитайте вес и длину необходимого вам товара</h4>
+      </div>
       <div className="fenceCalc">
         <Fence />
       </div>
