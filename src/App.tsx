@@ -13,8 +13,11 @@ import "@/template/scss/fenceRadio.scss";
 import "@/template/scss/fenceSelect.scss";
 import "@/template/scss/fenceTooltip.scss";
 import "@/template/scss/fenceTable.scss";
+import { TOOLTIP_TEXTS } from "./fixtures/TOOLTIP_TEXTS";
 
 function App() {
+  // console.log("window", window.__INITIAL_STATE__);
+  console.log("TOOLTIP_TEXTS", TOOLTIP_TEXTS);
   return (
     <Provider store={store}>
       <div className="fenceCalc">
