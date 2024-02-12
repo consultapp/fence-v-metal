@@ -47,6 +47,8 @@
   }
 
   &__imageWrapper {
+    min-width: 70px;
+    min-height: 70px;
     width: 70px;
     height: 70px;
     border-radius: 16px;
@@ -54,17 +56,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-grow: 2;
   }
   &__image {
     width: 40.727px;
     height: 56px;
-    // background-image: url("../assets/shtaketnik_trapeze.png");
     // background-repeat: no-repeat;
     // background-size: cover;
   }
   &__info {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
   }
 
   &__infoHeader {
