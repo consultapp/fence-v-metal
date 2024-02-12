@@ -73,9 +73,11 @@ export default function Calculator() {
   const addToBasket = () => {
     // basketAddProduct(prodID,1);
     if ("basketAddProduct" in window) {
-      window.basketAddProduct(material.id, cMaterial?.count ?? 0);
+      window.basketAddProduct(material.id, cMaterial?.squareMeter ?? 0);
       window.basketAddProduct(pillar.id, cPillar?.meters ?? 0);
       window.basketAddProduct(joist.id, cJoist?.meters ?? 0);
+      window.basketAddProduct(screw.id, cScrew?.count ?? 0);
+      window.basketAddProduct(stub.id, cStub?.count ?? 0);
     }
   };
 
