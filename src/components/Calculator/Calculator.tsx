@@ -70,6 +70,19 @@ export default function Calculator() {
   const cScrew = fence.getScrewCalculations();
   const cStub = fence.getStubCalculations();
 
+  const addToBasket = () => {
+    // basketAddProduct(prodID,1);
+    if ("basketAddProduct" in window) {
+      console.log(
+        "first",
+        window.basketAddProduct,
+        material.id,
+        cMaterial?.count ?? 0
+      );
+      window.basketAddProduct(material.id, cMaterial?.count ?? 0);
+    }
+  };
+
   if (!cMaterial) return "";
 
   return (
@@ -163,11 +176,7 @@ export default function Calculator() {
         >
           Отправить расчёт
         </CustomButton>
-        <CustomButton
-          type="primary"
-          onClick={() => dispatch(fenceSlice.actions.resetFence())}
-          half50={true}
-        >
+        <CustomButton type="primary" onClick={addToBasket} half50={true}>
           Добавить в корзину
         </CustomButton>
       </div>
