@@ -4,5 +4,12 @@ type Props = {
 };
 
 export default function CustomInput({ onChange, value }: Props) {
-  return <input type="text" onChange={onChange} value={value ? value : ""} />;
+  return (
+    <input
+      type="text"
+      onChange={onChange}
+      value={value ? value : ""}
+      placeholder="0"
+    />
+  );
 }
