@@ -8,6 +8,12 @@
   font-weight: 400;
   line-height: normal;
 
+  @media screen and (max-width: "479px") {
+    font-size: 14px;
+    line-height: 19px;
+    letter-spacing: 0em;
+  }
+
   &__header {
     border-radius: 16px;
     border: 1px solid #eaeaea;

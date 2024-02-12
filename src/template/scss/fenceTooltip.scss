@@ -7,12 +7,14 @@
   cursor: pointer;
 
   &__details {
-    max-width: 335px;
+    width: 335px;
+
     position: absolute;
     left: -100vw;
     opacity: 0;
 
-    min-width: 310px;
+    text-wrap: wrap;
+
     font-family: Open Sans;
     font-size: 14px;
     font-weight: 400;

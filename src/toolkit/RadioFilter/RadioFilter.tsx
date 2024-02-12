@@ -34,7 +34,7 @@ export default function RadioFilter({ filters, selector, dispatcher }: Props) {
       <fieldset className="fenceRadio">
         {filters
           ? filters.map((filter) => (
-              <>
+              <div className="fenceRadio__wrapper">
                 <div
                   className="fenceRadio__imageWrapper"
                   onPointerDown={() => {
@@ -79,7 +79,7 @@ export default function RadioFilter({ filters, selector, dispatcher }: Props) {
                     </span>
                   </div>
                 </label>
-              </>
+              </div>
             ))
           : ""}
       </fieldset>

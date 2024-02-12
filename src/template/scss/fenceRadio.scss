@@ -37,7 +37,21 @@
     margin: 0 10px 0 0;
   }
 
+  &__wrapper {
+    gap: 10px;
+    display: flex;
+    flex-direction: row;
+    @media screen and (max-width: "479px") {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
   &_displayLine {
+    @media screen and (max-width: "479px") {
+      flex-direction: column;
+      align-items: flex-start;
+    }
     cursor: pointer;
     display: flex;
     flex-direction: row;
