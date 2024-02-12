@@ -5,6 +5,7 @@
   justify-content: flex-start;
   gap: 20px;
   padding-left: 0;
+  cursor: pointer;
 
   & label {
     color: #22122d;
@@ -13,6 +14,8 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+
+    cursor: pointer;
   }
 
   [type="radio"]:checked,
@@ -35,6 +38,7 @@
   }
 
   &_displayLine {
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -47,6 +51,8 @@
   }
 
   &__imageWrapper {
+    position: relative;
+
     min-width: 70px;
     min-height: 70px;
     width: 70px;
@@ -56,14 +62,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-grow: 2;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.24);
+    }
   }
+
   &__image {
     width: 40.727px;
     height: 56px;
     // background-repeat: no-repeat;
     // background-size: cover;
   }
+
+  &__openModal {
+    position: absolute;
+    left: -100vw;
+    top: 0;
+    transform: scale(150%);
+  }
+
+  &__imageWrapper:hover &__openModal {
+    left: 35%;
+    top: 35%;
+  }
+
   &__info {
     display: flex;
     flex-direction: column;
