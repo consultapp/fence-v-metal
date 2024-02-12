@@ -40,6 +40,9 @@
 -- 11.02.24 --
 2h wp integration plugin
 
+-- 12.02.24 --
+2h modal + verstka
+
 -- Plan --
 Mobile version
 3h верстка + интеграция
