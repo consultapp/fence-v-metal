@@ -39,13 +39,13 @@ const FILTERS: { [key in keyof typeof FENCE_TYPES]: IFilter[] } = {
     {
       slug: "mp20",
       name: "МП-20",
-      link: "/wp-content/plugins/ca-fence-calc/assets/shtaketnik_lane.png",
+      link: "/wp-content/plugins/ca-fence-calc/assets/proflist_mp20.png",
       description: "ширина 1.15 м",
     },
     {
       slug: "c8",
       name: "С-8",
-      link: "/wp-content/plugins/ca-fence-calc/assets/shtaketnik_lane.png",
+      link: "/wp-content/plugins/ca-fence-calc/assets/proflist_c8.png",
       description: "ширина 1.15 м",
     },
   ],
