@@ -110,8 +110,12 @@ export default function Calculator() {
           <div className="fenceTable__cell fenceTable__header">
             Название товара
           </div>
-          <div className="fenceTable__cell fenceTable__header">Количество</div>
-          <div className="fenceTable__cell fenceTable__header">Стоимость</div>
+          <div className="fenceTable__cell fenceTable__header fenceTable_center">
+            Количество
+          </div>
+          <div className="fenceTable__cell fenceTable__header fenceTable__end">
+            Стоимость
+          </div>
           <TableCell
             product={material}
             contain={true}

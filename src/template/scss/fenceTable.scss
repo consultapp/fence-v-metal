@@ -59,6 +59,14 @@
   &__header {
     padding-bottom: 10px;
   }
+
+  &_center {
+    justify-content: end;
+  }
+  &_end {
+    justify-content: end;
+  }
+
   &__resultPrice {
     padding-top: 15px;
     font-family: Open Sans;
