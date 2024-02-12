@@ -7,7 +7,7 @@ const FILTERS: { [key in keyof typeof FENCE_TYPES]: IFilter[] } = {
     {
       slug: "trapeze",
       name: "Trapeze",
-      link: "../assets/shtaketnik_trapeze.png",
+      link: "/wp-content/plugins/ca-fence-calc/assets/shtaketnik_trapeze.png",
       description: "ширина 1.15 м",
       perMeter: {
         [SHTAKETNIK_TYPES.oneSide]: 7,
@@ -17,7 +17,7 @@ const FILTERS: { [key in keyof typeof FENCE_TYPES]: IFilter[] } = {
     {
       slug: "ellipse",
       name: "Ellipse",
-      link: "../assets/shtaketnik_ellipse.png",
+      link: "/wp-content/plugins/ca-fence-calc/assets/shtaketnik_ellipse.png",
       description: "ширина 1.15 м",
       perMeter: {
         [SHTAKETNIK_TYPES.oneSide]: 7,
@@ -27,7 +27,7 @@ const FILTERS: { [key in keyof typeof FENCE_TYPES]: IFilter[] } = {
     {
       slug: "lane",
       name: "Lane",
-      link: "assets/shtaketnik_lane.png",
+      link: "/wp-content/plugins/ca-fence-calc/assets/shtaketnik_lane.png",
       description: "ширина 1.15 м",
       perMeter: {
         [SHTAKETNIK_TYPES.oneSide]: 8,
@@ -39,13 +39,13 @@ const FILTERS: { [key in keyof typeof FENCE_TYPES]: IFilter[] } = {
     {
       slug: "mp20",
       name: "МП-20",
-      link: "../assets/shtaketnik_lane.png",
+      link: "/wp-content/plugins/ca-fence-calc/assets/shtaketnik_lane.png",
       description: "ширина 1.15 м",
     },
     {
       slug: "c8",
       name: "С-8",
-      link: "../assets/shtaketnik_lane.png",
+      link: "/wp-content/plugins/ca-fence-calc/assets/shtaketnik_lane.png",
       description: "ширина 1.15 м",
     },
   ],
