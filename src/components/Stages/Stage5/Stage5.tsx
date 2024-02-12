@@ -1,3 +1,4 @@
+import Tooltip from "@/components/Tooltip/Tooltip";
 import { PRODUCT_TYPES } from "@/fixtures/PRODUCT_TYPES";
 import { selectProductsByType } from "@/store/entities/products/selectors";
 import { useAppSelector } from "@/store/hooks";
@@ -12,7 +13,9 @@ export default function Stage5() {
 
   return (
     <div className="fenceSection">
-      <div className="fenceSection__header3">Лаги</div>
+      <div className="fenceSection__header3">
+        Лаги <Tooltip type="joist" />
+      </div>
       <div className="fenceSection__line"></div>
 
       <CustomSelect

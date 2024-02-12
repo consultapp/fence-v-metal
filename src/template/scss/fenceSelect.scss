@@ -105,6 +105,13 @@
     color: #22122d;
     text-align: right;
 
+    & div:first-child {
+      text-decoration: line-through;
+      & span {
+        opacity: 0;
+      }
+    }
+
     & div:last-child {
       color: #fdbf50;
     }

@@ -5,6 +5,7 @@ import { useMemo, useRef, useState } from "react";
 import { UnknownAction } from "redux";
 import IconLogo from "./icon.svg";
 import { Ceil, sortByPrice } from "@/functions";
+import { PRODUCT_TYPES } from "@/fixtures/PRODUCT_TYPES";
 
 type Props = {
   products: TProduct[];
@@ -101,7 +102,15 @@ export default function CustomSelect({
               {product.currentPromotion ? (
                 <div className="fenceSelect__priceDiscount">
                   <div>
-                    {product.price} руб. <span> &nbsp;</span>
+                    {product.price} руб.
+                    <span>
+                      /м
+                      {product.productType === PRODUCT_TYPES.proflist ? (
+                        <sup>2</sup>
+                      ) : (
+                        ""
+                      )}
+                    </span>
                   </div>
                   <div>
                     {Ceil(
@@ -109,12 +118,27 @@ export default function CustomSelect({
                         ((100 - product.currentPromotion) / 100)
                     )}{" "}
                     руб.
-                    <span>/м</span>
+                    <span>
+                      /м
+                      {product.productType === PRODUCT_TYPES.proflist ? (
+                        <sup>2</sup>
+                      ) : (
+                        ""
+                      )}
+                    </span>
                   </div>
                 </div>
               ) : (
                 <div className="fenceSelect__price">
-                  {product.price} руб. <span>/м</span>
+                  {product.price} руб.{" "}
+                  <span>
+                    /м
+                    {product.productType === PRODUCT_TYPES.proflist ? (
+                      <sup>2</sup>
+                    ) : (
+                      ""
+                    )}
+                  </span>
                 </div>
               )}
             </div>

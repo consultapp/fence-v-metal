@@ -1,3 +1,4 @@
+import Tooltip from "@/components/Tooltip/Tooltip";
 import FENCE_TYPES from "@/fixtures/FENCE_TYPES";
 import { fenceSlice } from "@/store/ui/fence";
 import { selectFenceType } from "@/store/ui/fence/selectors";
@@ -6,7 +7,9 @@ import RadioButtons from "@/toolkit/RadioButtons/RadioButtons";
 export default function Stage1() {
   return (
     <div className="fenceSection">
-      <div className="fenceSection__header3">Тип забора</div>
+      <div className="fenceSection__header3">
+        Тип забора <Tooltip type="fenceType" />
+      </div>
       <RadioButtons
         types={Object.values(FENCE_TYPES)}
         selector={selectFenceType}
