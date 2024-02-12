@@ -14,7 +14,9 @@ type Props = {
 };
 
 export default function RadioFilter({ filters, selector, dispatcher }: Props) {
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState<{ image1: string; image2: string } | null>(
+    null
+  );
 
   const current = useAppSelector(selector);
   const dispatch = useAppDispatch();
@@ -26,13 +28,8 @@ export default function RadioFilter({ filters, selector, dispatcher }: Props) {
 
   return (
     <>
-      <ModalWindow isOpen={modal} close={() => setModal(false)}>
-        <ModalTwoImages
-          image1={filters?.find((item) => item.slug === current?.slug)?.link}
-          image2={`${filters
-            ?.find((item) => item.slug === current?.slug)
-            ?.link.replace(".png", "_schema.png")}`}
-        />
+      <ModalWindow isOpen={Boolean(modal)} close={() => setModal(null)}>
+        <ModalTwoImages image1={modal?.image1} image2={modal?.image2} />
       </ModalWindow>
       <fieldset className="fenceRadio">
         {filters
@@ -41,7 +38,10 @@ export default function RadioFilter({ filters, selector, dispatcher }: Props) {
                 <div
                   className="fenceRadio__imageWrapper"
                   onPointerDown={() => {
-                    setModal(true);
+                    setModal({
+                      image1: filter.link,
+                      image2: filter.link.replace(".png", "_schema.png"),
+                    });
                   }}
                 >
                   <img className="fenceRadio__image" src={filter.link} />
