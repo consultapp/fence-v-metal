@@ -74,7 +74,7 @@ export default function Calculator() {
     // basketAddProduct(prodID,1);
     if ("basketAddProduct" in window) {
       window.basketAddProduct(material.id, cMaterial?.count ?? 0);
-      window.basketAddProduct(pillar.id, cPillar?.count ?? 0);
+      window.basketAddProduct(pillar.id, cPillar?.meters ?? 0);
       window.basketAddProduct(joist.id, cJoist?.meters ?? 0);
     }
   };
@@ -113,7 +113,7 @@ export default function Calculator() {
           <div className="fenceTable__cell fenceTable__header fenceTable_center">
             Количество
           </div>
-          <div className="fenceTable__cell fenceTable__header fenceTable__end">
+          <div className="fenceTable__cell fenceTable__header fenceTable_end">
             Стоимость
           </div>
           <TableCell
@@ -164,7 +164,7 @@ export default function Calculator() {
                 (cScrew?.totalPrice ?? 0) +
                 (cStub?.totalPrice ?? 0)
             )}
-            руб.
+            &nbsp;руб.
           </div>
         </div>
       </div>

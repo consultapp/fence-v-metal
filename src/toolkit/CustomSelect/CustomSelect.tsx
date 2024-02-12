@@ -81,11 +81,6 @@ export default function CustomSelect({
       </div>
       {isOpen && (
         <div className="fenceSelect__body">
-          <div className="fenceSelect__option">
-            <div className="fenceSelect__noinfo" key="option_noinfo">
-              Не выбрано
-            </div>
-          </div>
           {sortByPrice(products).map((product) => (
             <div
               className="fenceSelect__option"
