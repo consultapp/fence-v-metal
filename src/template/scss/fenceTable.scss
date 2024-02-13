@@ -1,6 +1,10 @@
 .fenceTable {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
+  @media screen and (max-width: "479px") {
+    grid-template-columns: 2fr 0px 1fr;
+    font-size: 14px;
+  }
 
   font-family: Open Sans;
   font-size: 16px;
@@ -44,6 +48,22 @@
     justify-content: center;
     display: flex;
     flex-direction: column;
+    @media screen and (max-width: "479px") {
+      visibility: hidden;
+    }
+  }
+  &__countMobile {
+    font-size: 13px;
+    line-height: 18px;
+    letter-spacing: 0em;
+
+    visibility: hidden;
+    @media screen and (max-width: "479px") {
+      visibility: visible;
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   &__description {
@@ -120,5 +140,11 @@
     letter-spacing: 0em;
     text-align: left;
     color: rgba(34, 18, 45, 1);
+  }
+
+  &_mobileHidden {
+    @media screen and (max-width: "479px") {
+      visibility: hidden;
+    }
   }
 }

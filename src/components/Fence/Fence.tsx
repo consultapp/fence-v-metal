@@ -5,7 +5,7 @@ import Stage4 from "../Stages/Stage4/Stage4";
 import Stage5 from "../Stages/Stage5/Stage5";
 import Stage6 from "../Stages/Stage6/Stage6";
 import Stage7 from "../Stages/Stage7/Stage7";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { loadProductsIfNotExisted } from "@/store/entities/products/thunk/loadProductsIfNotExisted";
 import { selectProductLoadingStatus } from "@/store/entities/products/selectors";
@@ -20,6 +20,7 @@ import {
 } from "@/store/ui/fence/selectors";
 
 export default function Fence() {
+  const wrapper = useRef<HTMLDivElement | null>(null);
   const dispatch = useAppDispatch();
   const loadingStatus = useAppSelector(selectProductLoadingStatus);
   const showResult = useAppSelector(selectIsShowResult);
@@ -50,44 +51,49 @@ export default function Fence() {
       </div>
     );
 
-  return showResult ? (
-    <div className="fenceCalc_wrapper">
-      <Calculator />
-    </div>
-  ) : (
-    <div className="fenceCalc_wrapper">
-      <Stage1 />
-      <Stage2 />
-      <Stage3 />
-      <Stage4 />
-      <Stage5 />
-      <div className="fenceSection">
-        <div className="fenceSection_twoColumn">
-          <Stage6 />
-          <Stage7 />
-        </div>
-      </div>
+  return (
+    <div className="fenceCalc_wrapper" ref={wrapper}>
+      {showResult ? (
+        <Calculator />
+      ) : (
+        <>
+          <Stage1 />
+          <Stage2 />
+          <Stage3 />
+          <Stage4 />
+          <Stage5 />
+          <div className="fenceSection">
+            <div className="fenceSection_twoColumn">
+              <Stage6 />
+              <Stage7 />
+            </div>
+          </div>
 
-      <div className="fenceSection fenceSection_flexRow">
-        <CustomButton
-          type="primary"
-          half50={true}
-          onClick={() =>
-            isReadyForCalc ? dispatch(fenceSlice.actions.showResult()) : null
-          }
-        >
-          Рассчитать
-        </CustomButton>
-        <CustomButton
-          type="primary"
-          border="outlined"
-          onClick={() => dispatch(fenceSlice.actions.resetFence())}
-          half50={true}
-          svg={true}
-        >
-          Очистить все поля
-        </CustomButton>
-      </div>
+          <div className="fenceSection fenceSection_flexRow">
+            <CustomButton
+              type="primary"
+              half50={true}
+              onClick={() => {
+                isReadyForCalc
+                  ? dispatch(fenceSlice.actions.showResult())
+                  : null;
+                wrapper.current && wrapper.current.scrollIntoView();
+              }}
+            >
+              Рассчитать
+            </CustomButton>
+            <CustomButton
+              type="primary"
+              border="outlined"
+              onClick={() => dispatch(fenceSlice.actions.resetFence())}
+              half50={true}
+              svg={true}
+            >
+              Очистить все поля
+            </CustomButton>
+          </div>
+        </>
+      )}
     </div>
   );
 }

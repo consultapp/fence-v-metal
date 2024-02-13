@@ -112,7 +112,7 @@ export default function Calculator() {
           <div className="fenceTable__cell fenceTable__header">
             Название товара
           </div>
-          <div className="fenceTable__cell fenceTable__header fenceTable_center">
+          <div className="fenceTable__cell fenceTable__header fenceTable_center fenceTable_mobileHidden">
             Количество
           </div>
           <div className="fenceTable__cell fenceTable__header fenceTable_end">
