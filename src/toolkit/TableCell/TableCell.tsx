@@ -41,13 +41,31 @@ export default function TableCell({
             {showDescription && product.description ? product.description : ""}
           </div>
           <div className="fenceTable__countMobile">
-            <div>{`${count} ${countInfo}`}</div>
+            <div>
+              {`${count} `}
+              {countInfo === "m2" ? (
+                <>
+                  m<sup>2</sup>
+                </>
+              ) : (
+                countInfo
+              )}
+            </div>
             <div className="fenceTable__description">{description}</div>
           </div>
         </div>
       </div>
       <div className="fenceTable__cell fenceTable__count">
-        <div>{`${count} ${countInfo}`}</div>
+        <div>
+          {`${count} `}
+          {countInfo === "m2" ? (
+            <>
+              m<sup>2</sup>
+            </>
+          ) : (
+            countInfo
+          )}
+        </div>
         <div className="fenceTable__description">{description}</div>
       </div>
       {product.currentPromotion || oldPrice !== totalPrice ? (
