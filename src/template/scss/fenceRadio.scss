@@ -18,6 +18,11 @@
     cursor: pointer;
   }
 
+  &_flex {
+    display: flex;
+    align-items: center;
+  }
+
   [type="radio"]:checked,
   [type="checkbox"]:checked {
     background: radial-gradient(circle at center, #fdbf50 50%, #fff 50%);

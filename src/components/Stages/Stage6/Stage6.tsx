@@ -13,7 +13,7 @@ export default function Stage6() {
 
   return (
     <div>
-      <div className="fenceSection__header3">Длина, м.</div>
+      <div className="fenceSection__header3">Длина,&nbsp;м.</div>
       <CustomInput onChange={changeHandler} value={current ? current : ""} />
     </div>
   );

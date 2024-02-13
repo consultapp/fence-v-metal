@@ -115,6 +115,9 @@
       text-decoration: line-through;
       & span {
         opacity: 0;
+        @media screen and (max-width: "479px") {
+          display: none;
+        }
       }
     }
 
@@ -124,6 +127,9 @@
 
     & span {
       color: #919399;
+      @media screen and (max-width: "479px") {
+        display: block;
+      }
     }
   }
 
@@ -134,6 +140,9 @@
 
     & span {
       color: #919399;
+      @media screen and (max-width: "479px") {
+        display: block;
+      }
     }
   }
 }

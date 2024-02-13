@@ -97,7 +97,7 @@ export default function CustomSelect({
               {product.currentPromotion ? (
                 <div className="fenceSelect__priceDiscount">
                   <div>
-                    {product.price} руб.
+                    {product.price}&nbsp;руб.
                     <span>
                       /м
                       {product.productType === PRODUCT_TYPES.proflist ? (
@@ -111,8 +111,8 @@ export default function CustomSelect({
                     {Ceil(
                       (product.price ?? 0) *
                         ((100 - product.currentPromotion) / 100)
-                    )}{" "}
-                    руб.
+                    )}
+                    &nbsp;руб.
                     <span>
                       /м
                       {product.productType === PRODUCT_TYPES.proflist ? (
@@ -125,7 +125,7 @@ export default function CustomSelect({
                 </div>
               ) : (
                 <div className="fenceSelect__price">
-                  {product.price} руб.{" "}
+                  {product.price}&nbsp;руб.{" "}
                   <span>
                     /м
                     {product.productType === PRODUCT_TYPES.proflist ? (
