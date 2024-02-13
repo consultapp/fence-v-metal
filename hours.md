@@ -41,7 +41,11 @@
 2h wp integration plugin
 
 -- 12.02.24 --
-2h modal + verstka
+1h modal + verstka
+2h mobile verstka
+
+-- 13.02.24 --
+1h mobile verstka
 
 -- Plan --
 Mobile version
