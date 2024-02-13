@@ -64,7 +64,15 @@ export default function CustomSelect({
                 <div>{currentProduct.description}</div>
               </div>
               <div className="fenceSelect__price">
-                {currentProduct.price} руб. <span>/м</span>
+                {currentProduct.price}&nbsp;руб.{" "}
+                <span>
+                  /м
+                  {currentProduct.productType === PRODUCT_TYPES.proflist ? (
+                    <sup>2</sup>
+                  ) : (
+                    ""
+                  )}
+                </span>
               </div>
             </>
           ) : (
