@@ -26,8 +26,8 @@ class Fence implements IFence {
   fenceHeight: number = 0;
 
   constructor({ length, height, pillar, joist, screw, stub }: TProps) {
-    this.length = length;
-    this.height = height;
+    this.length = parseFloat((length?.toString() ?? "").replace(",", "."));
+    this.height = parseFloat((height?.toString() ?? "").replace(",", "."));
     this.pillar = pillar;
     this.joist = joist;
     this.screw = screw;

@@ -57,7 +57,6 @@ export const fenceSlice = createSlice({
       state.joistId = payload;
     },
     setLength: (state, { payload }) => {
-      console.log("payload", payload);
       if (payload === "") {
         state.length = 0;
       } else {
