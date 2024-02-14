@@ -62,7 +62,7 @@ export interface IFilter {
 declare global {
   interface Window {
     basketAddProduct(prodId: number, count: number): void;
-    __INITIAL_STATE__: { tooltips: { [key: string]: string } };
+    __INITIAL_STATE__: { tooltips: { [key: string]: string }; url: string };
   }
 }
 // window.__INITIAL_STATE__ = window.__INITIAL_STATE__ || {};
