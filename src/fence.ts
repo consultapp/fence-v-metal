@@ -44,6 +44,8 @@ class Fence implements IFence {
         this.fenceHeight = 2.4;
       } else if (this.height <= 2.2) {
         this.fenceHeight = 3;
+      } else if (this.height <= 2.5) {
+        this.fenceHeight = 3.5;
       }
     }
   }
@@ -67,13 +69,13 @@ class Fence implements IFence {
   }
 
   getJoistCalculation() {
-    if (this.length && this.joist) {
-      const meters = this.length * 2;
+    if (this.length && this.joist && this.fenceHeight) {
+      const meters = this.length * (this.fenceHeight === 3.5 ? 3 : 2);
       const price = getPipePriceWithDiscount(this.joist, meters);
       return {
-        meters: this.length * 2,
-        totalPrice: Ceil(this.length * 2 * (price ?? 0)),
-        oldPrice: Ceil(this.length * 2 * (this.joist.price ?? 0)),
+        meters: meters,
+        totalPrice: Ceil(meters * (price ?? 0)),
+        oldPrice: Ceil(meters * (this.joist.price ?? 0)),
       };
     }
     return;

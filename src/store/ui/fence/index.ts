@@ -75,7 +75,7 @@ export const fenceSlice = createSlice({
         let tmp = payload;
         if (checkNumber(tmp)) {
           if (payload < 1) tmp = 1;
-          if (payload > 2.2) tmp = 2.2;
+          if (payload > 2.5) tmp = 2.5;
           state.height = tmp;
         }
       }
