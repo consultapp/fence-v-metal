@@ -58,12 +58,22 @@ export const fenceSlice = createSlice({
     },
     setLength: (state, { payload }) => {
       state.length = payload;
+      if (payload === "") {
+        state.length = 0;
+      } else {
+        let tmp = payload.replace(",", ".");
+        tmp = tmp.replace(/[^0-9.]/, "");
+
+        state.length = tmp;
+      }
     },
     setHeight: (state, { payload }) => {
       if (payload === "") {
         state.height = 0;
       } else {
         let tmp = payload.replace(",", ".");
+        tmp = tmp.replace(/[^0-9.]/, "");
+
         if (payload < 1) tmp = 1;
         if (payload > 2.2) tmp = 2.2;
         state.height = tmp;
