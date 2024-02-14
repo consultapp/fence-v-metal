@@ -70,7 +70,7 @@ class Fence implements IFence {
 
   getJoistCalculation() {
     if (this.length && this.joist && this.fenceHeight) {
-      const meters = this.length * (this.fenceHeight === 3.5 ? 3 : 2);
+      const meters = Ceil(this.length * (this.fenceHeight === 3.5 ? 3 : 2));
       const price = getPipePriceWithDiscount(this.joist, meters);
       return {
         meters: meters,

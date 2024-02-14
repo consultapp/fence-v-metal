@@ -11,7 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 add_shortcode( 'ca_calculator', 'ca_calculator_func' );
 function ca_calculator_func($atts){
-	 return file_get_contents(plugin_dir_path( __FILE__ ).'/template.html');
+	$template = file_get_contents(plugin_dir_path( __FILE__ ).'/template.html');
+	$url = get_site_url();
+
+	return str_replace('THEMPLATE_SITE_URL', $url, $template);;
 }
 
 
