@@ -35,7 +35,7 @@ export default function TableCell({
             style={{ backgroundImage: `url("${product.group_image}")` }}
           ></div>
         </div>
-        <div>
+        <div className="fenceTable__product">
           <div>{product.name}</div>
           <div className="fenceTable__desc">
             {showDescription && product.description ? product.description : ""}
