@@ -33,6 +33,8 @@ export default function CustomSelect({
   };
 
   const toggleSelect = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (controller.current) controller.current.abort();
+
     if (isOpen) {
       setIsOpen(false);
     } else {
