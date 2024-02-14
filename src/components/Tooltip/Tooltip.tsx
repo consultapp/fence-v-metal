@@ -1,12 +1,14 @@
 import { TOOLTIP_TEXTS } from "@/fixtures/TOOLTIP_TEXTS";
+import styles from "./styles.module.scss";
+import classNames from "classnames";
 
 type Props = { type: keyof typeof TOOLTIP_TEXTS; t0?: boolean };
 
 export default function Tooltip({ type, t0 = false }: Props) {
   return (
-    <div className="tooltip">
+    <div className={styles.tooltip}>
       <svg
-        className="tooltip__icon"
+        className={styles.tooltip__icon}
         width="22"
         height="23"
         viewBox="0 0 22 23"
@@ -36,7 +38,9 @@ export default function Tooltip({ type, t0 = false }: Props) {
         />
       </svg>
 
-      <div className={`tooltip__details ${t0 ? "tooltip_t0" : ""}`}>
+      <div
+        className={classNames(styles.tooltip__details, t0 && styles.tooltip_t0)}
+      >
         {TOOLTIP_TEXTS[type] ? TOOLTIP_TEXTS[type] : ""}
       </div>
     </div>
