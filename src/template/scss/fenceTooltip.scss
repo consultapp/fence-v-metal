@@ -54,7 +54,7 @@
     left: 50%;
 
     @media screen and (max-width: "479px") {
-      width: 120px;
+      max-width: 50vw;
     }
     .translate0 {
       transform: translateY(-10%) translateX(20px);
