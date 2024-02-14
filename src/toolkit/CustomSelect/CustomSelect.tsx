@@ -56,7 +56,7 @@ export default function CustomSelect({
   };
 
   return (
-    <div className="fenceSelect" data-selected>
+    <div className="fenceSelect" data-selected data-open={isOpen}>
       <div className="fenceSelect__header" onClick={toggleSelect}>
         <div className="fenceSelect__current" data-empty>
           {currentProduct ? (
