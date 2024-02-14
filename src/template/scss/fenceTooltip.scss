@@ -3,14 +3,15 @@
   position: relative;
   vertical-align: top;
   color: 22122D;
-  z-index: 1;
+
   cursor: pointer;
 
   &__details {
+    z-index: 500;
     width: 335px;
 
     position: absolute;
-    left: -100vw;
+    left: -200vw;
     opacity: 0;
 
     text-wrap: wrap;
@@ -21,6 +22,7 @@
     line-height: 19px;
     letter-spacing: 0em;
     text-align: left;
+    overflow-wrap: break-word;
 
     color: #919399;
 
@@ -50,5 +52,17 @@
   &__icon:hover ~ &__details {
     opacity: 1;
     left: 50%;
+
+    @media screen and (max-width: "479px") {
+      max-width: 50vw;
+    }
+    .translate0 {
+      transform: translateY(-10%) translateX(20px);
+    }
+  }
+  &__icon:hover ~ &_t0 {
+    @media screen and (max-width: "479px") {
+      transform: translateY(-10%) translateX(20px);
+    }
   }
 }

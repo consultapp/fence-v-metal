@@ -23,7 +23,7 @@ export default function RadioButtons({ types, selector, dispatcher }: Props) {
   return (
     <fieldset className="fenceRadio">
       {types.map((type) => (
-        <div key={type}>
+        <div key={type} className="fenceRadio_flex">
           <input
             data-value={type}
             type="radio"

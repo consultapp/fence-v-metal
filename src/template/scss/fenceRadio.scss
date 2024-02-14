@@ -18,6 +18,12 @@
     cursor: pointer;
   }
 
+  &_flex {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
   [type="radio"]:checked,
   [type="checkbox"]:checked {
     background: radial-gradient(circle at center, #fdbf50 50%, #fff 50%);
@@ -77,6 +83,8 @@
     justify-content: center;
     align-items: center;
 
+    transition: background 0.2s ease-in-out;
+
     &:hover {
       background: rgba(0, 0, 0, 0.24);
     }
@@ -85,8 +93,6 @@
   &__image {
     width: 40.727px;
     height: 56px;
-    // background-repeat: no-repeat;
-    // background-size: cover;
   }
 
   &__openModal {
@@ -94,11 +100,14 @@
     left: -100vw;
     top: 0;
     transform: scale(150%);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
   }
 
   &__imageWrapper:hover &__openModal {
     left: 35%;
     top: 35%;
+    opacity: 1;
   }
 
   &__info {

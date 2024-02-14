@@ -33,6 +33,8 @@ export default function CustomSelect({
   };
 
   const toggleSelect = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (controller.current) controller.current.abort();
+
     if (isOpen) {
       setIsOpen(false);
     } else {
@@ -64,7 +66,15 @@ export default function CustomSelect({
                 <div>{currentProduct.description}</div>
               </div>
               <div className="fenceSelect__price">
-                {currentProduct.price} руб. <span>/м</span>
+                {currentProduct.price}&nbsp;руб.{" "}
+                <span>
+                  /м
+                  {currentProduct.productType === PRODUCT_TYPES.proflist ? (
+                    <sup>2</sup>
+                  ) : (
+                    ""
+                  )}
+                </span>
               </div>
             </>
           ) : (
@@ -97,7 +107,7 @@ export default function CustomSelect({
               {product.currentPromotion ? (
                 <div className="fenceSelect__priceDiscount">
                   <div>
-                    {product.price} руб.
+                    {product.price}&nbsp;руб.
                     <span>
                       /м
                       {product.productType === PRODUCT_TYPES.proflist ? (
@@ -111,8 +121,8 @@ export default function CustomSelect({
                     {Ceil(
                       (product.price ?? 0) *
                         ((100 - product.currentPromotion) / 100)
-                    )}{" "}
-                    руб.
+                    )}
+                    &nbsp;руб.
                     <span>
                       /м
                       {product.productType === PRODUCT_TYPES.proflist ? (
@@ -125,7 +135,7 @@ export default function CustomSelect({
                 </div>
               ) : (
                 <div className="fenceSelect__price">
-                  {product.price} руб.{" "}
+                  {product.price}&nbsp;руб.{" "}
                   <span>
                     /м
                     {product.productType === PRODUCT_TYPES.proflist ? (

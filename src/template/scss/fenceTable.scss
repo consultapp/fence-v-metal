@@ -1,6 +1,10 @@
 .fenceTable {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
+  @media screen and (max-width: "479px") {
+    grid-template-columns: 2fr 0px 1fr;
+    font-size: 14px;
+  }
 
   font-family: Open Sans;
   font-size: 16px;
@@ -44,6 +48,21 @@
     justify-content: center;
     display: flex;
     flex-direction: column;
+    @media screen and (max-width: "479px") {
+      visibility: hidden;
+    }
+  }
+  &__countMobile {
+    font-size: 13px;
+    line-height: 18px;
+    letter-spacing: 0em;
+
+    display: none;
+    @media screen and (max-width: "479px") {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   &__description {
@@ -98,11 +117,17 @@
   &__imageContainer {
     width: 70px;
     height: 70px;
+    min-width: 70px;
+    background-color: rgba(249, 249, 249, 1);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__image {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -110,6 +135,12 @@
     &_contain {
       background-size: contain;
     }
+  }
+
+  &__product {
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
   }
 
   &__desc {
@@ -120,5 +151,11 @@
     letter-spacing: 0em;
     text-align: left;
     color: rgba(34, 18, 45, 1);
+  }
+
+  &_mobileHidden {
+    @media screen and (max-width: "479px") {
+      visibility: hidden;
+    }
   }
 }

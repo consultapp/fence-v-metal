@@ -8,7 +8,7 @@ export default function Stage1() {
   return (
     <div className="fenceSection">
       <div className="fenceSection__header3">
-        Тип забора <Tooltip type="fenceType" />
+        Тип забора <Tooltip type="fenceType" t0={true} />
       </div>
       <RadioButtons
         types={Object.values(FENCE_TYPES)}

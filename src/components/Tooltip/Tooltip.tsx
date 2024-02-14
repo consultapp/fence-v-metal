@@ -1,8 +1,8 @@
 import { TOOLTIP_TEXTS } from "@/fixtures/TOOLTIP_TEXTS";
 
-type Props = { type: keyof typeof TOOLTIP_TEXTS };
+type Props = { type: keyof typeof TOOLTIP_TEXTS; t0?: boolean };
 
-export default function Tooltip({ type }: Props) {
+export default function Tooltip({ type, t0 = false }: Props) {
   return (
     <div className="tooltip">
       <svg
@@ -36,7 +36,7 @@ export default function Tooltip({ type }: Props) {
         />
       </svg>
 
-      <div className="tooltip__details">
+      <div className={`tooltip__details ${t0 ? "tooltip_t0" : ""}`}>
         {TOOLTIP_TEXTS[type] ? TOOLTIP_TEXTS[type] : ""}
       </div>
     </div>
