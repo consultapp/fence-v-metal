@@ -57,26 +57,28 @@ export const fenceSlice = createSlice({
       state.joistId = payload;
     },
     setLength: (state, { payload }) => {
-      state.length = payload;
+      console.log("payload", payload);
       if (payload === "") {
         state.length = 0;
       } else {
-        let tmp = payload.replace(",", ".");
-        tmp = tmp.replace(/[^0-9.]/, "");
-
-        state.length = tmp;
+        let tmp = payload;
+        if (checkNumber(tmp)) {
+          if (payload < 1) tmp = 1;
+          if (payload > 999) tmp = 999;
+          state.length = tmp;
+        }
       }
     },
     setHeight: (state, { payload }) => {
       if (payload === "") {
         state.height = 0;
       } else {
-        let tmp = payload.replace(",", ".");
-        tmp = tmp.replace(/[^0-9.]/, "");
-
-        if (payload < 1) tmp = 1;
-        if (payload > 2.2) tmp = 2.2;
-        state.height = tmp;
+        let tmp = payload;
+        if (checkNumber(tmp)) {
+          if (payload < 1) tmp = 1;
+          if (payload > 2.2) tmp = 2.2;
+          state.height = tmp;
+        }
       }
     },
     resetFence: (state) => {
@@ -97,3 +99,7 @@ export const fenceSlice = createSlice({
     },
   },
 });
+
+function checkNumber(n: string) {
+  return n.match(/^(0|[1-9]+)(?:[.,]?)(?:\d{1,2}|)$/);
+}
