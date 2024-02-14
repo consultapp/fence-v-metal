@@ -3,10 +3,11 @@
   position: relative;
   vertical-align: top;
   color: 22122D;
-  z-index: 1;
+
   cursor: pointer;
 
   &__details {
+    z-index: 500;
     width: 335px;
 
     position: absolute;
@@ -50,5 +51,17 @@
   &__icon:hover ~ &__details {
     opacity: 1;
     left: 50%;
+
+    @media screen and (max-width: "479px") {
+      width: 120px;
+    }
+    .translate0 {
+      transform: translateY(-10%) translateX(20px);
+    }
+  }
+  &__icon:hover ~ &_t0 {
+    @media screen and (max-width: "479px") {
+      transform: translateY(-10%) translateX(20px);
+    }
   }
 }
