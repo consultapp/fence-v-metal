@@ -14,17 +14,14 @@ import Loading from "@/toolkit/Loading/Loading";
 import Calculator from "../Calculator/Calculator";
 import CustomButton from "@/toolkit/CustomButton/CustomButton";
 import { fenceSlice } from "@/store/ui/fence";
-import {
-  selectFenceIsRedyForCalculations,
-  selectIsShowResult,
-} from "@/store/ui/fence/selectors";
+import { selectIsShowResult } from "@/store/ui/fence/selectors";
 
 export default function Fence() {
   const wrapper = useRef<HTMLDivElement | null>(null);
   const dispatch = useAppDispatch();
   const loadingStatus = useAppSelector(selectProductLoadingStatus);
   const showResult = useAppSelector(selectIsShowResult);
-  const isReadyForCalc = useAppSelector(selectFenceIsRedyForCalculations);
+  // const isReadyForCalc = useAppSelector(selectFenceIsRedyForCalculations);
 
   useEffect(() => {
     dispatch(loadProductsIfNotExisted());
@@ -74,9 +71,7 @@ export default function Fence() {
               type="primary"
               half50={true}
               onClick={() => {
-                isReadyForCalc
-                  ? dispatch(fenceSlice.actions.showResult())
-                  : null;
+                dispatch(fenceSlice.actions.showResult());
                 wrapper.current && wrapper.current.scrollIntoView();
               }}
             >

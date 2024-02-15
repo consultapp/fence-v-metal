@@ -59,6 +59,14 @@ export interface IFilter {
   };
 }
 
+export interface IErrorFields {
+  material: boolean;
+  pillar: boolean;
+  joist: boolean;
+  length: boolean;
+  height: boolean;
+}
+
 declare global {
   interface Window {
     basketAddProduct(prodId: number, count: number): void;

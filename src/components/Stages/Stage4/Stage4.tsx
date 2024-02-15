@@ -19,6 +19,7 @@ export default function Stage4() {
       <div className="fenceSection__line"></div>
 
       <CustomSelect
+        errorField="pillar"
         products={products}
         selector={selectFencePillarId}
         dispatcher={fenceSlice.actions.setPillarlId}

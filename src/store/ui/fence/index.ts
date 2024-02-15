@@ -1,7 +1,7 @@
 import FENCE_TYPES from "@/fixtures/FENCE_TYPES";
 import FILTERS from "@/fixtures/FILTERS";
 import SHTAKETNIK_TYPES from "@/fixtures/SHTAKETNIK_TYPES";
-import { TProductID } from "@/types";
+import { IErrorFields, TProductID } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 
 interface IInit {
@@ -14,6 +14,7 @@ interface IInit {
   length: number;
   height: number;
   showResult: boolean;
+  errorFields: IErrorFields;
 }
 
 const initialState: IInit = {
@@ -26,6 +27,13 @@ const initialState: IInit = {
   showResult: false,
   length: 100,
   height: 1.7,
+  errorFields: {
+    material: false,
+    pillar: false,
+    joist: false,
+    length: false,
+    height: false,
+  },
 };
 
 export const fenceSlice = createSlice({
@@ -48,18 +56,22 @@ export const fenceSlice = createSlice({
       state.materialId = null;
     },
     setMaterialId: (state, { payload }) => {
+      if (state.errorFields.material) state.errorFields.material = false;
       state.materialId = payload;
     },
     setPillarlId: (state, { payload }) => {
+      if (state.errorFields.pillar) state.errorFields.pillar = false;
       state.pillarId = payload;
     },
     setJoistId: (state, { payload }) => {
+      if (state.errorFields.joist) state.errorFields.joist = false;
       state.joistId = payload;
     },
     setLength: (state, { payload }) => {
       if (payload === "") {
         state.length = 0;
       } else {
+        if (state.errorFields.length) state.errorFields.length = false;
         let tmp = payload;
         if (checkNumber(tmp)) {
           if (payload < 1) tmp = 1;
@@ -72,6 +84,7 @@ export const fenceSlice = createSlice({
       if (payload === "") {
         state.height = 0;
       } else {
+        if (state.errorFields.height) state.errorFields.height = false;
         let tmp = payload;
         if (checkNumber(tmp)) {
           if (payload < 1) tmp = 1;
@@ -91,7 +104,29 @@ export const fenceSlice = createSlice({
       state.height = initialState.height;
     },
     showResult: (state) => {
-      state.showResult = true;
+      console.log("first");
+      let result = true;
+      if (!state.materialId) {
+        state.errorFields.material = true;
+        result = false;
+      }
+      if (!state.pillarId) {
+        state.errorFields.pillar = true;
+        result = false;
+      }
+      if (!state.joistId) {
+        state.errorFields.joist = true;
+        result = false;
+      }
+      if (!state.length) {
+        state.errorFields.length = true;
+        result = false;
+      }
+      if (!state.height) {
+        state.errorFields.height = true;
+        result = false;
+      }
+      state.showResult = result;
     },
     hideResult: (state) => {
       state.showResult = false;

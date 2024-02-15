@@ -19,6 +19,7 @@ export default function Stage5() {
       <div className="fenceSection__line"></div>
 
       <CustomSelect
+        errorField="joist"
         products={products}
         selector={selectFenceJoistId}
         dispatcher={fenceSlice.actions.setJoistId}

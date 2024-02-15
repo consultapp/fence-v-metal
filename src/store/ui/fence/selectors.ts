@@ -1,6 +1,7 @@
 import FENCE_TYPES from "@/fixtures/FENCE_TYPES";
 import FILTERS from "@/fixtures/FILTERS";
 import { RootState } from "@/store";
+import { IErrorFields } from "@/types";
 import { createSelector } from "@reduxjs/toolkit";
 
 export const selectFenceModule = (state: RootState) => state.fence;
@@ -71,3 +72,8 @@ export const selectFenceIsRedyForCalculations = createSelector(
   ],
   (a, b, c, d, e) => Boolean(a && b && c && d && e)
 );
+
+export const selectFenceErrorField = (
+  state: RootState,
+  payload: keyof IErrorFields
+) => selectFenceModule(state).errorFields[payload];

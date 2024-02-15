@@ -1,6 +1,9 @@
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { fenceSlice } from "@/store/ui/fence";
-import { selectFenceHeight } from "@/store/ui/fence/selectors";
+import {
+  selectFenceErrorField,
+  selectFenceHeight,
+} from "@/store/ui/fence/selectors";
 import CustomInput from "@/toolkit/CustomInput/CustomInput";
 
 export default function Stage7() {
@@ -11,10 +14,18 @@ export default function Stage7() {
     dispatch(fenceSlice.actions.setHeight(e.target.value ?? ""));
   };
 
+  const isError = useAppSelector((state) =>
+    selectFenceErrorField(state, "height")
+  );
+
   return (
     <div>
       <div className="fenceSection__header3">Высота,&nbsp;м.</div>
-      <CustomInput onChange={changeHandler} value={current ? current : ""} />
+      <CustomInput
+        onChange={changeHandler}
+        value={current ? current : ""}
+        isError={isError}
+      />
     </div>
   );
 }

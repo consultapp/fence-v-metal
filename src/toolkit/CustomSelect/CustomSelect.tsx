@@ -1,20 +1,23 @@
 import { RootState } from "@/store";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { TProduct } from "@/types";
+import { IErrorFields, TProduct } from "@/types";
 import { useMemo, useRef, useState } from "react";
 import { UnknownAction } from "redux";
 import IconLogo from "./icon.svg";
 import { Ceil, sortByPrice } from "@/functions";
 import { PRODUCT_TYPES } from "@/fixtures/PRODUCT_TYPES";
+import { selectFenceErrorField } from "@/store/ui/fence/selectors";
 
 type Props = {
   products: TProduct[];
+  errorField: keyof IErrorFields;
   selector: (state: RootState) => number | null;
   dispatcher: (arg0: number) => UnknownAction;
 };
 
 export default function CustomSelect({
   products,
+  errorField,
   selector,
   dispatcher,
 }: Props) {
@@ -25,6 +28,10 @@ export default function CustomSelect({
   const [currentProduct] = useMemo(() => {
     return products.filter((item) => item.id === current);
   }, [products, current]);
+
+  const isError = useAppSelector((state) =>
+    selectFenceErrorField(state, errorField)
+  );
 
   const changeHandler = (e: React.MouseEvent<HTMLDivElement>) => {
     dispatch(dispatcher(Number(e.currentTarget.dataset.id)));
@@ -56,7 +63,12 @@ export default function CustomSelect({
   };
 
   return (
-    <div className="fenceSelect" data-selected data-open={isOpen}>
+    <div
+      className="fenceSelect"
+      data-selected
+      data-open={isOpen}
+      data-error={isError}
+    >
       <div className="fenceSelect__header" onClick={toggleSelect}>
         <div className="fenceSelect__current" data-empty>
           {currentProduct ? (
@@ -89,6 +101,9 @@ export default function CustomSelect({
           }
         />
       </div>
+      {!isOpen && (
+        <div className="fenceSelect__error">Пожалуйста, заполните это поле</div>
+      )}
       {isOpen && (
         <div className="fenceSelect__body">
           {sortByPrice(products).map((product) => (

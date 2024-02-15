@@ -1,6 +1,9 @@
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { fenceSlice } from "@/store/ui/fence";
-import { selectFenceLength } from "@/store/ui/fence/selectors";
+import {
+  selectFenceErrorField,
+  selectFenceLength,
+} from "@/store/ui/fence/selectors";
 import CustomInput from "@/toolkit/CustomInput/CustomInput";
 
 export default function Stage6() {
@@ -11,10 +14,17 @@ export default function Stage6() {
     dispatch(fenceSlice.actions.setLength(e.target.value ?? ""));
   };
 
+  const isError = useAppSelector((state) =>
+    selectFenceErrorField(state, "length")
+  );
   return (
     <div>
       <div className="fenceSection__header3">Длина,&nbsp;м.</div>
-      <CustomInput onChange={changeHandler} value={current ? current : ""} />
+      <CustomInput
+        onChange={changeHandler}
+        value={current ? current : ""}
+        isError={isError}
+      />
     </div>
   );
 }

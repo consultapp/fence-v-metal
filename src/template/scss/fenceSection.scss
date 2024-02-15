@@ -46,7 +46,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     gap: 30px;
     flex-wrap: wrap;
@@ -73,6 +73,10 @@
       background: #f9f9f9;
       padding: 19px 17px 19px 20px;
       align-self: stretch;
+    }
+
+    & input[data-error="true"] {
+      border-color: #ff4949;
     }
   }
 }

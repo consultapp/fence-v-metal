@@ -47,6 +47,9 @@
 -- 13.02.24 --
 1h mobile verstka
 
+-- 14.02.24 --
+1.5h errors + err verstka
+
 -- Plan --
 Mobile version
 3h верстка + интеграция

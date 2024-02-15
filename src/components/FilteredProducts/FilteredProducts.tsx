@@ -44,6 +44,7 @@ export default function FilteredProducts({
       )}
       {
         <CustomSelect
+          errorField="material"
           products={filteredProducts ? filteredProducts : []}
           selector={selector}
           dispatcher={dispatcher}

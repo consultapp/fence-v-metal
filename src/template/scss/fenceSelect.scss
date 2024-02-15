@@ -37,6 +37,17 @@
   &[data-error="true"] &__header {
     border-color: #ff4949;
   }
+  &__error {
+    margin-top: 10px;
+    display: none;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: left;
+    color: #ff4949;
+  }
+  &[data-error="true"] &__error {
+    display: flex;
+  }
 
   &__body {
     position: absolute;
