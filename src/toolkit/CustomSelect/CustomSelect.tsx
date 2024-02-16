@@ -105,7 +105,7 @@ export default function CustomSelect({
         <div className="fenceSelect__error">Пожалуйста, заполните это поле</div>
       )}
       {isOpen && (
-        <div className="fenceSelect__body">
+        <div className="fenceSelect__body custom-scrollbar">
           {sortByPrice(products).map((product) => (
             <div
               className="fenceSelect__option"

@@ -63,6 +63,14 @@
     border-radius: 16px 16px 16px 16px;
 
     z-index: 100;
+
+    scrollbar-color: #fdbf50 #fff;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #fdbf50;
+      border-radius: 10px;
+    }
   }
 
   &__toggler {
@@ -107,13 +115,6 @@
   &__option[data-selected="true"]:hover {
     background: #fdbf50;
   }
-
-  // &__option:first-child {
-  //   border-radius: 16px 16px 0px 0px;
-  // }
-  // &__option:last-child {
-  //   border-radius: 0px 0px 16px 16px;
-  // }
 
   &__info div:first-child {
     color: #22122d;

@@ -97,11 +97,11 @@
 
   &__openModal {
     position: absolute;
-    left: -100vw;
-    top: 0;
+    left: -200vw;
+    top: 35%;
     transform: scale(150%);
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out;
+    opacity: 1;
+    // transition: opacity 0.2s ease-in-out;
   }
 
   &__imageWrapper:hover &__openModal {
