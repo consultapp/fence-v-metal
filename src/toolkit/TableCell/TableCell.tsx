@@ -45,7 +45,7 @@ export default function TableCell({
               {`${count} `}
               {countInfo === "m2" ? (
                 <>
-                  m<sup>2</sup>
+                  м<sup>2</sup>
                 </>
               ) : (
                 countInfo
@@ -60,7 +60,7 @@ export default function TableCell({
           {`${count} `}
           {countInfo === "m2" ? (
             <>
-              m<sup>2</sup>
+              м<sup>2</sup>
             </>
           ) : (
             countInfo
