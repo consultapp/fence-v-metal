@@ -26,8 +26,8 @@ export default function ModalWindow({ isOpen, close, children }: Props) {
           <path
             d="M1 1L11 11M21 21L11 11M11 11L21 1M11 11L1 21"
             stroke="#22122D"
-            stroke-width="2"
-            stroke-linecap="round"
+            strokeWidth="2"
+            strokeLinecap="round"
           />
         </svg>
 

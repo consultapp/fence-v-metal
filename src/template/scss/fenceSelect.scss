@@ -68,6 +68,14 @@
     border-radius: 16px 0 0 16px;
 
     z-index: 100;
+
+    &_Top {
+      margin-bottom: 25px;
+      bottom: 65px;
+      @media screen and (max-width: "479px") {
+        margin-bottom: 15px;
+      }
+    }
   }
 
   &__toggler {

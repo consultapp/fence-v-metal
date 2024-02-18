@@ -50,6 +50,9 @@
 -- 14.02.24 --
 1.5h errors + err verstka
 
+-- 18.02.24 --
+0.5h select opens up
+
 -- Plan --
 Mobile version
 3h верстка + интеграция

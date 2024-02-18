@@ -1,12 +1,13 @@
 import { RootState } from "@/store";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { IErrorFields, TProduct } from "@/types";
-import { useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { UnknownAction } from "redux";
 import IconLogo from "./icon.svg";
 import { Ceil, sortByPrice } from "@/functions";
 import PRODUCT_TYPES from "@/fixtures/PRODUCT_TYPES";
 import { selectFenceErrorField } from "@/store/ui/fence/selectors";
+import classNames from "classnames";
 
 type Props = {
   products: TProduct[];
@@ -37,6 +38,7 @@ export default function CustomSelect({
   const dispatch = useAppDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const controller = useRef(new AbortController());
+  const header = useRef<HTMLDivElement>(null);
   const [currentProduct] = useMemo(() => {
     return products.filter((item) => item.id === current);
   }, [products, current]);
@@ -51,9 +53,18 @@ export default function CustomSelect({
     controller.current.abort();
   };
 
+  const testTopShow = useCallback(() => {
+    if (header && header.current) {
+      const clientHeight = document.documentElement.clientHeight;
+      const { top } = header.current.getBoundingClientRect();
+      if (clientHeight - top < 60 * 4 + 60) return true;
+    }
+    return false;
+  }, []);
+
   const toggleSelect = (e: React.MouseEvent<HTMLDivElement>) => {
     if (controller.current) controller.current.abort();
-
+    console.log("testTopShow()", testTopShow());
     if (isOpen) {
       setIsOpen(false);
     } else {
@@ -81,7 +92,7 @@ export default function CustomSelect({
       data-open={isOpen}
       data-error={isError}
     >
-      <div className="fenceSelect__header" onClick={toggleSelect}>
+      <div className="fenceSelect__header" ref={header} onClick={toggleSelect}>
         <div className="fenceSelect__current" data-empty>
           {currentProduct ? (
             <>
@@ -115,7 +126,13 @@ export default function CustomSelect({
         <div className="fenceSelect__error">Пожалуйста, заполните это поле</div>
       )}
       {isOpen && (
-        <div className="fenceSelect__body custom-scrollbar">
+        <div
+          className={classNames(
+            "fenceSelect__body",
+            "custom-scrollbar",
+            testTopShow() && "fenceSelect__body_Top"
+          )}
+        >
           {sortByPrice(products).map((product) => (
             <div
               className="fenceSelect__option"
