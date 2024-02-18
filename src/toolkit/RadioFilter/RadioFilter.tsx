@@ -37,12 +37,6 @@ export default function RadioFilter({ filters, selector, dispatcher }: Props) {
               <div className="fenceRadio__wrapper" key={filter.slug}>
                 <div
                   className="fenceRadio__imageWrapper"
-                  // onPointerDown={() => {
-                  //   setModal({
-                  //     image1: filter.link,
-                  //     image2: filter.link.replace(".png", "_schema.png"),
-                  //   });
-                  // }}
                   onClick={() => {
                     setModal({
                       image1: filter.link,

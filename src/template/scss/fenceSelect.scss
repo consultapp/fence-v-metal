@@ -30,6 +30,10 @@
     gap: 10px;
 
     z-index: 1;
+
+    @media screen and (max-width: "479px") {
+      line-height: 1.2;
+    }
   }
   &[data-open="true"] &__header {
     border-color: #fdbf50;
@@ -50,27 +54,20 @@
   }
 
   &__body {
+    background-color: #fff;
     position: absolute;
     margin-top: 25px;
     @media screen and (max-width: "479px") {
       margin-top: 15px;
     }
     width: 100%;
-    max-height: calc(400px);
+    max-height: calc(60px * 4);
     overflow-y: scroll;
     overflow-x: hidden;
     border: 1px solid #eaeaea;
-    border-radius: 16px 16px 16px 16px;
+    border-radius: 16px 0 0 16px;
 
     z-index: 100;
-
-    scrollbar-color: #fdbf50 #fff;
-    scrollbar-width: thin;
-
-    &::-webkit-scrollbar-thumb {
-      background-color: #fdbf50;
-      border-radius: 10px;
-    }
   }
 
   &__toggler {
@@ -105,15 +102,22 @@
     padding: 8px 20px;
     border-bottom: 1px solid #eaeaea;
     background: #fff;
-  }
 
-  &__option[data-selectable]:hover {
-    background: #f9f9f9;
-  }
+    &:last-child {
+      border-bottom: 0px;
+    }
+    &[data-selectable]:hover {
+      background: #f9f9f9;
+    }
 
-  &__option[data-selected="true"],
-  &__option[data-selected="true"]:hover {
-    background: #fdbf50;
+    &[data-selected="true"],
+    &[data-selected="true"]:hover {
+      background: #fdbf50;
+
+      & .fenceSelect__priceDiscount div:last-child {
+        color: #fff;
+      }
+    }
   }
 
   &__info div:first-child {

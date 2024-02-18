@@ -5,7 +5,7 @@ import { useMemo, useRef, useState } from "react";
 import { UnknownAction } from "redux";
 import IconLogo from "./icon.svg";
 import { Ceil, sortByPrice } from "@/functions";
-import { PRODUCT_TYPES } from "@/fixtures/PRODUCT_TYPES";
+import PRODUCT_TYPES from "@/fixtures/PRODUCT_TYPES";
 import { selectFenceErrorField } from "@/store/ui/fence/selectors";
 
 type Props = {
@@ -14,6 +14,19 @@ type Props = {
   selector: (state: RootState) => number | null;
   dispatcher: (arg0: number) => UnknownAction;
 };
+
+function getUnits(type: keyof typeof PRODUCT_TYPES | null) {
+  if (typeof type !== typeof PRODUCT_TYPES) return;
+  return (
+    <>
+      &nbsp;руб.{" "}
+      <span>
+        /м
+        {type === PRODUCT_TYPES.proflist ? <sup>2</sup> : ""}
+      </span>
+    </>
+  );
+}
 
 export default function CustomSelect({
   products,
@@ -122,7 +135,7 @@ export default function CustomSelect({
               {product.currentPromotion ? (
                 <div className="fenceSelect__priceDiscount">
                   <div>
-                    {product.price}&nbsp;руб.
+                    {product.price}&nbsp;руб.{" "}
                     <span>
                       /м
                       {product.productType === PRODUCT_TYPES.proflist ? (
@@ -137,15 +150,7 @@ export default function CustomSelect({
                       (product.price ?? 0) *
                         ((100 - product.currentPromotion) / 100)
                     )}
-                    &nbsp;руб.
-                    <span>
-                      /м
-                      {product.productType === PRODUCT_TYPES.proflist ? (
-                        <sup>2</sup>
-                      ) : (
-                        ""
-                      )}
-                    </span>
+                    &nbsp;руб. {getUnits(product.productType)}
                   </div>
                 </div>
               ) : (

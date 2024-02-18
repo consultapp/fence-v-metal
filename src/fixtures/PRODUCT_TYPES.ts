@@ -1,4 +1,4 @@
-export const PRODUCT_TYPES = {
+const PRODUCT_TYPES = {
   shtaketnik: "shtaketnik",
   proflist: "proflist",
   pillar: "pillar",
@@ -6,3 +6,5 @@ export const PRODUCT_TYPES = {
   screw: "screw",
   stub: "stub",
 } as const;
+
+export default PRODUCT_TYPES;

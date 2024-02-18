@@ -1,4 +1,4 @@
-import { PRODUCT_TYPES } from "@/fixtures/PRODUCT_TYPES";
+import PRODUCT_TYPES from "@/fixtures/PRODUCT_TYPES";
 import { splitPipesDiscount } from "@/functions";
 import { TProduct } from "@/types";
 

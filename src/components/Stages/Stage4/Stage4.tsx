@@ -1,5 +1,5 @@
 import Tooltip from "@/components/Tooltip/Tooltip";
-import { PRODUCT_TYPES } from "@/fixtures/PRODUCT_TYPES";
+import PRODUCT_TYPES from "@/fixtures/PRODUCT_TYPES";
 import { selectProductsByType } from "@/store/entities/products/selectors";
 import { useAppSelector } from "@/store/hooks";
 import { fenceSlice } from "@/store/ui/fence";

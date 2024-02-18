@@ -1,7 +1,7 @@
 import { FenceProflist, FenceShtaketnik } from "@/fence";
 import FENCE_TYPES from "@/fixtures/FENCE_TYPES";
 import { selectProductById } from "@/store/entities/products/selectors";
-import { PRODUCT_TYPES } from "@/fixtures/PRODUCT_TYPES";
+import PRODUCT_TYPES from "@/fixtures/PRODUCT_TYPES";
 import { selectProductsByType } from "@/store/entities/products/selectors";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { fenceSlice } from "@/store/ui/fence";

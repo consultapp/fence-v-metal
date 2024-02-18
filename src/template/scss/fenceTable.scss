@@ -118,7 +118,7 @@
     width: 70px;
     height: 70px;
     min-width: 70px;
-    background-color: rgba(249, 249, 249, 1);
+    background-color: #fef9f3;
     border-radius: 16px;
     display: flex;
     justify-content: center;
@@ -135,12 +135,6 @@
     &_contain {
       background-size: contain;
     }
-  }
-
-  &__product {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
   }
 
   &__desc {

@@ -1,5 +1,5 @@
 import LOADING_STATUS from "@/fixtures/LOADING_STATUS";
-import { PRODUCT_TYPES } from "@/fixtures/PRODUCT_TYPES";
+import PRODUCT_TYPES from "@/fixtures/PRODUCT_TYPES";
 import { RootState } from "@/store";
 import { TProduct, TProductID } from "@/types";
 import { createSelector } from "@reduxjs/toolkit";

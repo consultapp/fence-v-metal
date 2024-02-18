@@ -1,10 +1,12 @@
 // PRODUCTS
 import FENCE_TYPES from "./fixtures/FENCE_TYPES";
 import LOADING_STATUS from "./fixtures/LOADING_STATUS";
-import PRODUCT_TYPES from "./fixtures/PRODUCT_TYPES";
+import PRODUCT_TYPES from "@/fixtures/PRODUCT_TYPES";
 import SHTAKETNIK_TYPES from "./fixtures/SHTAKETNIK_TYPES";
 
 export type TProductID = number;
+export type TProductType = keyof typeof PRODUCT_TYPES;
+
 export interface TProduct {
   id: TProductID;
   slug: string;
@@ -14,7 +16,7 @@ export interface TProduct {
   price?: number;
   unit?: string;
   width?: number; // attributes_2_value for PROFLIST
-  proflistType?: keyof typeof PRODUCT_TYPES;
+  // proflistType?: keyof typeof PRODUCT_TYPES;
   description?: string;
   group_image?: string;
   currentPromotion?: number;
