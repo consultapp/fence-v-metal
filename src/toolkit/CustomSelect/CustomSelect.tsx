@@ -64,7 +64,6 @@ export default function CustomSelect({
 
   const toggleSelect = (e: React.MouseEvent<HTMLDivElement>) => {
     if (controller.current) controller.current.abort();
-    console.log("testTopShow()", testTopShow());
     if (isOpen) {
       setIsOpen(false);
     } else {

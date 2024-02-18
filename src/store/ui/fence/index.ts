@@ -104,7 +104,6 @@ export const fenceSlice = createSlice({
       state.height = initialState.height;
     },
     showResult: (state) => {
-      console.log("first");
       let result = true;
       if (!state.materialId) {
         state.errorFields.material = true;
