@@ -16,7 +16,6 @@ type Props = {
 };
 
 function getUnits(type: keyof typeof PRODUCT_TYPES | null) {
-  if (typeof type !== typeof PRODUCT_TYPES) return;
   return (
     <>
       &nbsp;руб.{" "}
@@ -91,15 +90,13 @@ export default function CustomSelect({
                 <div>{currentProduct.description}</div>
               </div>
               <div className="fenceSelect__price">
-                {currentProduct.price}&nbsp;руб.{" "}
-                <span>
-                  /м
-                  {currentProduct.productType === PRODUCT_TYPES.proflist ? (
-                    <sup>2</sup>
-                  ) : (
-                    ""
-                  )}
-                </span>
+                {currentProduct.currentPromotion
+                  ? Ceil(
+                      (currentProduct.price ?? 0) *
+                        ((100 - currentProduct.currentPromotion) / 100)
+                    )
+                  : currentProduct.price}
+                {getUnits(currentProduct.productType)}
               </div>
             </>
           ) : (
@@ -135,35 +132,21 @@ export default function CustomSelect({
               {product.currentPromotion ? (
                 <div className="fenceSelect__priceDiscount">
                   <div>
-                    {product.price}&nbsp;руб.{" "}
-                    <span>
-                      /м
-                      {product.productType === PRODUCT_TYPES.proflist ? (
-                        <sup>2</sup>
-                      ) : (
-                        ""
-                      )}
-                    </span>
+                    {product.price}
+                    {getUnits(product.productType)}
                   </div>
                   <div>
                     {Ceil(
                       (product.price ?? 0) *
                         ((100 - product.currentPromotion) / 100)
                     )}
-                    &nbsp;руб. {getUnits(product.productType)}
+                    {getUnits(product.productType)}
                   </div>
                 </div>
               ) : (
                 <div className="fenceSelect__price">
-                  {product.price}&nbsp;руб.{" "}
-                  <span>
-                    /м
-                    {product.productType === PRODUCT_TYPES.proflist ? (
-                      <sup>2</sup>
-                    ) : (
-                      ""
-                    )}
-                  </span>
+                  {product.price}
+                  {getUnits(product.productType)}
                 </div>
               )}
             </div>
