@@ -53,6 +53,9 @@
 -- 18.02.24 --
 0.5h select opens up
 
+-- 20.02.24 --
+0.5h api colors
+
 -- Plan --
 Mobile version
 3h верстка + интеграция
