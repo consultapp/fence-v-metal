@@ -45,7 +45,8 @@ function get_product_meta_for_api( $object ) {
   $post_image = get_post_thumbnail_id( $post_id );      
   $post_meta["group_image"] = wp_get_attachment_image_src($post_image)[0];
 
-	$promotions = get_the_terms($post_id, 'promotion'); //акции, привязанные к данному товару
+  	//акции, привязанные к данному товару
+	$promotions = get_the_terms($post_id, 'promotion'); 
 	if($promotions){
 		$product_promo_discount = get_field('discount', $promotions[0]); //скидка на товар по акции (%)
 		
@@ -53,8 +54,9 @@ function get_product_meta_for_api( $object ) {
 			$post_meta["currentPromotion"] = $product_promo_discount;
 		}
 	}
-							
-	$product_cat = get_the_terms($post_id, 'product_cat'); //акции, привязанные к данному товару
+					
+	//акции, привязанные к категории
+	$product_cat = get_the_terms($post_id, 'product_cat'); 
 	if($product_cat){
 		$term = get_term( $product_cat[0]->term_id  );
 		
@@ -69,6 +71,17 @@ function get_product_meta_for_api( $object ) {
 			}
 		}
 	}
+
+		//COLOR
+		$colors = get_the_terms($post_id, 'color'); 
+		if($colors){
+			$post_meta["colors"]=$colors;
+			$i=0;
+			foreach ($colors as &$color) {
+				$c = get_term_meta( $color->term_id, 'color', false );
+				$post_meta["colors"][$i++]->color=$c;
+			}
+		}
 
   return $post_meta;
 }
