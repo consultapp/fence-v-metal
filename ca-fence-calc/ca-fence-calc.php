@@ -79,7 +79,7 @@ function get_product_meta_for_api( $object ) {
 			$i=0;
 			foreach ($colors as &$color) {
 				$c = get_term_meta( $color->term_id, 'color', false );
-				$post_meta["colors"][$i++]->color=$c;
+				$post_meta["colors"][$i++]->color=$c[0];
 			}
 		}
 

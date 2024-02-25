@@ -21,6 +21,7 @@ export interface TProduct {
   group_image?: string;
   currentPromotion?: number;
   profilePipeDiscount?: { [key: number]: number };
+  colors?: IColor[];
 }
 
 export interface TProductStore {
@@ -67,6 +68,12 @@ export interface IErrorFields {
   joist: boolean;
   length: boolean;
   height: boolean;
+}
+
+export interface IColor {
+  name: string;
+  slug: string;
+  color: string;
 }
 
 declare global {

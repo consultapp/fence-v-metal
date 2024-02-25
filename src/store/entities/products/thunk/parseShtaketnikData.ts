@@ -1,5 +1,5 @@
 import PRODUCT_TYPES from "@/fixtures/PRODUCT_TYPES";
-import { TProduct } from "@/types";
+import { IColor, TProduct } from "@/types";
 
 interface IShtaketnik {
   id: string;
@@ -8,10 +8,10 @@ interface IShtaketnik {
   meta: {
     price: string;
     attributes_1_value: string;
-    // attributes_2_value: string;
     unit: string;
     group_image: string;
     currentPromotion?: number;
+    colors?: IColor[];
   };
   link: string;
 }
@@ -42,12 +42,14 @@ export function parseShtaketnikData(items: IShtaketnik[]) {
           unit,
           group_image,
           currentPromotion,
+          colors,
         } = item.meta;
         tmp.price = parseFloat(price);
         tmp.description = attributes_1_value;
         tmp.unit = unit;
         tmp.group_image = group_image;
         tmp.currentPromotion = Number(currentPromotion) ?? null;
+        tmp.colors = colors;
       }
       result.push(tmp as TProduct);
     }
