@@ -17,7 +17,7 @@ export default function ColorPickerButton({ color, selected }: Props) {
         styles.colorPickerButton,
         selected && styles.colorPickerButton_selected
       )}
-      onClick={() => dispatch(fenceSlice.actions.setColor(color.slug))}
+      onClick={() => dispatch(fenceSlice.actions.setColor(color))}
     >
       <div style={{ backgroundColor: color.color }}></div>
     </div>

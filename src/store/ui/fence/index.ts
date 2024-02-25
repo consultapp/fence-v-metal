@@ -1,7 +1,7 @@
 import FENCE_TYPES from "@/fixtures/FENCE_TYPES";
 import FILTERS from "@/fixtures/FILTERS";
 import SHTAKETNIK_TYPES from "@/fixtures/SHTAKETNIK_TYPES";
-import { IErrorFields, TProductID } from "@/types";
+import { IColor, IErrorFields, TProductID } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 
 interface IInit {
@@ -15,7 +15,7 @@ interface IInit {
   height: number;
   showResult: boolean;
   errorFields: IErrorFields;
-  color: string | null;
+  color: IColor | null;
 }
 
 const initialState: IInit = {

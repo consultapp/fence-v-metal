@@ -23,7 +23,7 @@ export default function StageColor() {
       material.colors.length &&
       currentColor === null
     ) {
-      dispatch(fenceSlice.actions.setColor(material.colors[0].slug));
+      dispatch(fenceSlice.actions.setColor(material.colors[0]));
     }
   }, [materialId, currentColor, dispatch, material]);
 
@@ -36,7 +36,7 @@ export default function StageColor() {
       <div className="fenceSection__header3">
         Цвет
         <span className="fenceSection__headerSpan">
-          {currentColor?.toUpperCase()}
+          {currentColor?.name?.toUpperCase()}
         </span>
       </div>
       <ColorPicker colors={material.colors} currentColor={currentColor} />

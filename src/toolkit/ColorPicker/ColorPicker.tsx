@@ -2,7 +2,7 @@ import { IColor } from "@/types";
 import styles from "./styles.module.scss";
 import ColorPickerButton from "../ColorPickerButton/ColorPickerButton";
 
-type Props = { colors: IColor[] | undefined; currentColor: string | null };
+type Props = { colors: IColor[] | undefined; currentColor: IColor | null };
 
 export default function ColorPicker({ colors, currentColor }: Props) {
   if (!colors || !colors.length) return;
@@ -13,7 +13,7 @@ export default function ColorPicker({ colors, currentColor }: Props) {
         <ColorPickerButton
           key={color.slug}
           color={color}
-          selected={color.slug === currentColor}
+          selected={color.slug === currentColor?.slug}
         />
       ))}
     </div>
