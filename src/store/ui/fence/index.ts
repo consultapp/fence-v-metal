@@ -1,6 +1,7 @@
 import FENCE_TYPES from "@/fixtures/FENCE_TYPES";
 import FILTERS from "@/fixtures/FILTERS";
 import SHTAKETNIK_TYPES from "@/fixtures/SHTAKETNIK_TYPES";
+import { store } from "@/store";
 import { IErrorFields, TProductID } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 
@@ -15,6 +16,7 @@ interface IInit {
   height: number;
   showResult: boolean;
   errorFields: IErrorFields;
+  color: string | null;
 }
 
 const initialState: IInit = {
@@ -34,6 +36,7 @@ const initialState: IInit = {
     length: false,
     height: false,
   },
+  color: null,
 };
 
 export const fenceSlice = createSlice({
@@ -47,6 +50,7 @@ export const fenceSlice = createSlice({
       }
       state.shtaketnikType = initialState.shtaketnikType;
       state.materialId = initialState.materialId;
+      state.color = null;
     },
     setShtaketnikType: (state, { payload }) => {
       state.shtaketnikType = payload;
@@ -54,10 +58,12 @@ export const fenceSlice = createSlice({
     setFilter: (state, { payload }) => {
       state.filter = payload;
       state.materialId = null;
+      state.color = null;
     },
     setMaterialId: (state, { payload }) => {
       if (state.errorFields.material) state.errorFields.material = false;
       state.materialId = payload;
+      state.color = null;
     },
     setPillarlId: (state, { payload }) => {
       if (state.errorFields.pillar) state.errorFields.pillar = false;
@@ -66,6 +72,9 @@ export const fenceSlice = createSlice({
     setJoistId: (state, { payload }) => {
       if (state.errorFields.joist) state.errorFields.joist = false;
       state.joistId = payload;
+    },
+    setColor: (state, { payload }) => {
+      state.color = payload;
     },
     setLength: (state, { payload }) => {
       if (payload === "") {
@@ -102,6 +111,7 @@ export const fenceSlice = createSlice({
       state.joistId = initialState.joistId;
       state.length = initialState.length;
       state.height = initialState.height;
+      state.color = initialState.color;
     },
     showResult: (state) => {
       let result = true;

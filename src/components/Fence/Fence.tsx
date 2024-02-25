@@ -15,6 +15,7 @@ import Calculator from "../Calculator/Calculator";
 import CustomButton from "@/toolkit/CustomButton/CustomButton";
 import { fenceSlice } from "@/store/ui/fence";
 import { selectIsShowResult } from "@/store/ui/fence/selectors";
+import StageColor from "../Stages/StageColor/StageColor";
 
 export default function Fence() {
   const wrapper = useRef<HTMLDivElement | null>(null);
@@ -57,6 +58,7 @@ export default function Fence() {
           <Stage1 />
           <Stage2 />
           <Stage3 />
+          <StageColor />
           <Stage4 />
           <Stage5 />
           <div className="fenceSection">

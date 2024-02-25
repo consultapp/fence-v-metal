@@ -51,6 +51,9 @@ export const selectFenceLength = (state: RootState) =>
 export const selectFenceHeight = (state: RootState) =>
   selectFenceModule(state).height;
 
+export const selectFenceColor = (state: RootState) =>
+  selectFenceModule(state).color;
+
 export const selectFenceForCalculations = createSelector(
   [
     selectFenceLength,
