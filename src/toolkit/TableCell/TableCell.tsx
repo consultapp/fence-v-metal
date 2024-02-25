@@ -1,4 +1,4 @@
-import { TProduct } from "@/types";
+import { IColor, TProduct } from "@/types";
 import classNames from "classnames";
 
 type Props = {
@@ -10,6 +10,7 @@ type Props = {
   description?: string;
   countInfo?: string;
   showDescription?: boolean;
+  color?: IColor | null;
 };
 
 export default function TableCell({
@@ -21,6 +22,7 @@ export default function TableCell({
   description = "",
   contain = false,
   showDescription = false,
+  color = null,
 }: Props) {
   if (!product) return;
   return (
@@ -39,6 +41,7 @@ export default function TableCell({
           <div>{product.name}</div>
           <div className="fenceTable__desc">
             {showDescription && product.description ? product.description : ""}
+            {color && color.name ? `, ${color.name}` : ""}
           </div>
           <div className="fenceTable__countMobile">
             <div>

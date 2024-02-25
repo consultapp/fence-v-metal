@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { fenceSlice } from "@/store/ui/fence";
 import {
   selectCurrentFilter,
+  selectFenceColor,
   selectFenceForCalculations,
   selectFenceType,
   selectShtaketnikType,
@@ -40,6 +41,8 @@ export default function Calculator() {
   const [stub] = useAppSelector((state) =>
     selectProductsByType(state, PRODUCT_TYPES.stub)
   );
+
+  const color = useAppSelector(selectFenceColor);
 
   const fence =
     type === FENCE_TYPES.shtaketnik
@@ -126,6 +129,7 @@ export default function Calculator() {
             totalPrice={cMaterial.totalPrice}
             oldPrice={cMaterial.oldPrice}
             showDescription={true}
+            color={color}
           />
           <TableCell
             product={pillar}
