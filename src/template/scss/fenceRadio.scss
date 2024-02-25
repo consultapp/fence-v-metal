@@ -92,7 +92,8 @@
 
   &__image {
     width: auto;
-    height: 80%;
+    height: auto;
+    max-height: 80%;
   }
 
   &__openModal {

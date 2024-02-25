@@ -55,6 +55,7 @@
 
   &__body {
     background-color: #fff;
+    box-shadow: 0 16px 24px rgba(44, 54, 81, 0.08);
     position: absolute;
     margin-top: 25px;
     @media screen and (max-width: "479px") {
@@ -62,7 +63,7 @@
     }
     width: 100%;
     max-height: calc(60px * 4);
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     border: 1px solid #eaeaea;
     border-radius: 16px 0 0 16px;
