@@ -12,13 +12,14 @@ import "@/template/scss/fenceSection.scss";
 import "@/template/scss/fenceRadio.scss";
 import "@/template/scss/fenceSelect.scss";
 import "@/template/scss/fenceTable.scss";
+import { CALC_HEADERS } from "./fixtures/CALC_HEADERS";
 
 function App() {
   return (
     <Provider store={store}>
       <div className="calculator__head">
-        <h2>Калькулятор забора</h2>
-        <h4>Рассчитайте вес и длину необходимого вам товара</h4>
+        <h2>{CALC_HEADERS?.header1}</h2>
+        <h4>{CALC_HEADERS?.header2}</h4>
       </div>
       <div className="fenceCalc">
         <Fence />

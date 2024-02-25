@@ -1,8 +1,8 @@
 const LANG = {
   shtaketnik: "Штакетник",
   proflist: "Профлист",
-  oneSide: "Односторонний",
-  chess: "Двусторонний",
+  oneSide: "Одностороннее",
+  chess: "Шахматное",
 };
 
 export function getLang(type: string) {

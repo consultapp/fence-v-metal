@@ -201,7 +201,7 @@ export class FenceProflist extends Fence {
   getScrewCalculations() {
     const m = this.getMaterialCalculations();
     if (m && this.screw) {
-      const count = Math.ceil(m.squareMeter * 10);
+      const count = Math.ceil(m.count * 10);
       return {
         count,
         totalPrice: Ceil(count * (this.screw.price ?? 0)),

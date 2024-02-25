@@ -8,7 +8,7 @@ const FILTERS: { [key in keyof typeof FENCE_TYPES]: IFilter[] } = {
       slug: "trapeze",
       name: "Trapeze",
       link: "/wp-content/plugins/ca-fence-calc/assets/shtaketnik_trapeze.png",
-      description: "ширина 1.15 м",
+      description: "ширина 0.118 м",
       perMeter: {
         [SHTAKETNIK_TYPES.oneSide]: 7,
         [SHTAKETNIK_TYPES.chess]: 11,
@@ -18,7 +18,7 @@ const FILTERS: { [key in keyof typeof FENCE_TYPES]: IFilter[] } = {
       slug: "ellipse",
       name: "Ellipse",
       link: "/wp-content/plugins/ca-fence-calc/assets/shtaketnik_ellipse.png",
-      description: "ширина 1.15 м",
+      description: "ширина 0.126 м",
       perMeter: {
         [SHTAKETNIK_TYPES.oneSide]: 7,
         [SHTAKETNIK_TYPES.chess]: 11,
@@ -28,7 +28,7 @@ const FILTERS: { [key in keyof typeof FENCE_TYPES]: IFilter[] } = {
       slug: "lane",
       name: "Lane",
       link: "/wp-content/plugins/ca-fence-calc/assets/shtaketnik_lane.png",
-      description: "ширина 1.15 м",
+      description: "ширина 0.99 м",
       perMeter: {
         [SHTAKETNIK_TYPES.oneSide]: 8,
         [SHTAKETNIK_TYPES.chess]: 13,
@@ -46,7 +46,7 @@ const FILTERS: { [key in keyof typeof FENCE_TYPES]: IFilter[] } = {
       slug: "c8",
       name: "С-8",
       link: "/wp-content/plugins/ca-fence-calc/assets/proflist_c8.png",
-      description: "ширина 1.15 м",
+      description: "ширина 1.2 м",
     },
   ],
 } as const;

@@ -79,7 +79,11 @@ export interface IColor {
 declare global {
   interface Window {
     basketAddProduct(prodId: number, count: number): void;
-    __INITIAL_STATE__: { tooltips: { [key: string]: string }; url: string };
+    __INITIAL_STATE__: {
+      tooltips: { [key: string]: string };
+      url: string;
+      headers: { header1: string; header2: string };
+    };
   }
 }
 // window.__INITIAL_STATE__ = window.__INITIAL_STATE__ || {};
