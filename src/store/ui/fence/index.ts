@@ -1,7 +1,6 @@
 import FENCE_TYPES from "@/fixtures/FENCE_TYPES";
 import FILTERS from "@/fixtures/FILTERS";
 import SHTAKETNIK_TYPES from "@/fixtures/SHTAKETNIK_TYPES";
-import { store } from "@/store";
 import { IErrorFields, TProductID } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 
