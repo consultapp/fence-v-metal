@@ -1,5 +1,5 @@
 import PRODUCT_TYPES from "@/fixtures/PRODUCT_TYPES";
-import { TProduct } from "@/types";
+import { IColor, TProduct } from "@/types";
 
 interface IProflist {
   id: string;
@@ -12,6 +12,7 @@ interface IProflist {
     unit: string;
     group_image: string;
     currentPromotion?: number;
+    colors?: IColor[];
   };
   link: string;
 }
@@ -44,6 +45,7 @@ export function parseProflistData(items: IProflist[]) {
           unit,
           group_image,
           currentPromotion,
+          colors,
         } = item.meta;
         tmp.price = parseFloat(price);
         tmp.width = parseFloat(attributes_2_value);
@@ -51,6 +53,7 @@ export function parseProflistData(items: IProflist[]) {
         tmp.unit = unit;
         tmp.group_image = group_image;
         tmp.currentPromotion = Number(currentPromotion) ?? null;
+        tmp.colors = colors;
       }
       if (tmp.slug?.startsWith("mp-20") || tmp.slug?.startsWith("s-8"))
         result.push(tmp as TProduct);
