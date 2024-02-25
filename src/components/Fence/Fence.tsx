@@ -22,7 +22,6 @@ export default function Fence() {
   const dispatch = useAppDispatch();
   const loadingStatus = useAppSelector(selectProductLoadingStatus);
   const showResult = useAppSelector(selectIsShowResult);
-  // const isReadyForCalc = useAppSelector(selectFenceIsRedyForCalculations);
 
   useEffect(() => {
     dispatch(loadProductsIfNotExisted());
@@ -74,7 +73,9 @@ export default function Fence() {
               half50={true}
               onClick={() => {
                 dispatch(fenceSlice.actions.showResult());
-                wrapper.current && wrapper.current.scrollIntoView();
+                setTimeout(() => {
+                  if (wrapper.current) wrapper.current.scrollIntoView();
+                });
               }}
             >
               Рассчитать

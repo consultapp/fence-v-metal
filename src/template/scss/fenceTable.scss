@@ -23,6 +23,36 @@
     flex-grow: 1;
 
     gap: 5px;
+
+    &2 {
+      grid-column: 1 / span 1;
+      grid-row: 8 / 9;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      flex-grow: 1;
+      padding-right: 20px;
+      margin-bottom: 10px;
+    }
+    &3 {
+      grid-column: 2 / span 2;
+      grid-row: 8 / 9;
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      flex-grow: 1;
+
+      margin-bottom: 10px;
+
+      & div:first-child {
+        padding-left: 20px;
+
+        border-left: 1px solid rgba(234, 234, 234, 1);
+      }
+    }
   }
 
   &__priceDiscount {
@@ -95,7 +125,7 @@
     letter-spacing: 0em;
 
     grid-column: 2 / span 2;
-    grid-row: 8 / 9;
+    grid-row: 9 / 9;
 
     justify-self: flex-end;
   }
@@ -110,7 +140,7 @@
     text-align: right;
 
     grid-column: 1 / span 1;
-    grid-row: 8 / 9;
+    grid-row: 9 / 9;
     justify-self: flex-start;
   }
 

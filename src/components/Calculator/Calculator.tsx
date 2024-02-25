@@ -71,7 +71,6 @@ export default function Calculator() {
   const cStub = fence.getStubCalculations();
 
   const addToBasket = () => {
-    // basketAddProduct(prodID,1);
     if ("basketAddProduct" in window) {
       window.basketAddProduct(material.id, cMaterial?.squareMeter ?? 0);
       window.basketAddProduct(pillar.id, cPillar?.meters ?? 0);
@@ -157,6 +156,14 @@ export default function Calculator() {
             oldPrice={cStub?.totalPrice ?? 0}
             countInfo="шт."
           />
+          <div className="fenceTable__cell fenceTable__cell2">
+            <div>Длина:</div>
+            <div className=" fenceTable__price">{length}&nbsp;м</div>
+          </div>
+          <div className="fenceTable__cell fenceTable__cell3">
+            <div>Высота:</div>
+            <div className="fenceTable__price">{height}&nbsp;м</div>
+          </div>
           <div className="fenceTable__result">Итого:</div>
           <div className="fenceTable__resultPrice">
             {Ceil(

@@ -17,7 +17,6 @@ export default function Stage7() {
   const isError = useAppSelector((state) =>
     selectFenceErrorField(state, "height")
   );
-
   return (
     <div>
       <div className="fenceSection__header3">Высота,&nbsp;м.</div>
