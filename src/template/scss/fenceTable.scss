@@ -116,6 +116,16 @@
     justify-content: end;
   }
 
+  &__productName,
+  &__productName:hover,
+  &__productName:active,
+  &__productName:visited {
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(34, 18, 45);
+  }
+
   &__resultPrice {
     padding-top: 15px;
     font-family: Open Sans;

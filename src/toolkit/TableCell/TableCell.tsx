@@ -38,7 +38,13 @@ export default function TableCell({
           ></div>
         </div>
         <div className="fenceTable__product">
-          <div>{product.name}</div>
+          <a
+            className="fenceTable__productName"
+            href={product.link}
+            target="_blanc"
+          >
+            {product.name}
+          </a>
           <div className="fenceTable__desc">
             {showDescription && product.description ? product.description : ""}
             {color && color.name ? `, ${color.name}` : ""}
