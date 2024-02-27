@@ -7,6 +7,7 @@ type Props = {
   onClick: () => void;
   svg?: boolean;
   half50?: boolean;
+  className?: string;
 };
 
 export default function CustomButton({
@@ -16,6 +17,7 @@ export default function CustomButton({
   onClick,
   svg = false,
   half50 = false,
+  className = "",
 }: Props) {
   return (
     <button
@@ -23,7 +25,8 @@ export default function CustomButton({
         "fenceButton",
         `fenceButton_${type}`,
         border === "outlined" && "fenceButton_outlined",
-        half50 && "fenceButton_half50"
+        half50 && "fenceButton_half50",
+        className
       )}
       onClick={onClick}
     >

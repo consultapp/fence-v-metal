@@ -1,6 +1,6 @@
 <?php 
 //отправка форм ajax-ом
-function send_ajax_form(){
+function send_fence_form(){
 	
 	if($_REQUEST["honey"] != "not_a_robot"){
 		echo json_encode([
@@ -121,5 +121,4 @@ function send_ajax_form(){
 	};
 	wp_die();
 }
-add_action('wp_ajax_nopriv_client_ajax', 'send_ajax_form' );
-add_action('wp_ajax_client_ajax', 'send_ajax_form' );
+add_action('wp_ajax_fencec_form', 'send_fence_form' );

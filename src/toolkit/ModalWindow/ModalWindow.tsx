@@ -1,17 +1,31 @@
 import styles from "./styles.module.scss";
+import classNames from "classnames";
 
-type Props = { isOpen: boolean; close: () => void; children: React.ReactNode };
+type Props = {
+  isOpen: boolean;
+  close: () => void;
+  children: React.ReactNode;
+  w400?: boolean;
+};
 
-export default function ModalWindow({ isOpen, close, children }: Props) {
+export default function ModalWindow({
+  isOpen,
+  close,
+  children,
+  w400 = false,
+}: Props) {
   return (
     <div
-      className={styles.fenceModal}
+      className={classNames(styles.fenceModal)}
       id="modal"
       data-open={isOpen}
       onClick={close}
     >
       <div
-        className={styles.fenceModal__container}
+        className={classNames(
+          styles.fenceModal__container,
+          w400 && styles.fenceModal_w400
+        )}
         onClick={(e) => e.stopPropagation()}
       >
         <svg

@@ -4,19 +4,8 @@ function(e) {
       data = new FormData(this),
       fileInputs = this.elements['files[]'];
   
-    form.addClass('busy');
     data.append('action', 'client_ajax');
-  
-    if (fileInputs) {
-      $(fileInputs).each(function() {
-        var userFiles = this.userFiles,
-          name = this.name;
-        $(this).val('');
-        for (var i = 0; i < userFiles.length; i++) {
-          data.append(name, userFiles[i]);
-        }
-      })
-    }
+
   
     $.ajax({
       url: '/wp-admin/admin-ajax.php',

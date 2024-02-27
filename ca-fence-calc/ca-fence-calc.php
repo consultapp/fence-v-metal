@@ -85,3 +85,5 @@ function get_product_meta_for_api( $object ) {
 
   return $post_meta;
 }
+
+include('./send-email.php')

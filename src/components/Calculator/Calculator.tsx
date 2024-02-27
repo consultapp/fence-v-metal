@@ -15,10 +15,14 @@ import {
 import CustomButton from "@/toolkit/CustomButton/CustomButton";
 import TableCell from "@/toolkit/TableCell/TableCell";
 import { Ceil } from "@/functions";
+import { useState } from "react";
+import ModalWindow from "@/toolkit/ModalWindow/ModalWindow";
+import ModalSendResult from "@/toolkit/ModalSendResult/ModalSendResult";
 
 export default function Calculator() {
   const dispatch = useAppDispatch();
   const type = useAppSelector(selectFenceType);
+  const [modal, setModal] = useState(true);
 
   const [length, height, pillarId, joistId, materialId] = useAppSelector(
     selectFenceForCalculations
@@ -87,6 +91,9 @@ export default function Calculator() {
 
   return (
     <>
+      <ModalWindow isOpen={modal} close={() => setModal(false)} w400={true}>
+        <ModalSendResult />
+      </ModalWindow>
       <div className="fenceSection">
         <button
           className="fenceFlatButton"
