@@ -4,7 +4,7 @@ type Props = {
   type: "primary" | "secondary";
   border?: "normal" | "outlined";
   children: React.ReactNode;
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLElement>) => void;
   svg?: boolean;
   half50?: boolean;
   className?: string;

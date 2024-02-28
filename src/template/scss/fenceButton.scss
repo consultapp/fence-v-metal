@@ -50,9 +50,9 @@
     border: 1px solid #fdbf50;
     background: #fff;
   }
-  & svg {
-    vertical-align: middle;
-    margin-left: 5px;
+
+  &_outlined:hover {
+    background-color: #fdbf50;
   }
 
   &_small {

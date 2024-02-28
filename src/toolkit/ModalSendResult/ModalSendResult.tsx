@@ -2,6 +2,8 @@ import classNames from "classnames";
 import styles from "./styles.module.scss";
 import { useRef, useState } from "react";
 import CustomButton from "../CustomButton/CustomButton";
+import Form1 from "./Form1";
+import Form2 from "./Form2";
 
 export default function ModalSendResult() {
   const ref = useRef(null);
@@ -12,7 +14,10 @@ export default function ModalSendResult() {
       <div className={styles.fenceSendResult__twoColumns}>
         <CustomButton
           type="primary"
-          onClick={() => setState(false)}
+          onClick={(e: React.MouseEvent<HTMLElement>) => {
+            e.preventDefault();
+            setState(false);
+          }}
           className="fenceButton_small"
         >
           Перезвоните&nbsp;мне
@@ -20,13 +25,21 @@ export default function ModalSendResult() {
         <CustomButton
           type="primary"
           border="outlined"
-          onClick={() => setState(true)}
+          onClick={(e: React.MouseEvent<HTMLElement>) => {
+            e.preventDefault();
+            setState(true);
+          }}
           className="fenceButton_small"
         >
           Позвоню&nbsp;сам(а)
         </CustomButton>
       </div>
-      <div className={styles.fenceSendResult}></div> ModalSendResult
+      {!state ? <Form1 /> : <Form2 />}
+      <div className={styles.fenceSendResult__sendButton}>
+        <CustomButton type="primary" onClick={() => setState(false)}>
+          Отправить&nbsp;расчёт
+        </CustomButton>
+      </div>
     </form>
   );
 }
