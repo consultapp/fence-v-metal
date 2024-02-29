@@ -2,7 +2,7 @@
 
 export default function Form1() {
   return (
-    <div className="contact-form__column">
+    <>
       <div className="field contacts-form__field">
         <i className="icon-users field__icon"></i>
         <input
@@ -13,7 +13,7 @@ export default function Form1() {
         />
       </div>
       <div className="field__wrapper">
-        <i className="field__icon field__icon--active icon-phone"></i>{" "}
+        <i className="field__icon field__icon--active icon-phone"></i>
         <input
           type="tel"
           name="Телефон"
@@ -23,7 +23,12 @@ export default function Form1() {
         <i className="fa-caret-down field__dropdown-icon"></i>
       </div>
       <label className="check-field">
-        <input type="checkbox" className="check-field__input" />
+        <input
+          type="checkbox"
+          className="check-field__input"
+          id="isAgree"
+          name="isAgree"
+        />
         <span className="check-field__text">
           Согласен на обработку
           <a href="https://metal.webcartel.ru/privacy-policy/">
@@ -31,6 +36,6 @@ export default function Form1() {
           </a>
         </span>
       </label>
-    </div>
+    </>
   );
 }

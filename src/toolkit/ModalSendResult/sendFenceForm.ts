@@ -11,21 +11,27 @@ export async function sendFenceForm(
   console.dir(form);
 
   const data = new FormData(form);
-  data.append("action", "calc_fence");
-  data.append("table", "<h1>Table H1</h1>");
-  data.append("form_subject", "Тестовый расчет из калькулятора");
-  data.append("calculations", JSON.stringify(calculations));
+  const isAgree = data.getAll("isAgree");
+  console.log("isAgree", isAgree);
 
-  const response = await fetch(
-    `${window.__INITIAL_STATE__.url}/wp-admin/admin-ajax.php`,
-    {
-      method: "POST",
-      body: data,
-      cache: "no-cache",
-    }
-  );
+  if (isAgree && isAgree.length && isAgree[0] === "on") {
+    console.log("isAgree", isAgree);
+    data.append("action", "calc_fence");
+    data.append("table", "<h1>Table H1</h1>");
+    data.append("form_subject", "Тестовый расчет из калькулятора");
+    data.append("calculations", JSON.stringify(calculations));
 
-  return response.json();
+    const response = await fetch(
+      `${window.__INITIAL_STATE__.url}/wp-admin/admin-ajax.php`,
+      {
+        method: "POST",
+        body: data,
+        cache: "no-cache",
+      }
+    );
+
+    return response.json();
+  }
 }
 
 // Request URL:

@@ -22,7 +22,7 @@ import ModalSendResult from "@/toolkit/ModalSendResult/ModalSendResult";
 export default function Calculator() {
   const dispatch = useAppDispatch();
   const type = useAppSelector(selectFenceType);
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
 
   const [length, height, pillarId, joistId, materialId] = useAppSelector(
     selectFenceForCalculations
@@ -192,7 +192,7 @@ export default function Calculator() {
         <CustomButton
           type="secondary"
           half50={true}
-          onClick={() => dispatch(fenceSlice.actions.showResult())}
+          onClick={() => setModal(true)}
         >
           Отправить расчёт
         </CustomButton>
