@@ -1,6 +1,13 @@
 <?php 
+
 //отправка форм ajax-ом
 function send_fence_form(){
+
+	echo json_encode([
+		'status'=>false,
+		'message'=>"<h3>Система распознала ваше сообщение как спам.</h3><p>Попробуйте отправить письмо ещё раз. Используйте клавиатуру при заполнении полей</p>"
+	]);
+	wp_die();
 	
 	if($_REQUEST["honey"] != "not_a_robot"){
 		echo json_encode([
