@@ -14,16 +14,14 @@ export async function sendFenceForm(
   data.append("action", "calc_fence");
   data.append("table", "<h1>Table H1</h1>");
   data.append("form_subject", "Тестовый расчет из калькулятора");
+  data.append("calculations", JSON.stringify(calculations));
 
   const response = await fetch(
     `${window.__INITIAL_STATE__.url}/wp-admin/admin-ajax.php`,
     {
       method: "POST",
-      body: JSON.stringify({ data, calculations }),
+      body: data,
       cache: "no-cache",
-      headers: {
-        "Content-Type": "application/json",
-      },
     }
   );
 

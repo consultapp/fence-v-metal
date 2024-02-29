@@ -58,3 +58,7 @@
 
 -- 25.02.24 --
 1.5h colors verstka + code
+
+-- 29.02.24 --
+1h e-mail send wp
+1.5 e-mail form + class upgrades
