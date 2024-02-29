@@ -71,11 +71,8 @@ export default function Calculator() {
           material,
         });
 
-  const cMaterial = fence.getMaterialCalculations();
-  const cPillar = fence.getPillarCalculation();
-  const cJoist = fence.getJoistCalculation();
-  const cScrew = fence.getScrewCalculations();
-  const cStub = fence.getStubCalculations();
+  const calculations = fence.getCalculation();
+  const { cMaterial, cPillar, cJoist, cScrew, cStub } = calculations;
 
   const addToBasket = () => {
     if ("basketAddProduct" in window) {
@@ -92,7 +89,10 @@ export default function Calculator() {
   return (
     <>
       <ModalWindow isOpen={modal} close={() => setModal(false)} w400={true}>
-        <ModalSendResult />
+        <ModalSendResult
+          calculations={calculations}
+          close={() => setModal(false)}
+        />
       </ModalWindow>
       <div className="fenceSection">
         <button

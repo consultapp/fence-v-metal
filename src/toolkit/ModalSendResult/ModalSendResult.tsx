@@ -1,32 +1,42 @@
-import classNames from "classnames";
 import styles from "./styles.module.scss";
 import { useRef, useState } from "react";
 import CustomButton from "../CustomButton/CustomButton";
 import Form1 from "./Form1";
 import Form2 from "./Form2";
+import { FenceProflist, FenceShtaketnik } from "@/fence";
+// import { useDispatch } from "react-redux";
 
-async function sendFenceForm(form: HTMLFormElement) {
+async function sendFenceForm(form: HTMLFormElement, calculations: T) {
   console.dir(form);
 
-  const d = new FormData(form);
-  d.append("action", "calc_fence_ajax");
-  d.set("action", "calc_fence_ajax");
-  console.dir(d);
-  console.log("data", d);
+  const data = new FormData(form);
+  data.append("action", "calc_fence_ajax");
+  data.append("table", "<h1>Table H1</h1>");
 
-  // const response = await fetch("/wp-admin/admin-ajax.php", {
-  //   method: "POST",
-  //   body: JSON.stringify(data),
-  //   cache: "no-cache",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // });
+  const response = await fetch(
+    `${window.__INITIAL_STATE__.url}/wp-admin/admin-ajax.php`,
+    {
+      method: "POST",
+      body: JSON.stringify({ data, calculations }),
+      cache: "no-cache",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
 
-  // return response.json();
+  return response.json();
 }
 
-export default function ModalSendResult() {
+interface Props {
+  calculations: ReturnType<
+    FenceProflist["getCalculation"] | FenceShtaketnik["getCalculation"]
+  >;
+  close: () => void;
+}
+
+export default function ModalSendResult({ calculations, close }: Props) {
+  // const dispatch = useDispatch();
   const refForm = useRef<HTMLFormElement | null>(null);
   const refInput = useRef<HTMLInputElement | null>(null);
   const [state, setState] = useState(true);
@@ -76,8 +86,13 @@ export default function ModalSendResult() {
           onClick={(e: React.MouseEvent<HTMLElement>) => {
             e.preventDefault();
             if (refForm && refForm.current) {
-              sendFenceForm(refForm.current);
+              sendFenceForm(refForm.current, calculations)
+                .then((data) => console.log("data", data))
+                .catch((reason) =>
+                  console.log("Error of email sending: ", reason)
+                );
             }
+            close();
           }}
         >
           Отправить&nbsp;расчёт

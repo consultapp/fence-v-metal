@@ -58,6 +58,7 @@ class Fence implements IFence {
       const price = getPipePriceWithDiscount(this.pillar, pillarMeters);
 
       return {
+        product: this.pillar,
         meters: pillarMeters,
         count: pillarCount,
         description: `${pillarCount} столб по ${this.fenceHeight} м`,
@@ -73,6 +74,7 @@ class Fence implements IFence {
       const meters = Ceil(this.length * (this.fenceHeight === 3.5 ? 3 : 2));
       const price = getPipePriceWithDiscount(this.joist, meters);
       return {
+        product: this.joist,
         meters: meters,
         totalPrice: Ceil(meters * (price ?? 0)),
         oldPrice: Ceil(meters * (this.joist.price ?? 0)),
@@ -85,6 +87,7 @@ class Fence implements IFence {
     if (this.length && this.pillar && this.stub) {
       const p = this.getPillarCalculation();
       return {
+        product: this.stub,
         count: p?.count,
         totalPrice: Ceil((p?.count ?? 0) * (this.stub.price ?? 0)),
         oldPrice: Ceil((p?.count ?? 0) * (this.stub.price ?? 0)),
@@ -136,6 +139,7 @@ export class FenceShtaketnik extends Fence {
         const squareMeter = Ceil(count * this.height, 3);
 
         return {
+          product: this.material,
           count,
           description: `${count} планок по ${this.height} м`,
           squareMeter,
@@ -152,11 +156,21 @@ export class FenceShtaketnik extends Fence {
     if (m && this.screw) {
       const count = Math.ceil(m.count * 4);
       return {
+        product: this.screw,
         count,
         totalPrice: Ceil(count * (this.screw.price ?? 0)),
         oldPrice: Ceil(count * (this.screw.price ?? 0)),
       };
     }
+  }
+  getCalculation() {
+    const cMaterial = this.getMaterialCalculations();
+    const cPillar = this.getPillarCalculation();
+    const cJoist = this.getJoistCalculation();
+    const cScrew = this.getScrewCalculations();
+    const cStub = this.getStubCalculations();
+
+    return { cMaterial, cPillar, cJoist, cScrew, cStub };
   }
 }
 
@@ -188,6 +202,7 @@ export class FenceProflist extends Fence {
       );
 
       return {
+        product: this.material,
         count,
         description: `${count} лист по ${this.height} м`,
         squareMeter,
@@ -203,9 +218,20 @@ export class FenceProflist extends Fence {
     if (m && this.screw) {
       const count = Math.ceil(m.count * 10);
       return {
+        product: this.screw,
         count,
         totalPrice: Ceil(count * (this.screw.price ?? 0)),
       };
     }
+  }
+
+  getCalculation() {
+    const cMaterial = this.getMaterialCalculations();
+    const cPillar = this.getPillarCalculation();
+    const cJoist = this.getJoistCalculation();
+    const cScrew = this.getScrewCalculations();
+    const cStub = this.getStubCalculations();
+
+    return { cMaterial, cPillar, cJoist, cScrew, cStub };
   }
 }
