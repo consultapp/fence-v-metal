@@ -56,7 +56,7 @@ export default function ModalSendResult({ calculations, close }: Props) {
           Позвоню&nbsp;сам(а)
         </CustomButton>
       </div>
-      {!state ? <Form1 /> : <Form2 />}
+      {state ? <Form1 /> : <Form2 />}
       <div className={styles.fenceSendResult__sendButton}>
         <CustomButton
           type="primary"
