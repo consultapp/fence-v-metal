@@ -4,29 +4,7 @@ import CustomButton from "../CustomButton/CustomButton";
 import Form1 from "./Form1";
 import Form2 from "./Form2";
 import { FenceProflist, FenceShtaketnik } from "@/fence";
-// import { useDispatch } from "react-redux";
-
-async function sendFenceForm(form: HTMLFormElement, calculations: T) {
-  console.dir(form);
-
-  const data = new FormData(form);
-  data.append("action", "calc_fence_ajax");
-  data.append("table", "<h1>Table H1</h1>");
-
-  const response = await fetch(
-    `${window.__INITIAL_STATE__.url}/wp-admin/admin-ajax.php`,
-    {
-      method: "POST",
-      body: JSON.stringify({ data, calculations }),
-      cache: "no-cache",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
-
-  return response.json();
-}
+import { sendFenceForm } from "./sendFenceForm";
 
 interface Props {
   calculations: ReturnType<
@@ -36,7 +14,6 @@ interface Props {
 }
 
 export default function ModalSendResult({ calculations, close }: Props) {
-  // const dispatch = useDispatch();
   const refForm = useRef<HTMLFormElement | null>(null);
   const refInput = useRef<HTMLInputElement | null>(null);
   const [state, setState] = useState(true);

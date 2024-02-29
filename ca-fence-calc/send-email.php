@@ -35,58 +35,11 @@ function send_fence_form(){
 	
 	$message = get_html_table($form_data);
 	
-	$attachments = [];
-	$blocked_attachments = [];
-	$allowed_file_extensions = ['jpg','jpeg','png','svg','gif','heif','webp','doc','docx','xls','xlsx','pdf','zip'];
-	
-	foreach($_FILES['files']['error'] as $file_index=>$error) {
-		if ($error!=0) continue;
-		$filename=ABSPATH.'tmp/'.$_FILES['files']['name'][$file_index];
-		
-		$extenstion = pathinfo($filename,PATHINFO_EXTENSION);
-		if(!in_array($extenstion, $allowed_file_extensions)){
-			$blocked_attachments[]= $_FILES['files']['name'][$file_index];
-			continue;
-		} 
-		
-		move_uploaded_file($_FILES['files']['tmp_name'][$file_index],$filename);
-		$attachments[]=$filename;
-	}
-
-	if($blocked_attachments){
-		$message.= '<p><b>Заблокированные файлы:</b></p><ul>';
-		foreach($blocked_attachments as $file) $message.= '<li>'.$file.'</li>';
-		$message.= '</ul>';
-	}
-	
 	$success_message = "<h3>Ваше сообщение успешно отправлено!</h3>";
 	
-	
-	if($_REQUEST['basket']){
-		$total_weight = 0;
-		
-		if($_REQUEST['Имя'] == 'test'){
-			$mail_to = ['zhuroff92@gmail.com'];
-		}
-		
-		$message.= '<table style="width:100%;margin-top: 52px"><thead><tr><td><b>Товар</b></td><td><b>Количество</b></td><td><b>Вес, т.</b></td><td><b>Цена</b></td></tr></thead>';	
-		
-		
-		foreach($_REQUEST['basket'] as $item){			
-			$message .= "<tr><td><b>".$item['title']."</b></td><td>".$item['amount']." ".$item['unit']."</td><td>".$item['weight']."</td><td>".$item['price']." руб.</td></tr>";
-			
-			if($item['weight']){
-				$total_weight += $item['weight'];
-			}
-		}
-		$message.= '</tbody>';
-		
-		$total_weight = $total_weight > 0 ? $total_weight : "";
-		
-		$message.= '<tfoot><tr><td colspan="2"><b>Итого</b></td><td><b>'.$total_weight.'</b></td><td><b>'.$_REQUEST["price"].' руб.</b></td></tr></tfoot><tbody>';
-		$message.= '</table>';
-		$success_message = "<h3>Ваш заказ принят!</h3>";
-	}
+
+	// TEST
+	$mail_to = ['info@consultapp.ru'];
 	
 	
 		
@@ -115,10 +68,7 @@ function send_fence_form(){
 		]);
 		
 	}
-	//удаляем загруженные файлы после отправки
-	foreach($attachments as $filename){
-		unlink($filename);
-	};
+
 	wp_die();
 }
-add_action('wp_ajax_fencec_form', 'send_fence_form' );
+add_action('wp_ajax_calc_fence', 'send_fence_form' );
