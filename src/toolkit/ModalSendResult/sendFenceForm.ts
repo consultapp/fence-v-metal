@@ -1,12 +1,14 @@
-// form_subject
-
 import { FenceProflist, FenceShtaketnik } from "@/fence";
+import { Ceil } from "@/functions";
+import { getUnits } from "@/components/Calculator/getUnits";
+
+type TCalculations = ReturnType<
+  FenceProflist["getCalculation"] | FenceShtaketnik["getCalculation"]
+>;
 
 export async function sendFenceForm(
   form: HTMLFormElement,
-  calculations: ReturnType<
-    FenceProflist["getCalculation"] | FenceShtaketnik["getCalculation"]
-  >
+  calculations: TCalculations
 ) {
   console.dir(form);
 
@@ -19,7 +21,7 @@ export async function sendFenceForm(
     data.append("action", "calc_fence");
     data.append("table", "<h1>Table H1</h1>");
     data.append("form_subject", "Тестовый расчет из калькулятора");
-    data.append("calculations", JSON.stringify(calculations));
+    data.append("calculationsTable", getEmailResultTableHTML(calculations));
 
     const response = await fetch(
       `${window.__INITIAL_STATE__.url}/wp-admin/admin-ajax.php`,
@@ -32,6 +34,63 @@ export async function sendFenceForm(
 
     return response.json();
   }
+}
+
+function getRowHTML(a: string, b: string, c: string) {
+  return `    <tr>
+  <td align="left">${a}</td>
+  <td align="center">${b}</td>
+  <td align="center">${c}</td>
+</tr>`;
+}
+
+function getEmailResultTableHTML(calculations: TCalculations): string {
+  const { cMaterial, cPillar, cJoist, cScrew, cStub } = calculations;
+  return `
+  <table
+      role="presentation"
+      style="width:100%;border:0;border-spacing:0;"
+    >
+    ${getRowHTML("Товар", "Количество", "Цена")}
+    ${getRowHTML(
+      cMaterial?.product.name ?? "",
+      `${cMaterial?.count} ${getUnits(cMaterial?.countInfo ?? "")}`,
+      `${cMaterial?.totalPrice}`
+    )}
+    ${getRowHTML(
+      cPillar?.product.name ?? "",
+      `${cPillar?.count} м`,
+      `${cPillar?.totalPrice}`
+    )}
+    ${getRowHTML(
+      cJoist?.product.name ?? "",
+      `${cJoist?.meters} м`,
+      `${cJoist?.totalPrice}`
+    )}
+    ${getRowHTML(
+      cScrew?.product.name ?? "",
+      `${cScrew?.count} шт.`,
+      `${cScrew?.totalPrice}`
+    )}
+    ${getRowHTML(
+      cStub?.product.name ?? "",
+      `${cStub?.count} шт.`,
+      `${cStub?.totalPrice}`
+    )}
+    ${getRowHTML(
+      "Итого",
+      "",
+      `${Ceil(
+        (cMaterial?.totalPrice ?? 0) +
+          (cPillar?.totalPrice ?? 0) +
+          (cJoist?.totalPrice ?? 0) +
+          (cScrew?.totalPrice ?? 0) +
+          (cStub?.totalPrice ?? 0)
+      )}
+    &nbsp;руб.`
+    )}
+    </table>
+  `;
 }
 
 // Request URL:

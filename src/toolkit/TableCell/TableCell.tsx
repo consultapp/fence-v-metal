@@ -1,3 +1,4 @@
+import { getUnits } from "@/components/Calculator/getUnits";
 import { IColor, TProduct } from "@/types";
 import classNames from "classnames";
 
@@ -52,13 +53,7 @@ export default function TableCell({
           <div className="fenceTable__countMobile">
             <div>
               {`${count} `}
-              {countInfo === "m2" ? (
-                <>
-                  м<sup>2</sup>
-                </>
-              ) : (
-                countInfo
-              )}
+              {getUnits(countInfo)}
             </div>
             <div className="fenceTable__description">{description}</div>
           </div>
@@ -67,13 +62,7 @@ export default function TableCell({
       <div className="fenceTable__cell fenceTable__count">
         <div>
           {`${count} `}
-          {countInfo === "m2" ? (
-            <>
-              м<sup>2</sup>
-            </>
-          ) : (
-            countInfo
-          )}
+          {getUnits(countInfo)}
         </div>
         <div className="fenceTable__description">{description}</div>
       </div>

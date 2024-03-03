@@ -119,16 +119,12 @@ function send_fence_form(){
 	$tech_keys = ['form_subject','action','response','honey','basket','price'];
 	$form_data = array_diff_key($_REQUEST,array_flip($tech_keys));
 	
+	$message = get_html_table($form_data).' '.$_REQUEST["calculationsTable"];
 	
-	$message = get_html_table($form_data);
-	
-	$success_message = "<h3>Ваше сообщение успешно отправлено!</h3>".$_REQUEST["calculations"];
-	
+	$success_message = "<h3>Ваше сообщение успешно отправлено!</h3>".$_REQUEST["calculationsTable"];
 
 	// TEST
 	$mail_to = ['info@consultapp.ru'];
-	
-	
 		
 	function adopt($text) {
 		return '=?UTF-8?B?'.Base64_encode($text).'?=';
