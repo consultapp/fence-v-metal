@@ -38,7 +38,7 @@ export default function ModalSendResult({ calculations, close }: Props) {
           type="primary"
           onClick={(e: React.MouseEvent<HTMLElement>) => {
             e.preventDefault();
-            setState(false);
+            setState(true);
           }}
           className="fenceButton_small"
         >
@@ -49,7 +49,7 @@ export default function ModalSendResult({ calculations, close }: Props) {
           border="outlined"
           onClick={(e: React.MouseEvent<HTMLElement>) => {
             e.preventDefault();
-            setState(true);
+            setState(false);
           }}
           className="fenceButton_small"
         >
