@@ -116,7 +116,7 @@ function send_fence_form(){
 	
 	
 	//убираем технические ключи из письма
-	$tech_keys = ['form_subject','action','response','honey','basket','price'];
+	$tech_keys = ['form_subject','action','response','honey','basket','price','calculations'];
 	$form_data = array_diff_key($_REQUEST,array_flip($tech_keys));
 	
 	$message = get_html_table($form_data).' '.$_REQUEST["calculationsTable"];
