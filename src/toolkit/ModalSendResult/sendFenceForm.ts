@@ -46,7 +46,8 @@ function getRowHTML(a: string, b: string, c: string) {
 
 function getEmailResultTableHTML(calculations: TCalculations): string {
   const { cMaterial, cPillar, cJoist, cScrew, cStub } = calculations;
-  return `
+
+  const result = `
   <table
       role="presentation"
       style="width:100%;border:0;border-spacing:0;"
@@ -91,6 +92,9 @@ function getEmailResultTableHTML(calculations: TCalculations): string {
     )}
     </table>
   `;
+
+  console.log("result", result);
+  return result;
 }
 
 // Request URL:
