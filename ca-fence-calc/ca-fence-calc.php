@@ -116,10 +116,11 @@ function send_fence_form(){
 	
 	
 	//убираем технические ключи из письма
-	$tech_keys = ['form_subject','action','response','honey','basket','price','calculationsTable'];
-	$form_data = array_diff_key($_REQUEST,array_flip($tech_keys));
+	// $tech_keys = ['form_subject','action','response','honey','basket','price','calculationsTable'];
+	// $form_data = array_diff_key($_REQUEST,array_flip($tech_keys));
 	
-	$message = get_html_table($form_data).' '.str_replace('\\"', '', $_REQUEST["calculationsTable"]);
+	// get_html_table($form_data)
+	$message = str_replace('\\"', '', $_REQUEST["calculationsTable"]);
 	
 	$success_message = "<h3>Ваше сообщение успешно отправлено!</h3>";
 

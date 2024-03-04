@@ -9,18 +9,23 @@ export async function sendFenceForm(
   form: HTMLFormElement,
   calculations: TCalculations
 ) {
-  console.dir(form);
-
   const data = new FormData(form);
   const isAgree = data.getAll("isAgree");
+  const name = data.getAll("Имя");
+  const phone = data.getAll("Телефон");
   console.log("isAgree", isAgree);
 
   if (isAgree && isAgree.length && isAgree[0] === "on") {
-    console.log("isAgree", isAgree);
     data.append("action", "calc_fence");
-    data.append("table", "<h1>Table H1</h1>");
     data.append("form_subject", "Тестовый расчет из калькулятора");
-    data.append("calculationsTable", getEmailResultTableHTML(calculations));
+    data.append(
+      "calculationsTable",
+      getEmailResultTableHTML(
+        calculations,
+        name[0] as string,
+        phone[0] as string
+      )
+    );
 
     const response = await fetch(
       `${window.__INITIAL_STATE__.url}/wp-admin/admin-ajax.php`,
@@ -36,18 +41,19 @@ export async function sendFenceForm(
 }
 
 function getRowHTML(a: string, b: string, c: string) {
-  return `    <tr>
-  <td align="left" style='padding: 10px; border: #e9e9e9 1px solid;'>${a}</td>
-  <td align="center" style='padding: 10px; border: #e9e9e9 1px solid;'>${b}</td>
-  <td align="center" style='padding: 10px; border: #e9e9e9 1px solid;'>${c}</td>
-</tr>`;
+  return `<tr><td align="left" style="padding: 10px; border: #e9e9e9 1px solid;">${a}</td><td align="center" style="padding: 10px; border: #e9e9e9 1px solid;">${b}</td><td align="center" style="padding: 10px; border: #e9e9e9 1px solid;">${c}</td></tr>`;
 }
 
-function getEmailResultTableHTML(calculations: TCalculations): string {
+// style="width:100%;"
+function getEmailResultTableHTML(
+  calculations: TCalculations,
+  name: string,
+  phone: string
+): string {
   const { cMaterial, cPillar, cJoist, cScrew, cStub } = calculations;
-  const result = `<table
+  const result = `<div>Имя:${name}</div><div>Телефон:${phone}</div><table
       role="presentation"
-      style="width:100%;"
+      style=""
     ><tbody>${getRowHTML(
       "<b>Товар</b>",
       "<b>Количество</b>",
@@ -57,25 +63,25 @@ function getEmailResultTableHTML(calculations: TCalculations): string {
     `&nbsp;${cMaterial?.count} ${
       cMaterial?.countInfo === "m2" ? "м<sup>2</sup>" : cMaterial?.countInfo
     }`,
-    `${cMaterial?.totalPrice}`
+    `${cMaterial?.totalPrice}&nbsp;руб.`
   )}${getRowHTML(
     cPillar?.product.name ?? "",
     `${cPillar?.count}&nbsp;м`,
-    `${cPillar?.totalPrice}`
+    `${cPillar?.totalPrice}&nbsp;руб.`
   )}${getRowHTML(
     cJoist?.product.name ?? "",
     `${cJoist?.meters}&nbsp;м`,
-    `${cJoist?.totalPrice}`
+    `${cJoist?.totalPrice}&nbsp;руб.`
   )}${getRowHTML(
     cScrew?.product.name ?? "",
     `${cScrew?.count}&nbsp;шт.`,
-    `${cScrew?.totalPrice}`
+    `${cScrew?.totalPrice}&nbsp;руб.`
   )}${getRowHTML(
     cStub?.product.name ?? "",
     `${cStub?.count}&nbsp;шт.`,
-    `${cStub?.totalPrice}`
+    `${cStub?.totalPrice}&nbsp;руб.`
   )}${getRowHTML(
-    "<b>Итого</b>",
+    "<b>Итого:</b>",
     "",
     `<b>${Ceil(
       (cMaterial?.totalPrice ?? 0) +
