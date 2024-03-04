@@ -35,10 +35,11 @@ export default function Form1() {
           name="isAgree"
         />
         <span className="check-field__text">
-          Согласен на обработку
-          <a href="https://metal.webcartel.ru/privacy-policy/">
+          Согласен на обработку{" "}
+          <a href="https://metal.webcartel.ru/privacy-policy/" target="_blank">
             персональных данных
           </a>
+          .
         </span>
       </label>
     </>
