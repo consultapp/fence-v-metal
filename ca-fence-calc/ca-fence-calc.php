@@ -156,3 +156,17 @@ function send_fence_form(){
 }
 add_action( 'wp_ajax_calc_fence', 'send_fence_form' );
 add_action( 'wp_ajax_nopriv_calc_fence', 'send_fence_form' );
+
+
+// //создание html-таблицы из массива
+// function get_html_table($a=[]){
+// 	foreach($a as $key=>$value){
+// 		$table_body .= "
+// 		" . ( ($c = !$c) ? '<tr>':'<tr style="background-color: #f8f8f8;">' ) . "
+// 			<td style='padding: 10px; border: #e9e9e9 1px solid;'><b>$key</b></td>
+// 			<td style='padding: 10px; border: #e9e9e9 1px solid;'>$value</td>
+// 		</tr>
+// 		";
+// 	}	
+// 	return "<table style='width: 100%;'><tbody>$table_body</tbody></table>";	
+// }

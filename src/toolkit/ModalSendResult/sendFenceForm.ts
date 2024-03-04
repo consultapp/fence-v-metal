@@ -1,6 +1,5 @@
 import { FenceProflist, FenceShtaketnik } from "@/fence";
 import { Ceil } from "@/functions";
-import { getUnits } from "@/components/Calculator/getUnits";
 
 type TCalculations = ReturnType<
   FenceProflist["getCalculation"] | FenceShtaketnik["getCalculation"]
@@ -38,62 +37,56 @@ export async function sendFenceForm(
 
 function getRowHTML(a: string, b: string, c: string) {
   return `    <tr>
-  <td align="left">${a}</td>
-  <td align="center">${b}</td>
-  <td align="center">${c}</td>
+  <td align="left" style='padding: 10px; border: #e9e9e9 1px solid;'>${a}</td>
+  <td align="center" style='padding: 10px; border: #e9e9e9 1px solid;'>${b}</td>
+  <td align="center" style='padding: 10px; border: #e9e9e9 1px solid;'>${c}</td>
 </tr>`;
 }
 
 function getEmailResultTableHTML(calculations: TCalculations): string {
   const { cMaterial, cPillar, cJoist, cScrew, cStub } = calculations;
-
-  const result = `
-  <table
+  const result = `<table
       role="presentation"
-      style="width:100%;border:0;border-spacing:0;"
-    >
-    ${getRowHTML("Товар", "Количество", "Цена")}
-    ${getRowHTML(
-      cMaterial?.product.name ?? "",
-      `${cMaterial?.count} ${getUnits(cMaterial?.countInfo ?? "")}`,
-      `${cMaterial?.totalPrice}`
+      style="width:100%;"
+    ><tbody>${getRowHTML(
+      "<b>Товар</b>",
+      "<b>Количество</b>",
+      "<b>Цена</b>"
+    )}${getRowHTML(
+    cMaterial?.product.name ?? "",
+    `&nbsp;${cMaterial?.count} ${
+      cMaterial?.countInfo === "m2" ? "м<sup>2</sup>" : cMaterial?.countInfo
+    }`,
+    `${cMaterial?.totalPrice}`
+  )}${getRowHTML(
+    cPillar?.product.name ?? "",
+    `${cPillar?.count}&nbsp;м`,
+    `${cPillar?.totalPrice}`
+  )}${getRowHTML(
+    cJoist?.product.name ?? "",
+    `${cJoist?.meters}&nbsp;м`,
+    `${cJoist?.totalPrice}`
+  )}${getRowHTML(
+    cScrew?.product.name ?? "",
+    `${cScrew?.count}&nbsp;шт.`,
+    `${cScrew?.totalPrice}`
+  )}${getRowHTML(
+    cStub?.product.name ?? "",
+    `${cStub?.count}&nbsp;шт.`,
+    `${cStub?.totalPrice}`
+  )}${getRowHTML(
+    "<b>Итого</b>",
+    "",
+    `<b>${Ceil(
+      (cMaterial?.totalPrice ?? 0) +
+        (cPillar?.totalPrice ?? 0) +
+        (cJoist?.totalPrice ?? 0) +
+        (cScrew?.totalPrice ?? 0) +
+        (cStub?.totalPrice ?? 0)
     )}
-    ${getRowHTML(
-      cPillar?.product.name ?? "",
-      `${cPillar?.count} м`,
-      `${cPillar?.totalPrice}`
-    )}
-    ${getRowHTML(
-      cJoist?.product.name ?? "",
-      `${cJoist?.meters} м`,
-      `${cJoist?.totalPrice}`
-    )}
-    ${getRowHTML(
-      cScrew?.product.name ?? "",
-      `${cScrew?.count} шт.`,
-      `${cScrew?.totalPrice}`
-    )}
-    ${getRowHTML(
-      cStub?.product.name ?? "",
-      `${cStub?.count} шт.`,
-      `${cStub?.totalPrice}`
-    )}
-    ${getRowHTML(
-      "Итого",
-      "",
-      `${Ceil(
-        (cMaterial?.totalPrice ?? 0) +
-          (cPillar?.totalPrice ?? 0) +
-          (cJoist?.totalPrice ?? 0) +
-          (cScrew?.totalPrice ?? 0) +
-          (cStub?.totalPrice ?? 0)
-      )}
-    &nbsp;руб.`
-    )}
-    </table>
-  `;
+    &nbsp;руб.</b>`
+  )}</tbody></table>`;
 
-  console.log("result", result);
   return result;
 }
 
