@@ -35,17 +35,19 @@ export default function ModalSendResult({ calculations, close }: Props) {
       const name = data.getAll("Имя");
       const phone = data.getAll("Телефон");
 
-      if (!name || !name.length || !name[0]) {
-        setError("Заполните Ваше имя");
-        return;
-      }
-      if (!phone || !phone.length || !phone[0]) {
-        setError("Заполните Ваш телефон");
-        return;
-      }
-      if (!isAgree || !isAgree.length || isAgree[0] !== "on") {
-        setError("Отметьте согласие с политикой конфиденциальности.");
-        return;
+      if (state) {
+        if (!name || !name.length || !name[0]) {
+          setError("Заполните Ваше имя");
+          return;
+        }
+        if (!phone || !phone.length || !phone[0]) {
+          setError("Заполните Ваш телефон");
+          return;
+        }
+        if (!isAgree || !isAgree.length || isAgree[0] !== "on") {
+          setError("Отметьте согласие с политикой конфиденциальности.");
+          return;
+        }
       }
 
       sendFenceForm(refForm.current, calculations)
@@ -55,7 +57,7 @@ export default function ModalSendResult({ calculations, close }: Props) {
         })
         .catch((reason) => {
           console.log("Error of email sending: ", reason);
-          alert("Ошибка отправки формы.");
+          setError("Ошибка отправки формы.");
         });
     }
   };
@@ -73,6 +75,7 @@ export default function ModalSendResult({ calculations, close }: Props) {
           type="primary"
           onClick={(e: React.MouseEvent<HTMLElement>) => {
             e.preventDefault();
+            setError("");
             setState(true);
           }}
           className="fenceButton_small"
@@ -84,6 +87,7 @@ export default function ModalSendResult({ calculations, close }: Props) {
           border="outlined"
           onClick={(e: React.MouseEvent<HTMLElement>) => {
             e.preventDefault();
+            setError("");
             setState(false);
           }}
           className="fenceButton_small"
