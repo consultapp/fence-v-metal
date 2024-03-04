@@ -26,7 +26,6 @@ export default function Form1() {
           className="field__input field--optional field__input--dark"
           placeholder="Ваш телефон"
         />
-        <i className="fa-caret-down field__dropdown-icon"></i>
       </div>
       <label className={classNames("check-field", styles.fenceSendResult_mt20)}>
         <input
