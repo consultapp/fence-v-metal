@@ -51,7 +51,7 @@ function getEmailResultTableHTML(
   phone: string
 ): string {
   const { cMaterial, cPillar, cJoist, cScrew, cStub } = calculations;
-  const result = `<div>Имя:${name}</div><div>Телефон:${phone}</div><table
+  const result = `<div>Имя: ${name}</div><div>Телефон: ${phone}</div><table
       role="presentation"
       style=""
     ><tbody>${getRowHTML(

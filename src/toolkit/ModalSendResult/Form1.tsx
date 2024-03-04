@@ -1,9 +1,15 @@
-// import styles from "./styles.module.scss";
+import styles from "./styles.module.scss";
+import classNames from "classnames";
 
 export default function Form1() {
   return (
     <>
-      <div className="field contacts-form__field">
+      <div
+        className={classNames(
+          "field contacts-form__field",
+          styles.fenceSendResult_mt20
+        )}
+      >
         <i className="icon-users field__icon"></i>
         <input
           type="text"
@@ -12,7 +18,7 @@ export default function Form1() {
           placeholder="Ваше Имя"
         />
       </div>
-      <div className="field__wrapper">
+      <div className={classNames("field__wrapper")}>
         <i className="field__icon field__icon--active icon-phone"></i>
         <input
           type="tel"
@@ -22,7 +28,7 @@ export default function Form1() {
         />
         <i className="fa-caret-down field__dropdown-icon"></i>
       </div>
-      <label className="check-field">
+      <label className={classNames("check-field", styles.fenceSendResult_mt20)}>
         <input
           type="checkbox"
           className="check-field__input"
