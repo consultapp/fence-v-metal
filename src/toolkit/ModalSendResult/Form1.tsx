@@ -15,7 +15,7 @@ export default function Form1() {
           type="text"
           name="Имя"
           className="field__input field__input--dark"
-          placeholder="Ваше Имя"
+          placeholder="Ваше имя"
         />
       </div>
       <div className={classNames("field__wrapper")}>

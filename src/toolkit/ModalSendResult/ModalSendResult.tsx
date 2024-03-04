@@ -17,11 +17,46 @@ export default function ModalSendResult({ calculations, close }: Props) {
   const refForm = useRef<HTMLFormElement | null>(null);
   const refInput = useRef<HTMLInputElement | null>(null);
   const [state, setState] = useState(true);
+  const [error, setError] = useState("");
 
   const mouseHandler = () => {
     if (refInput && refInput.current && !refInput.current.value) {
       console.log(refInput.current);
       refInput.current.value = "not_a_robot";
+    }
+  };
+
+  const sendHandler = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    setError("");
+    if (refForm && refForm.current) {
+      const data = new FormData(refForm.current);
+      const isAgree = data.getAll("isAgree");
+      const name = data.getAll("Имя");
+      const phone = data.getAll("Телефон");
+
+      if (!name || !name.length || !name[0]) {
+        setError("Заполните Ваше имя");
+        return;
+      }
+      if (!phone || !phone.length || !phone[0]) {
+        setError("Заполните Ваш телефон");
+        return;
+      }
+      if (!isAgree || !isAgree.length || isAgree[0] !== "on") {
+        setError("Отметьте согласие с политикой конфиденциальности.");
+        return;
+      }
+
+      sendFenceForm(refForm.current, calculations)
+        .then((data) => {
+          console.log("data", data);
+          close();
+        })
+        .catch((reason) => {
+          console.log("Error of email sending: ", reason);
+          alert("Ошибка отправки формы.");
+        });
     }
   };
 
@@ -57,21 +92,11 @@ export default function ModalSendResult({ calculations, close }: Props) {
         </CustomButton>
       </div>
       {state ? <Form1 /> : <Form2 />}
+
+      {error && <div className={styles.fenceSendResult__error}>{error}</div>}
+
       <div className={styles.fenceSendResult__sendButton}>
-        <CustomButton
-          type="primary"
-          onClick={(e: React.MouseEvent<HTMLElement>) => {
-            e.preventDefault();
-            if (refForm && refForm.current) {
-              sendFenceForm(refForm.current, calculations)
-                .then((data) => console.log("data", data))
-                .catch((reason) =>
-                  console.log("Error of email sending: ", reason)
-                );
-            }
-            close();
-          }}
-        >
+        <CustomButton type="primary" onClick={sendHandler}>
           Отправить&nbsp;расчёт
         </CustomButton>
       </div>
