@@ -168,13 +168,16 @@ export default function Calculator() {
             countInfo="шт."
           />
           <div className="fenceTable__cell fenceTable__cell2">
-            <div>Длина:</div>
-            <div className=" fenceTable__price">{length}&nbsp;м</div>
+            <div className="fenceTable__flexRow">
+              <div>Длина:</div>
+              <div className="fenceTable__price">{length}&nbsp;м</div>
+            </div>
+            <div className="fenceTable__flexRow">
+              <div>Высота:</div>
+              <div className="fenceTable__price">{height}&nbsp;м</div>
+            </div>
           </div>
-          <div className="fenceTable__cell fenceTable__cell3">
-            <div>Высота:</div>
-            <div className="fenceTable__price">{height}&nbsp;м</div>
-          </div>
+
           <div className="fenceTable__result">Итого:</div>
           <div className="fenceTable__resultPrice">
             {Ceil(

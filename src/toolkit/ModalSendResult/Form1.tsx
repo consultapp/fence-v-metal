@@ -1,18 +1,24 @@
-// import styles from "./styles.module.scss";
+import styles from "./styles.module.scss";
+import classNames from "classnames";
 
 export default function Form1() {
   return (
     <>
-      <div className="field contacts-form__field">
+      <div
+        className={classNames(
+          "field contacts-form__field",
+          styles.fenceSendResult_mt20
+        )}
+      >
         <i className="icon-users field__icon"></i>
         <input
           type="text"
           name="Имя"
           className="field__input field__input--dark"
-          placeholder="Ваше Имя"
+          placeholder="Ваше имя"
         />
       </div>
-      <div className="field__wrapper">
+      <div className={classNames("field__wrapper")}>
         <i className="field__icon field__icon--active icon-phone"></i>
         <input
           type="tel"
@@ -20,9 +26,8 @@ export default function Form1() {
           className="field__input field--optional field__input--dark"
           placeholder="Ваш телефон"
         />
-        <i className="fa-caret-down field__dropdown-icon"></i>
       </div>
-      <label className="check-field">
+      <label className={classNames("check-field", styles.fenceSendResult_mt20)}>
         <input
           type="checkbox"
           className="check-field__input"
@@ -30,10 +35,11 @@ export default function Form1() {
           name="isAgree"
         />
         <span className="check-field__text">
-          Согласен на обработку
-          <a href="https://metal.webcartel.ru/privacy-policy/">
+          Согласен на обработку{" "}
+          <a href="https://metal.webcartel.ru/privacy-policy/" target="_blank">
             персональных данных
           </a>
+          .
         </span>
       </label>
     </>

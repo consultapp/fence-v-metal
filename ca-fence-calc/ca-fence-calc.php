@@ -116,10 +116,11 @@ function send_fence_form(){
 	
 	
 	//убираем технические ключи из письма
-	$tech_keys = ['form_subject','action','response','honey','basket','price','calculationsTable'];
-	$form_data = array_diff_key($_REQUEST,array_flip($tech_keys));
+	// $tech_keys = ['form_subject','action','response','honey','basket','price','calculationsTable'];
+	// $form_data = array_diff_key($_REQUEST,array_flip($tech_keys));
 	
-	$message = get_html_table($form_data).' '.str_replace('\\"', '', $_REQUEST["calculationsTable"]);
+	// get_html_table($form_data)
+	$message = str_replace('\\"', '', $_REQUEST["calculationsTable"]);
 	
 	$success_message = "<h3>Ваше сообщение успешно отправлено!</h3>";
 
@@ -156,3 +157,17 @@ function send_fence_form(){
 }
 add_action( 'wp_ajax_calc_fence', 'send_fence_form' );
 add_action( 'wp_ajax_nopriv_calc_fence', 'send_fence_form' );
+
+
+// //создание html-таблицы из массива
+// function get_html_table($a=[]){
+// 	foreach($a as $key=>$value){
+// 		$table_body .= "
+// 		" . ( ($c = !$c) ? '<tr>':'<tr style="background-color: #f8f8f8;">' ) . "
+// 			<td style='padding: 10px; border: #e9e9e9 1px solid;'><b>$key</b></td>
+// 			<td style='padding: 10px; border: #e9e9e9 1px solid;'>$value</td>
+// 		</tr>
+// 		";
+// 	}	
+// 	return "<table style='width: 100%;'><tbody>$table_body</tbody></table>";	
+// }
