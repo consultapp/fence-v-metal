@@ -6,7 +6,7 @@ import {
 } from "@/store/ui/fence/selectors";
 import { fenceSlice } from "@/store/ui/fence";
 import RadioButtons from "@/toolkit/RadioButtons/RadioButtons";
-import Tooltip from "@/components/Tooltip/Tooltip";
+import TooltipCustom from "@/components/TooltipCustom/TooltipCustom";
 
 export default function Stage2() {
   const isHidden = useAppSelector(selectFenceStage2IsHidden);
@@ -16,7 +16,7 @@ export default function Stage2() {
   return (
     <div className="fenceSection">
       <div className="fenceSection__header3">
-        Заполнение <Tooltip type="filler" />
+        Заполнение <TooltipCustom type="filler" />
       </div>
       <RadioButtons
         types={Object.values(SHTAKETNIK_TYPES)}

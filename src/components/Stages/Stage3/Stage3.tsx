@@ -1,5 +1,5 @@
 import FilteredProducts from "@/components/FilteredProducts/FilteredProducts";
-import Tooltip from "@/components/Tooltip/Tooltip";
+import TooltipCustom from "@/components/TooltipCustom/TooltipCustom";
 import FENCE_TYPES from "@/fixtures/FENCE_TYPES";
 import { selectProductsByType } from "@/store/entities/products/selectors";
 import { useAppSelector } from "@/store/hooks";
@@ -17,7 +17,7 @@ export default function Stage3() {
     <div className="fenceSection">
       <div className="fenceSection__header3">
         Форма {type === FENCE_TYPES.proflist ? "профиля" : "штакетника"}{" "}
-        <Tooltip
+        <TooltipCustom
           type={
             type === FENCE_TYPES.proflist ? "formOfProfil" : "formShtaketnik"
           }
