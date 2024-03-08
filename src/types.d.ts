@@ -83,6 +83,8 @@ declare global {
       tooltips: { [key: string]: string };
       url: string;
       headers: { header1: string; header2: string };
+      pillarsSlug: string[];
+      joistsSlug: string[];
     };
   }
 }

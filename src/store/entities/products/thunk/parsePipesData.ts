@@ -17,20 +17,8 @@ interface IPipes {
   link: string;
 }
 
-const PIPES_PILLAR = [
-  "truba-profilnaya-40x40x1-5",
-  "truba-profilnaya-40x40x2",
-  "truba-profilnaya-50x50x2",
-  "truba-profilnaya-50x50x3",
-  "truba-profilnaya-60x40x2",
-  "truba-profilnaya-60x40x3",
-];
-
-const PIPES_JOIST = [
-  "truba-profilnaya-30-20-1-5",
-  "truba-profilnaya-40x20x1-5",
-  "truba-profilnaya-40x20x2",
-];
+const PIPES_PILLAR = window.__INITIAL_STATE__.pillarsSlug ?? [];
+const PIPES_JOIST = window.__INITIAL_STATE__.joistsSlug ?? [];
 
 export function parsePipesData(items: IPipes[]) {
   const result: TProduct[] = [];
