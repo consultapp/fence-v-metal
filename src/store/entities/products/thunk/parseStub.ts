@@ -42,7 +42,8 @@ export function parseStub(items: IStub[]) {
         tmp.unit = unit;
         tmp.group_image = group_image;
       }
-      result.push(tmp as TProduct);
+
+      if (tmp.name?.includes("Заглушка")) result.push(tmp as TProduct);
     }
   });
 

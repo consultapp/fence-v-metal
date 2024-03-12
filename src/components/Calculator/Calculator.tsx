@@ -42,8 +42,14 @@ export default function Calculator() {
   const [screw] = useAppSelector((state) =>
     selectProductsByType(state, PRODUCT_TYPES.screw)
   );
-  const [stub] = useAppSelector((state) =>
+  const stubs = useAppSelector((state) =>
     selectProductsByType(state, PRODUCT_TYPES.stub)
+  );
+
+  const regexp = /[0-9]{2}х[0-9]{2}/gi;
+  const [pillarDimention] = pillar.name.match(regexp) ?? [];
+  const [stub] = stubs.filter(
+    (item) => (item.name.match(regexp) ?? [])[0] === pillarDimention
   );
 
   const color = useAppSelector(selectFenceColor);

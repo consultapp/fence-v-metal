@@ -26,8 +26,9 @@ async function loadData() {
     `${API_URL}/products/1160/?_fields=id,slug,meta,title,link`
   );
   const stub = fetch(
-    `${API_URL}/products/1832/?_fields=id,slug,meta,title,link`
+    `${API_URL}/products/?_fields=id,slug,meta,title,link&per_page=100&product_cat=34`
   );
+  // /products/1832/?_fields=id,slug,meta,title,link
 
   const products: TProduct[] = [];
 
@@ -40,7 +41,7 @@ async function loadData() {
       ...parseShtaketnikData(p[1]),
       ...parsePipesData(p[2]),
       ...parseScrew([p[3]]),
-      ...parseStub([p[4]])
+      ...parseStub(p[4])
     );
   } catch (error) {
     new Error("Load error" + error);
