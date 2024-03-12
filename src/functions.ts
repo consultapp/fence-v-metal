@@ -1,7 +1,7 @@
 import { TProduct } from "./types";
 
 export function Ceil(num: number, t: number = 2) {
-  return Math.ceil(num * 10 ** t) / 10 ** t;
+  return Math.round(num * 10 ** t) / 10 ** t;
 }
 
 export function sortByPrice(products: TProduct[]) {
@@ -11,9 +11,12 @@ export function sortByPrice(products: TProduct[]) {
 }
 
 export function getPriceIfPromotion(p: TProduct) {
-  return p.currentPromotion
-    ? (p.price ?? 0) * ((100 - p.currentPromotion) / 100)
-    : p.price ?? 0;
+  return Ceil(
+    p.currentPromotion
+      ? (p.price ?? 0) * ((100 - p.currentPromotion) / 100)
+      : p.price ?? 0,
+    2
+  );
 }
 
 export function getPriceWithPromotion(
