@@ -76,7 +76,6 @@ export const fenceSlice = createSlice({
       state.color = payload;
     },
     setLength: (state, { payload }) => {
-      console.log("payload", payload);
       if (payload === "") {
         state.length = 0;
       } else {
@@ -86,8 +85,6 @@ export const fenceSlice = createSlice({
           if (payload < 1) tmp = 1;
           if (payload > 999) tmp = 999;
           state.length = tmp;
-        } else {
-          console.log("---", payload);
         }
       }
     },
