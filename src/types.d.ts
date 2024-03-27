@@ -85,6 +85,7 @@ declare global {
       headers: { header1: string; header2: string };
       pillarsSlug: string[];
       joistsSlug: string[];
+      phones?: string[];
     };
   }
 }
