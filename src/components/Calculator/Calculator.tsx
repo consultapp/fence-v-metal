@@ -135,7 +135,7 @@ export default function Calculator() {
           </div>
           <TableCell
             product={material}
-            contain={true}
+            // contain={true}
             countInfo={cMaterial?.countInfo}
             count={cMaterial.squareMeter}
             description={cMaterial.description}

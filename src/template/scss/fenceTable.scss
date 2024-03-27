@@ -164,6 +164,8 @@
     align-items: center;
 
     margin-right: 10px;
+
+    overflow: hidden;
   }
 
   &__image {
@@ -176,6 +178,12 @@
     &_contain {
       background-size: contain;
     }
+  }
+
+  &__image1 {
+    width: auto;
+    height: auto;
+    max-height: 65px;
   }
 
   &__desc {

@@ -21,7 +21,7 @@ export default function TableCell({
   totalPrice,
   oldPrice,
   description = "",
-  contain = false,
+  // contain = false,
   showDescription = false,
   color = null,
 }: Props) {
@@ -30,13 +30,18 @@ export default function TableCell({
     <>
       <div className="fenceTable__cell">
         <div className="fenceTable__imageContainer">
-          <div
+          {/* <div
             className={classNames(
               "fenceTable__image",
               contain && "fenceTable__image_contain"
             )}
             style={{ backgroundImage: `url("${product.group_image}")` }}
-          ></div>
+          ></div> */}
+          <img
+            className={classNames("fenceTable__image1")}
+            src={product.group_image}
+            alt={product.name}
+          />
         </div>
         <div className="fenceTable__product">
           <a
