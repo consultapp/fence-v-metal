@@ -16,6 +16,7 @@ import CustomButton from "@/toolkit/CustomButton/CustomButton";
 import { fenceSlice } from "@/store/ui/fence";
 import { selectIsShowResult } from "@/store/ui/fence/selectors";
 import StageColor from "../Stages/StageColor/StageColor";
+import { CALC_HEADERS } from "@/fixtures/CALC_HEADERS";
 
 export default function Fence() {
   const wrapper = useRef<HTMLDivElement | null>(null);
@@ -36,62 +37,79 @@ export default function Fence() {
 
   if (loadingStatus !== LOADING_STATUS.finished)
     return (
-      <div
-        style={{
-          minHeight: 200,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-        }}
-      >
-        <Loading />
-      </div>
+      <>
+        <div className="calculator__head">
+          <h2>{CALC_HEADERS?.header1}</h2>
+          <h4>{CALC_HEADERS?.header2}</h4>
+        </div>
+        <div className="fenceCalc">
+          <div
+            style={{
+              minHeight: 200,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
+            <Loading />
+          </div>
+        </div>
+      </>
     );
 
   return (
-    <div className="fenceCalc_wrapper" ref={wrapper}>
-      {showResult ? (
-        <Calculator />
-      ) : (
-        <>
-          <Stage1 />
-          <Stage2 />
-          <Stage3 />
-          <StageColor />
-          <Stage4 />
-          <Stage5 />
-          <div className="fenceSection">
-            <div className="fenceSection_twoColumn">
-              <Stage6 />
-              <Stage7 />
-            </div>
-          </div>
+    <>
+      <div className="calculator__head">
+        <h2 ref={wrapper}>{CALC_HEADERS?.header1}</h2>
+        <h4>{CALC_HEADERS?.header2}</h4>
+      </div>
+      <div className="fenceCalc">
+        <div className="fenceCalc_wrapper">
+          {showResult ? (
+            <Calculator />
+          ) : (
+            <>
+              <Stage1 />
+              <Stage2 />
+              <Stage3 />
+              <StageColor />
+              <Stage4 />
+              <Stage5 />
+              <div className="fenceSection">
+                <div className="fenceSection_twoColumn">
+                  <Stage6 />
+                  <Stage7 />
+                </div>
+              </div>
 
-          <div className="fenceSection fenceSection_flexRow">
-            <CustomButton
-              type="primary"
-              half50={true}
-              onClick={() => {
-                dispatch(fenceSlice.actions.showResult());
-                setTimeout(() => {
-                  if (wrapper.current) wrapper.current.scrollIntoView();
-                });
-              }}
-            >
-              Рассчитать
-            </CustomButton>
-            <CustomButton
-              type="primary"
-              border="outlined"
-              onClick={() => dispatch(fenceSlice.actions.resetFence())}
-              half50={true}
-              svg={true}
-            >
-              Очистить все поля
-            </CustomButton>
-          </div>
-        </>
-      )}
-    </div>
+              <div className="fenceSection fenceSection_flexRow">
+                <CustomButton
+                  type="primary"
+                  half50={true}
+                  onClick={() => {
+                    dispatch(fenceSlice.actions.showResult());
+                    setTimeout(() => {
+                      if (wrapper.current)
+                        wrapper.current.scrollIntoView({ behavior: "smooth" });
+                    });
+                  }}
+                >
+                  Рассчитать
+                </CustomButton>
+                <CustomButton
+                  type="primary"
+                  border="outlined"
+                  onClick={() => dispatch(fenceSlice.actions.resetFence())}
+                  half50={true}
+                  svg={true}
+                >
+                  Очистить все поля
+                </CustomButton>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    </>
   );
 }
