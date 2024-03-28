@@ -63,8 +63,8 @@ function getEmailResultTableHTML(
       "<b>Количество</b>",
       "<b>Цена</b>"
     )}${getRowHTML(
-    cMaterial?.product.name ??
-      "" + ` | ${additionalInfo} ${cMaterial?.product.description ?? ""}`,
+    (cMaterial?.product.name ?? "") +
+      ` | ${additionalInfo} ${cMaterial?.product.description ?? ""}`,
     `&nbsp;${cMaterial?.count} ${
       cMaterial?.countInfo === "m2" ? "м<sup>2</sup>" : cMaterial?.countInfo
     }`,
