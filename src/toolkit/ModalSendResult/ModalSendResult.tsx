@@ -55,11 +55,11 @@ export default function ModalSendResult({ calculations, close }: Props) {
 
       sendFenceForm(refForm.current, calculations, color?.name ?? "")
         .then((data) => {
-          // console.log("data", data);
+          console.log("data", data);
           close();
         })
         .catch((reason) => {
-          // console.log("Error of email sending: ", reason);
+          console.log("Error of email sending: ", reason);
           setError("Ошибка отправки формы.");
         });
     }
