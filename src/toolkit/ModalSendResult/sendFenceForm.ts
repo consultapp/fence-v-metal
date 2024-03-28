@@ -7,13 +7,15 @@ type TCalculations = ReturnType<
 
 export async function sendFenceForm(
   form: HTMLFormElement,
-  calculations: TCalculations
+  calculations: TCalculations,
+  additionalInfo: string
 ) {
   const data = new FormData(form);
   const isAgree = data.getAll("isAgree");
   const name = data.getAll("Имя");
   const phone = data.getAll("Телефон");
   console.log("isAgree", isAgree);
+  console.log("additionalInfo", additionalInfo);
 
   if (isAgree && isAgree.length && isAgree[0] === "on") {
     data.append("action", "calc_fence");
@@ -23,7 +25,8 @@ export async function sendFenceForm(
       getEmailResultTableHTML(
         calculations,
         name[0] as string,
-        phone[0] as string
+        phone[0] as string,
+        additionalInfo
       )
     );
 
@@ -41,17 +44,18 @@ export async function sendFenceForm(
 }
 
 function getRowHTML(a: string, b: string, c: string) {
-  return `<tr><td align="left" style="padding: 10px; border: #e9e9e9 1px solid;">${a}</td><td align="center" style="padding: 10px; border: #e9e9e9 1px solid;">${b}</td><td align="center" style="padding: 10px; border: #e9e9e9 1px solid;">${c}</td></tr>`;
+  return `<tr><td align="left" style="padding: 10px; border: 1px solid  #e9e9e9;">${a}</td><td align="center" style="padding: 10px; border:  1px solid #e9e9e9; ">${b}</td><td align="right" style="padding: 10px; border: 1px solid #e9e9e9;">${c}</td></tr>`;
 }
 
 // style="width:100%;"
 function getEmailResultTableHTML(
   calculations: TCalculations,
   name: string,
-  phone: string
+  phone: string,
+  additionalInfo: string
 ): string {
   const { cMaterial, cPillar, cJoist, cScrew, cStub } = calculations;
-  const result = `<div>Имя: ${name}</div><div>Телефон: ${phone}</div><table
+  const result = `<h3>Имя: ${name}</div><h3>Телефон: ${phone}</h3><table
       role="presentation"
       style=""
     ><tbody>${getRowHTML(
@@ -59,7 +63,8 @@ function getEmailResultTableHTML(
       "<b>Количество</b>",
       "<b>Цена</b>"
     )}${getRowHTML(
-    cMaterial?.product.name ?? "",
+    cMaterial?.product.name ??
+      "" + ` | ${additionalInfo} ${cMaterial?.product.description ?? ""}`,
     `&nbsp;${cMaterial?.count} ${
       cMaterial?.countInfo === "m2" ? "м<sup>2</sup>" : cMaterial?.countInfo
     }`,

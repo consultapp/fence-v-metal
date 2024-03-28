@@ -125,7 +125,7 @@ function send_fence_form(){
 	$success_message = "<h3>Ваше сообщение успешно отправлено!</h3>";
 
 	// TEST
-	// $mail_to = ['info@consultapp.ru'];
+	$mail_to = ['info@consultapp.ru'];
 		
 	function adopt($text) {
 		return '=?UTF-8?B?'.Base64_encode($text).'?=';

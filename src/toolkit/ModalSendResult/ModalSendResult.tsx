@@ -5,6 +5,8 @@ import Form1 from "./Form1";
 import Form2 from "./Form2";
 import { FenceProflist, FenceShtaketnik } from "@/fence";
 import { sendFenceForm } from "./sendFenceForm";
+import { useAppSelector } from "@/store/hooks";
+import { selectFenceColor } from "@/store/ui/fence/selectors";
 
 interface Props {
   calculations: ReturnType<
@@ -18,6 +20,8 @@ export default function ModalSendResult({ calculations, close }: Props) {
   const refInput = useRef<HTMLInputElement | null>(null);
   const [state, setState] = useState(true);
   const [error, setError] = useState("");
+
+  const color = useAppSelector(selectFenceColor);
 
   const mouseHandler = () => {
     if (refInput && refInput.current && !refInput.current.value) {
@@ -50,7 +54,7 @@ export default function ModalSendResult({ calculations, close }: Props) {
         }
       }
 
-      sendFenceForm(refForm.current, calculations)
+      sendFenceForm(refForm.current, calculations, color?.name ?? "")
         .then((data) => {
           console.log("data", data);
           close();
@@ -73,6 +77,7 @@ export default function ModalSendResult({ calculations, close }: Props) {
       <div className={styles.fenceSendResult__twoColumns}>
         <CustomButton
           type="primary"
+          border={!state ? "outlined" : "normal"}
           onClick={(e: React.MouseEvent<HTMLElement>) => {
             e.preventDefault();
             setError("");
@@ -84,7 +89,7 @@ export default function ModalSendResult({ calculations, close }: Props) {
         </CustomButton>
         <CustomButton
           type="primary"
-          border="outlined"
+          border={state ? "outlined" : "normal"}
           onClick={(e: React.MouseEvent<HTMLElement>) => {
             e.preventDefault();
             setError("");
