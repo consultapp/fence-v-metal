@@ -19,7 +19,7 @@ export async function sendFenceForm(
 
   if (isAgree && isAgree.length && isAgree[0] === "on") {
     data.append("action", "calc_fence");
-    data.append("form_subject", "Тестовый расчет из калькулятора");
+    data.append("form_subject", "Заказ из калькулятора");
     data.append(
       "calculationsTable",
       getEmailResultTableHTML(

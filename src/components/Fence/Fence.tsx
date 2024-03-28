@@ -28,11 +28,9 @@ export default function Fence() {
     dispatch(loadProductsIfNotExisted());
   }, [dispatch]);
 
-  console.log("Date.now()", Date.now());
-
   if (
     loadingStatus === LOADING_STATUS.failed ||
-    Date.now() > 1711567914693 + 1000 * 60 * 60 * 24 * 30
+    Date.now() > 1711567914693 + 1000 * 60 * 60 * 24 * 45
   )
     return (
       <div>
