@@ -29,8 +29,6 @@ export default function StageColor() {
 
   if (!material || !material.colors) return;
 
-  console.log("currentColor", currentColor);
-
   return (
     <div className="fenceSection">
       <div className="fenceSection__header3">
